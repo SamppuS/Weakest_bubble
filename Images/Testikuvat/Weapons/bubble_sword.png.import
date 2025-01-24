@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://f06yjlj6q0bv"
-path="res://.godot/imported/yolakki(4).jpg-f1fca67a938c4cf80e109219e4fef67b.ctex"
+uid="uid://dont7p10snumj"
+path="res://.godot/imported/bubble_sword.png-1c28c60868a0df34d8417dc8dad92926.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/Testikuvat/Weapons/yolakki(4).jpg"
-dest_files=["res://.godot/imported/yolakki(4).jpg-f1fca67a938c4cf80e109219e4fef67b.ctex"]
+source_file="res://Images/Testikuvat/Weapons/bubble_sword.png"
+dest_files=["res://.godot/imported/bubble_sword.png-1c28c60868a0df34d8417dc8dad92926.ctex"]
 
 [params]
 

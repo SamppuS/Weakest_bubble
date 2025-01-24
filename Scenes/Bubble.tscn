@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://bt5fji5342xuf"]
+
+[ext_resource type="Texture2D" uid="uid://q8dqihtvd7ya" path="res://Images/Testikuvat/BasicShapes/Ympyrät/Ympyrä1.png" id="1_taheu"]
+[ext_resource type="Texture2D" uid="uid://dont7p10snumj" path="res://Images/Testikuvat/Weapons/bubble_sword.png" id="2_rcd7q"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fbcfy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sava3"]
+size = Vector2(3, 17)
+
+[node name="Bubble" type="Node2D"]
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+
+[node name="Ympyrä1" type="Sprite2D" parent="RigidBody2D"]
+scale = Vector2(0.0395683, 0.0395683)
+texture = ExtResource("1_taheu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+shape = SubResource("CircleShape2D_fbcfy")
+
+[node name="PinJoint2D" type="PinJoint2D" parent="RigidBody2D"]
+
+[node name="RigidBody2D" type="RigidBody2D" parent="RigidBody2D/PinJoint2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D/PinJoint2D/RigidBody2D"]
+shape = SubResource("RectangleShape2D_sava3")
+
+[node name="BubbleSword" type="Sprite2D" parent="RigidBody2D/PinJoint2D/RigidBody2D/CollisionShape2D"]
+scale = Vector2(0.025, 0.025)
+texture = ExtResource("2_rcd7q")
