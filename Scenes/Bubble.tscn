@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://ufq4hk20mbpu" path="res://Images/Testikuvat/Misc/plus_ball.png" id="2_2a2md"]
 [ext_resource type="Texture2D" uid="uid://dont7p10snumj" path="res://Images/Testikuvat/Weapons/bubble_sword.png" id="2_rcd7q"]
 
-[sub_resource type="Curve" id="Curve_kqmex"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.490099, 1), 0.0, 0.0, 0, 0]
+[sub_resource type="Curve" id="Curve_s5j5j"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fbcfy"]
@@ -18,7 +18,7 @@ radius = 5.0
 
 [node name="Bubble" type="Node2D"]
 script = ExtResource("1_riexd")
-force_funciton = SubResource("Curve_kqmex")
+force_function = SubResource("Curve_s5j5j")
 
 [node name="PinJoint2D" type="PinJoint2D" parent="."]
 node_a = NodePath("../Player")
