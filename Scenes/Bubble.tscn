@@ -25,6 +25,7 @@ node_a = NodePath("../Player")
 node_b = NodePath("../BubbleSword")
 
 [node name="Player" type="RigidBody2D" parent="."]
+gravity_scale = 0.402
 lock_rotation = true
 
 [node name="Ympyrä1" type="Sprite2D" parent="Player"]
