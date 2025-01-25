@@ -3,7 +3,7 @@ extends Node2D
 @export var force_function: Curve
 
 @onready var player = $Player
-@onready var sword = $BubbleSword
+@onready var sword = get_node("Bubble_Sword")
 
 const radius = 15
 
