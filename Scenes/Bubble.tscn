@@ -350,6 +350,7 @@ disable_collision = false
 [node name="Bubblebody" type="Polygon2D" parent="."]
 position = Vector2(-10.1, -10.14)
 scale = Vector2(0.035, 0.035)
+color = Color(1, 1, 1, 0.45098)
 texture = ExtResource("4_j5wmu")
 skeleton = NodePath("Skeleton2D")
 polygon = PackedVector2Array(260, 1, 246, 3, 239, 3, 225, 7, 220, 7, 193, 16, 190, 16, 174, 24, 171, 24, 147, 37, 145, 37, 144, 38, 144, 39, 142, 40, 140, 40, 139, 41, 139, 42, 137, 42, 129, 48, 127, 48, 126, 50, 124, 50, 118, 56, 116, 56, 102, 69, 100, 69, 94, 76, 92, 76, 86, 83, 84, 83, 84, 85, 77, 92, 76, 92, 76, 94, 70, 100, 69, 100, 69, 102, 65, 106, 64, 106, 64, 108, 61, 111, 60, 111, 60, 113, 58, 115, 57, 115, 57, 117, 54, 120, 53, 120, 51, 124, 50, 124, 49, 126, 49, 128, 48, 129, 47, 129, 46, 132, 45, 132, 44, 134, 44, 136, 43, 137, 42, 137, 38, 145, 37, 145, 25, 171, 24, 171, 24, 174, 23, 176, 22, 176, 22, 179, 20, 183, 19, 183, 17, 190, 16, 190, 9, 216, 8, 216, 7, 225, 6, 225, 1, 260, 0, 260, 0, 322, 3, 336, 3, 343, 7, 357, 7, 362, 16, 389, 16, 392, 18, 394, 18, 397, 37, 435, 37, 437, 38, 438, 39, 438, 40, 440, 40, 442, 41, 443, 42, 443, 42, 445, 48, 453, 48, 455, 50, 456, 50, 458, 56, 464, 56, 466, 69, 480, 69, 482, 76, 488, 76, 490, 83, 496, 83, 498, 85, 498, 92, 505, 92, 506, 94, 506, 100, 512, 100, 513, 102, 513, 106, 517, 106, 518, 108, 518, 111, 521, 111, 522, 113, 522, 115, 524, 115, 525, 117, 525, 120, 528, 120, 529, 124, 531, 124, 532, 126, 533, 128, 533, 132, 536, 132, 537, 134, 538, 136, 538, 137, 539, 137, 540, 145, 544, 145, 545, 171, 557, 171, 558, 174, 558, 176, 559, 176, 560, 179, 560, 183, 562, 183, 563, 190, 565, 190, 566, 216, 573, 216, 574, 239, 578, 239, 579, 271, 583, 311, 583, 336, 579, 343, 579, 357, 575, 362, 575, 389, 566, 392, 566, 408, 558, 411, 558, 435, 545, 437, 545, 438, 544, 438, 543, 440, 542, 442, 542, 443, 541, 443, 540, 445, 540, 453, 534, 455, 534, 456, 532, 458, 532, 464, 526, 466, 526, 480, 513, 482, 513, 488, 506, 490, 506, 496, 499, 498, 499, 498, 497, 505, 490, 506, 490, 506, 488, 512, 482, 513, 482, 513, 480, 517, 476, 518, 476, 518, 474, 521, 471, 522, 471, 522, 469, 524, 467, 525, 467, 525, 465, 528, 462, 529, 462, 531, 458, 532, 458, 533, 456, 533, 454, 536, 450, 537, 450, 538, 448, 538, 446, 539, 445, 540, 445, 544, 437, 545, 437, 557, 411, 558, 411, 558, 408, 559, 406, 560, 406, 560, 403, 562, 399, 563, 399, 565, 392, 566, 392, 573, 366, 574, 366, 578, 343, 579, 343, 581, 322, 582, 322, 582, 311, 583, 311, 583, 271, 579, 246, 579, 239, 573, 216, 573, 212, 566, 193, 566, 190, 558, 174, 558, 171, 545, 147, 545, 145, 544, 144, 543, 144, 542, 142, 542, 140, 541, 139, 540, 139, 540, 137, 534, 129, 534, 127, 526, 118, 526, 116, 522, 113, 522, 111, 518, 108, 518, 106, 513, 102, 513, 100, 499, 86, 499, 84, 497, 84, 490, 77, 490, 76, 488, 76, 482, 70, 482, 69, 480, 69, 476, 65, 476, 64, 474, 64, 471, 61, 471, 60, 469, 60, 467, 58, 467, 57, 465, 57, 462, 54, 462, 53, 458, 51, 458, 50, 456, 49, 454, 49, 450, 46, 450, 45, 448, 44, 446, 44, 445, 43, 445, 42, 437, 38, 437, 37, 411, 25, 411, 24, 408, 24, 406, 23, 406, 22, 403, 22, 399, 20, 399, 19, 392, 17, 392, 16, 366, 9, 366, 8, 357, 7, 357, 6, 322, 1, 322, 0, 260, 0, 45, 225, 7, 225, 8, 216, 9, 216, 16, 190, 17, 190, 19, 183, 20, 183, 21.5, 180, 45, 180, 45, 180, 21.5, 180, 22, 179, 22, 176, 23, 176, 24, 174, 24, 171, 25, 171, 37, 145, 38, 145, 42, 137, 43, 137, 44, 136, 44, 135, 45, 135, 45, 135, 44, 135, 44, 134, 45, 132, 45, 315, 0, 315, 0, 270, 45, 270, 45, 270, 0, 270, 0, 260, 1, 260, 6, 225, 45, 225, 45, 405, 22, 405, 18, 397, 18, 394, 16, 392, 16, 389, 7, 362, 7, 360, 45, 360, 45, 360, 7, 360, 7, 357, 3, 343, 3, 336, 0, 322, 0, 315, 45, 315, 90, 90, 79, 90, 84, 85, 84, 83, 86, 83, 90, 78.3333, 135, 135, 90, 135, 90, 90, 135, 90, 90, 135, 45, 135, 45, 132, 46, 132, 47, 129, 48, 129, 49, 128, 49, 126, 50, 124, 51, 124, 53, 120, 54, 120, 57, 117, 57, 115, 58, 115, 60, 113, 60, 111, 61, 111, 64, 108, 64, 106, 65, 106, 69, 102, 69, 100, 70, 100, 76, 94, 76, 92, 77, 92, 79, 90, 90, 90, 135, 90, 90, 90, 90, 78.3333, 92, 76, 94, 76, 100, 69, 102, 69, 116, 56, 118, 56, 124, 50, 126, 50, 127, 48, 129, 48, 133, 45, 135, 45, 90, 180, 45, 180, 45, 135, 90, 135, 135, 225, 90, 225, 90, 180, 135, 180, 90, 225, 45, 225, 45, 180, 90, 180, 135, 180, 90, 180, 90, 135, 135, 135, 90, 270, 45, 270, 45, 225, 90, 225, 135, 315, 90, 315, 90, 270, 135, 270, 90, 315, 45, 315, 45, 270, 90, 270, 135, 270, 90, 270, 90, 225, 135, 225, 90, 360, 45, 360, 45, 315, 90, 315, 135, 405, 90, 405, 90, 360, 135, 360, 90, 405, 45, 405, 45, 360, 90, 360, 135, 360, 90, 360, 90, 315, 135, 315, 225, 45, 180, 45, 180, 21, 190, 16, 193, 16, 220, 7, 225, 7, 180, 45, 135, 45, 135, 43.5, 137, 42, 139, 42, 139, 41, 140, 40, 142, 40, 144, 39, 144, 38, 145, 37, 147, 37, 171, 24, 174, 24, 180, 21, 135, 45, 133, 45, 135, 43.5, 180, 90, 135, 90, 135, 45, 180, 45, 225, 135, 180, 135, 180, 90, 225, 90, 180, 135, 135, 135, 135, 90, 180, 90, 225, 90, 180, 90, 180, 45, 225, 45, 180, 180, 135, 180, 135, 135, 180, 135, 225, 225, 180, 225, 180, 180, 225, 180, 180, 225, 135, 225, 135, 180, 180, 180, 225, 180, 180, 180, 180, 135, 225, 135, 180, 270, 135, 270, 135, 225, 180, 225, 225, 315, 180, 315, 180, 270, 225, 270, 180, 315, 135, 315, 135, 270, 180, 270, 225, 270, 180, 270, 180, 225, 225, 225, 180, 360, 135, 360, 135, 315, 180, 315, 225, 405, 180, 405, 180, 360, 225, 360, 180, 405, 135, 405, 135, 360, 180, 360, 225, 360, 180, 360, 180, 315, 225, 315, 315, 45, 270, 45, 270, 0, 315, 0, 270, 45, 225, 45, 225, 7, 239, 3, 246, 3, 260, 1, 260, 0, 270, 0, 270, 90, 225, 90, 225, 45, 270, 45, 315, 135, 270, 135, 270, 90, 315, 90, 270, 135, 225, 135, 225, 90, 270, 90, 315, 90, 270, 90, 270, 45, 315, 45, 270, 180, 225, 180, 225, 135, 270, 135, 315, 225, 270, 225, 270, 180, 315, 180, 270, 225, 225, 225, 225, 180, 270, 180, 315, 180, 270, 180, 270, 135, 315, 135, 270, 270, 225, 270, 225, 225, 270, 225, 315, 315, 270, 315, 270, 270, 315, 270, 270, 315, 225, 315, 225, 270, 270, 270, 315, 270, 270, 270, 270, 225, 315, 225, 270, 360, 225, 360, 225, 315, 270, 315, 315, 405, 270, 405, 270, 360, 315, 360, 270, 405, 225, 405, 225, 360, 270, 360, 315, 360, 270, 360, 270, 315, 315, 315, 366, 8, 366, 9, 392, 16, 392, 17, 399, 19, 399, 20, 403, 22, 405, 22, 405, 45, 360, 45, 360, 7.33333, 322, 1, 357, 6, 357, 7, 360, 7.33333, 360, 45, 315, 45, 315, 0, 322, 0, 360, 90, 315, 90, 315, 45, 360, 45, 405, 135, 360, 135, 360, 90, 405, 90, 360, 135, 315, 135, 315, 90, 360, 90, 405, 90, 360, 90, 360, 45, 405, 45, 360, 180, 315, 180, 315, 135, 360, 135, 405, 225, 360, 225, 360, 180, 405, 180, 360, 225, 315, 225, 315, 180, 360, 180, 405, 180, 360, 180, 360, 135, 405, 135, 360, 270, 315, 270, 315, 225, 360, 225, 405, 315, 360, 315, 360, 270, 405, 270, 360, 315, 315, 315, 315, 270, 360, 270, 405, 270, 360, 270, 360, 225, 405, 225, 360, 360, 315, 360, 315, 315, 360, 315, 405, 405, 360, 405, 360, 360, 405, 360, 360, 405, 315, 405, 315, 360, 360, 360, 405, 360, 360, 360, 360, 315, 405, 315, 90, 450, 45, 450, 45, 405, 90, 405, 135, 495, 90, 495, 90, 450, 135, 450, 90, 495, 81.8333, 495, 76, 490, 76, 488, 69, 482, 69, 480, 56, 466, 56, 464, 50, 458, 50, 456, 48, 455, 48, 453, 45.75, 450, 90, 450, 135, 450, 90, 450, 90, 405, 135, 405, 45, 449, 42, 445, 42, 443, 41, 443, 40, 442, 40, 440, 39, 438, 38, 438, 37, 437, 37, 435, 22, 405, 45, 405, 90, 503, 85, 498, 83, 498, 83, 496, 81.8333, 495, 90, 495, 135, 538, 134, 538, 132, 537, 132, 536, 128, 533, 126, 533, 124, 532, 124, 531, 120, 529, 120, 528, 117, 525, 115, 525, 115, 524, 113, 522, 111, 522, 111, 521, 108, 518, 106, 518, 106, 517, 102, 513, 100, 513, 100, 512, 94, 506, 92, 506, 92, 505, 90, 503, 90, 495, 135, 495, 180, 450, 135, 450, 135, 405, 180, 405, 225, 495, 180, 495, 180, 450, 225, 450, 180, 495, 135, 495, 135, 450, 180, 450, 225, 450, 180, 450, 180, 405, 225, 405, 180, 540, 135, 540, 135, 495, 180, 495, 225, 575.565, 216, 574, 216, 573, 190, 566, 190, 565, 183, 563, 183, 562, 180, 560.5, 180, 540, 225, 540, 180, 560.5, 179, 560, 176, 560, 176, 559, 174, 558, 171, 558, 171, 557, 145, 545, 145, 544, 137, 540, 180, 540, 225, 540, 180, 540, 180, 495, 225, 495, 270, 450, 225, 450, 225, 405, 270, 405, 315, 495, 270, 495, 270, 450, 315, 450, 270, 495, 225, 495, 225, 450, 270, 450, 315, 450, 270, 450, 270, 405, 315, 405, 270, 540, 225, 540, 225, 495, 270, 495, 315, 585, 270, 585, 270, 540, 315, 540, 270, 582.875, 239, 579, 239, 578, 225, 575.565, 225, 540, 270, 540, 315, 540, 270, 540, 270, 495, 315, 495, 360, 450, 315, 450, 315, 405, 360, 405, 405, 495, 360, 495, 360, 450, 405, 450, 360, 495, 315, 495, 315, 450, 360, 450, 405, 450, 360, 450, 360, 405, 405, 405, 360, 540, 315, 540, 315, 495, 360, 495, 405, 559.5, 392, 566, 389, 566, 362, 575, 360, 575, 360, 540, 405, 540, 360, 575, 357, 575, 343, 579, 336, 579, 315, 582.36, 315, 540, 360, 540, 405, 540, 360, 540, 360, 495, 405, 495, 450, 90, 405, 90, 405, 45, 450, 45, 495, 135, 450, 135, 450, 90, 495, 90, 450, 135, 405, 135, 405, 90, 450, 90, 454, 49, 456, 49, 458, 50, 458, 51, 462, 53, 462, 54, 465, 57, 467, 57, 467, 58, 469, 60, 471, 60, 471, 61, 474, 64, 476, 64, 476, 65, 480, 69, 482, 69, 482, 70, 488, 76, 490, 76, 490, 77, 495, 82, 495, 90, 450, 90, 450, 46, 406, 23, 408, 24, 411, 24, 411, 25, 437, 37, 437, 38, 445, 42, 445, 43, 446, 44, 448, 44, 450, 45, 405, 45, 405, 22, 406, 22, 497, 84, 499, 84, 499, 86, 503, 90, 495, 90, 495, 82, 513, 100, 513, 102, 518, 106, 518, 108, 522, 111, 522, 113, 526, 116, 526, 118, 534, 127, 534, 129, 538.5, 135, 495, 135, 495, 90, 503, 90, 450, 180, 405, 180, 405, 135, 450, 135, 495, 225, 450, 225, 450, 180, 495, 180, 450, 225, 405, 225, 405, 180, 450, 180, 495, 180, 450, 180, 450, 135, 495, 135, 450, 270, 405, 270, 405, 225, 450, 225, 495, 315, 450, 315, 450, 270, 495, 270, 450, 315, 405, 315, 405, 270, 450, 270, 495, 270, 450, 270, 450, 225, 495, 225, 450, 360, 405, 360, 405, 315, 450, 315, 495, 405, 450, 405, 450, 360, 495, 360, 450, 405, 405, 405, 405, 360, 450, 360, 495, 360, 450, 360, 450, 315, 495, 315, 540, 180, 495, 180, 495, 135, 540, 135, 566, 190, 566, 193, 573, 212, 573, 216, 575.348, 225, 540, 225, 540, 180, 561, 180, 540, 225, 495, 225, 495, 180, 540, 180, 542, 140, 542, 142, 543, 144, 544, 144, 545, 145, 545, 147, 558, 171, 558, 174, 561, 180, 540, 180, 540, 139, 541, 139, 540, 270, 495, 270, 495, 225, 540, 225, 583, 271, 583, 311, 582, 311, 582, 315, 540, 315, 540, 270, 582.84, 270, 540, 315, 495, 315, 495, 270, 540, 270, 579, 239, 579, 246, 582.84, 270, 540, 270, 540, 225, 575.348, 225, 540, 360, 495, 360, 495, 315, 540, 315, 574, 366, 573, 366, 566, 392, 565, 392, 563, 399, 562, 399, 560, 403, 560, 405, 540, 405, 540, 360, 575.043, 360, 540, 405, 495, 405, 495, 360, 540, 360, 582, 322, 581, 322, 579, 343, 578, 343, 575.043, 360, 540, 360, 540, 315, 582, 315, 450, 450, 405, 450, 405, 405, 450, 405, 495, 495, 450, 495, 450, 450, 495, 450, 450, 495, 405, 495, 405, 450, 450, 450, 495, 450, 450, 450, 450, 405, 495, 405, 450, 536.25, 445, 540, 405, 540, 405, 495, 450, 495, 443, 541, 442, 542, 440, 542, 438, 543, 438, 544, 437, 545, 435, 545, 411, 558, 408, 558, 405, 559.5, 405, 540, 443, 540, 495, 500.167, 490, 506, 488, 506, 482, 513, 480, 513, 466, 526, 464, 526, 458, 532, 456, 532, 455, 534, 453, 534, 450, 536.25, 450, 495, 495, 495, 498, 497, 498, 499, 496, 499, 495, 500.167, 495, 495, 500, 495, 540, 450, 495, 450, 495, 405, 540, 405, 533, 454, 533, 456, 532, 458, 531, 458, 529, 462, 528, 462, 525, 465, 525, 467, 524, 467, 522, 469, 522, 471, 521, 471, 518, 474, 518, 476, 517, 476, 513, 480, 513, 482, 512, 482, 506, 488, 506, 490, 505, 490, 500, 495, 495, 495, 495, 450, 536, 450, 560, 406, 559, 406, 558, 408, 558, 411, 557, 411, 545, 437, 544, 437, 540, 445, 540, 405, 560, 405)
@@ -358,7 +359,7 @@ bones = ["Bone-0", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
 internal_vertex_count = 882
 script = ExtResource("5_4xt01")
 vertex_interval = 90
-softness = 2.0
+softness = 30.0
 radius = 85
 margin_offset_edge = 18.0
 mass = 0.05
@@ -930,28 +931,28 @@ visible = false
 rotation = -2.51333
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-3")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-0-Bone-1" type="PinJoint2D" parent="Bubblebody/Bone-0"]
 visible = false
 rotation = 0.0246736
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-1")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-0-Bone-4" type="PinJoint2D" parent="Bubblebody/Bone-0"]
 visible = false
 rotation = -1.52073
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-4")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-0-Bone-5" type="PinJoint2D" parent="Bubblebody/Bone-0"]
 visible = false
 rotation = -0.64768
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-5")
-softness = 2.0
+softness = 30.0
 
 [node name="Bone-1" type="RigidBody2D" parent="Bubblebody"]
 position = Vector2(40.4428, 271.434)
@@ -976,35 +977,35 @@ visible = false
 rotation = -3.11692
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-0")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-1-Bone-4" type="PinJoint2D" parent="Bubblebody/Bone-1"]
 visible = false
 rotation = -2.47329
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-4")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-1-Bone-5" type="PinJoint2D" parent="Bubblebody/Bone-1"]
 visible = false
 rotation = -1.56374
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-5")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-1-Bone-2" type="PinJoint2D" parent="Bubblebody/Bone-1"]
 visible = false
 rotation = 0.00593702
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-2")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-1-Bone-6" type="PinJoint2D" parent="Bubblebody/Bone-1"]
 visible = false
 rotation = -0.677545
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-6")
-softness = 2.0
+softness = 30.0
 
 [node name="Bone-2" type="RigidBody2D" parent="Bubblebody"]
 position = Vector2(39.9433, 355.558)
@@ -1029,28 +1030,28 @@ visible = false
 rotation = -3.13566
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-1")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-2-Bone-5" type="PinJoint2D" parent="Bubblebody/Bone-2"]
 visible = false
 rotation = -2.45934
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-5")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-2-Bone-6" type="PinJoint2D" parent="Bubblebody/Bone-2"]
 visible = false
 rotation = -1.59094
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-6")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-2-Bone-22" type="PinJoint2D" parent="Bubblebody/Bone-2"]
 visible = false
 rotation = -0.464745
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-22")
-softness = 2.0
+softness = 30.0
 
 [node name="Bone-3" type="RigidBody2D" parent="Bubblebody"]
 position = Vector2(102.728, 102.728)
@@ -1075,35 +1076,35 @@ visible = false
 rotation = 0.628259
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-0")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-3-Bone-4" type="PinJoint2D" parent="Bubblebody/Bone-3"]
 visible = false
 rotation = -0.0351262
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-4")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-3-Bone-8" type="PinJoint2D" parent="Bubblebody/Bone-3"]
 visible = false
 rotation = -1.53567
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-8")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-3-Bone-9" type="PinJoint2D" parent="Bubblebody/Bone-3"]
 visible = false
 rotation = -0.785398
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-9")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-3-Bone-7" type="PinJoint2D" parent="Bubblebody/Bone-3"]
 visible = false
 rotation = -2.19626
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-7")
-softness = 2.0
+softness = 30.0
 
 [node name="Bone-4" type="RigidBody2D" parent="Bubblebody"]
 position = Vector2(105.75, 188.715)
@@ -1128,49 +1129,49 @@ visible = false
 rotation = -4.66233
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-0")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-4-Bone-1" type="PinJoint2D" parent="Bubblebody/Bone-4"]
 visible = false
 rotation = 0.668306
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-1")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-4-Bone-5" type="PinJoint2D" parent="Bubblebody/Bone-4"]
 visible = false
 rotation = -0.0258234
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-5")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-4-Bone-3" type="PinJoint2D" parent="Bubblebody/Bone-4"]
 visible = false
 rotation = -3.17672
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-3")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-4-Bone-8" type="PinJoint2D" parent="Bubblebody/Bone-4"]
 visible = false
 rotation = -2.35619
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-8")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-4-Bone-9" type="PinJoint2D" parent="Bubblebody/Bone-4"]
 visible = false
 rotation = -1.52469
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-9")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-4-Bone-10" type="PinJoint2D" parent="Bubblebody/Bone-4"]
 visible = false
 rotation = -0.826321
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-10")
-softness = 2.0
+softness = 30.0
 
 [node name="Bone-5" type="RigidBody2D" parent="Bubblebody"]
 position = Vector2(107.898, 271.91)
@@ -1195,56 +1196,56 @@ visible = false
 rotation = -3.78927
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-0")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-5-Bone-1" type="PinJoint2D" parent="Bubblebody/Bone-5"]
 visible = false
 rotation = -4.70534
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-1")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-5-Bone-4" type="PinJoint2D" parent="Bubblebody/Bone-5"]
 visible = false
 rotation = -3.16742
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-4")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-5-Bone-2" type="PinJoint2D" parent="Bubblebody/Bone-5"]
 visible = false
 rotation = 0.68225
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-2")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-5-Bone-6" type="PinJoint2D" parent="Bubblebody/Bone-5"]
 visible = false
 rotation = 0.0104039
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-6")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-5-Bone-9" type="PinJoint2D" parent="Bubblebody/Bone-5"]
 visible = false
 rotation = -2.32177
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-9")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-5-Bone-10" type="PinJoint2D" parent="Bubblebody/Bone-5"]
 visible = false
 rotation = -1.55411
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-10")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-5-Bone-11" type="PinJoint2D" parent="Bubblebody/Bone-5"]
 visible = false
 rotation = -0.83815
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-11")
-softness = 2.0
+softness = 30.0
 
 [node name="Bone-6" type="RigidBody2D" parent="Bubblebody"]
 position = Vector2(107.042, 354.207)
@@ -1269,49 +1270,49 @@ visible = false
 rotation = -3.81914
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-1")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-6-Bone-2" type="PinJoint2D" parent="Bubblebody/Bone-6"]
 visible = false
 rotation = 1.55066
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-2")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-6-Bone-5" type="PinJoint2D" parent="Bubblebody/Bone-6"]
 visible = false
 rotation = -3.13119
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-5")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-6-Bone-22" type="PinJoint2D" parent="Bubblebody/Bone-6"]
 visible = false
 rotation = 0.13909
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-22")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-6-Bone-10" type="PinJoint2D" parent="Bubblebody/Bone-6"]
 visible = false
 rotation = -2.29889
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-10")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-6-Bone-11" type="PinJoint2D" parent="Bubblebody/Bone-6"]
 visible = false
 rotation = -1.61187
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-11")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-6-Bone-23" type="PinJoint2D" parent="Bubblebody/Bone-6"]
 visible = false
 rotation = -0.799042
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-23")
-softness = 2.0
+softness = 30.0
 
 [node name="Bone-7" type="RigidBody2D" parent="Bubblebody"]
 position = Vector2(186.023, 42.5735)
@@ -1336,28 +1337,28 @@ visible = false
 rotation = -1.59574
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-12")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-7-Bone-3" type="PinJoint2D" parent="Bubblebody/Bone-7"]
 visible = false
 rotation = 0.945335
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-3")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-7-Bone-8" type="PinJoint2D" parent="Bubblebody/Bone-7"]
 visible = false
 rotation = -0.0425905
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-8")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-7-Bone-13" type="PinJoint2D" parent="Bubblebody/Bone-7"]
 visible = false
 rotation = -0.920552
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-13")
-softness = 2.0
+softness = 30.0
 
 [node name="Bone-8" type="RigidBody2D" parent="Bubblebody"]
 position = Vector2(188.715, 105.75)
@@ -1382,49 +1383,49 @@ visible = false
 rotation = -4.67726
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-3")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-8-Bone-4" type="PinJoint2D" parent="Bubblebody/Bone-8"]
 visible = false
 rotation = 0.785398
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-4")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-8-Bone-9" type="PinJoint2D" parent="Bubblebody/Bone-8"]
 visible = false
 rotation = -0.0461041
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-9")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-8-Bone-7" type="PinJoint2D" parent="Bubblebody/Bone-8"]
 visible = false
 rotation = -3.18418
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-7")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-8-Bone-12" type="PinJoint2D" parent="Bubblebody/Bone-8"]
 visible = false
 rotation = -2.2391
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-12")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-8-Bone-13" type="PinJoint2D" parent="Bubblebody/Bone-8"]
 visible = false
 rotation = -1.54497
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-13")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-8-Bone-14" type="PinJoint2D" parent="Bubblebody/Bone-8"]
 visible = false
 rotation = -0.744475
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-14")
-softness = 2.0
+softness = 30.0
 
 [node name="Bone-9" type="RigidBody2D" parent="Bubblebody"]
 position = Vector2(192.728, 192.728)
@@ -1449,56 +1450,56 @@ visible = false
 rotation = -3.92699
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-3")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-9-Bone-4" type="PinJoint2D" parent="Bubblebody/Bone-9"]
 visible = false
 rotation = -4.66629
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-4")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-9-Bone-8" type="PinJoint2D" parent="Bubblebody/Bone-9"]
 visible = false
 rotation = -3.1877
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-8")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-9-Bone-5" type="PinJoint2D" parent="Bubblebody/Bone-9"]
 visible = false
 rotation = 0.819819
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-5")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-9-Bone-10" type="PinJoint2D" parent="Bubblebody/Bone-9"]
 visible = false
 rotation = -0.0612334
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-10")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-9-Bone-13" type="PinJoint2D" parent="Bubblebody/Bone-9"]
 visible = false
 rotation = -2.39062
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-13")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-9-Bone-14" type="PinJoint2D" parent="Bubblebody/Bone-9"]
 visible = false
 rotation = -1.50956
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-14")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-9-Bone-15" type="PinJoint2D" parent="Bubblebody/Bone-9"]
 visible = false
 rotation = -0.785398
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-15")
-softness = 2.0
+softness = 30.0
 
 [node name="Bone-10" type="RigidBody2D" parent="Bubblebody"]
 position = Vector2(197.674, 273.408)
@@ -1523,56 +1524,56 @@ visible = false
 rotation = -3.96791
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-4")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-10-Bone-5" type="PinJoint2D" parent="Bubblebody/Bone-10"]
 visible = false
 rotation = -4.6957
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-5")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-10-Bone-9" type="PinJoint2D" parent="Bubblebody/Bone-10"]
 visible = false
 rotation = -3.20283
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-9")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-10-Bone-6" type="PinJoint2D" parent="Bubblebody/Bone-10"]
 visible = false
 rotation = 0.842699
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-6")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-10-Bone-11" type="PinJoint2D" parent="Bubblebody/Bone-10"]
 visible = false
 rotation = 0.0302811
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-11")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-10-Bone-14" type="PinJoint2D" parent="Bubblebody/Bone-10"]
 visible = false
 rotation = -2.35619
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-14")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-10-Bone-15" type="PinJoint2D" parent="Bubblebody/Bone-10"]
 visible = false
 rotation = -1.46166
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-15")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-10-Bone-16" type="PinJoint2D" parent="Bubblebody/Bone-10"]
 visible = false
 rotation = -0.841736
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-16")
-softness = 2.0
+softness = 30.0
 
 [node name="Bone-11" type="RigidBody2D" parent="Bubblebody"]
 position = Vector2(195.337, 350.578)
@@ -1597,56 +1598,56 @@ visible = false
 rotation = -3.97974
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-5")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-11-Bone-6" type="PinJoint2D" parent="Bubblebody/Bone-11"]
 visible = false
 rotation = 1.52972
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-6")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-11-Bone-10" type="PinJoint2D" parent="Bubblebody/Bone-11"]
 visible = false
 rotation = -3.11131
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-10")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-11-Bone-22" type="PinJoint2D" parent="Bubblebody/Bone-11"]
 visible = false
 rotation = 0.756143
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-22")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-11-Bone-23" type="PinJoint2D" parent="Bubblebody/Bone-11"]
 visible = false
 rotation = 0.0587322
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-23")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-11-Bone-15" type="PinJoint2D" parent="Bubblebody/Bone-11"]
 visible = false
 rotation = -2.23098
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-15")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-11-Bone-16" type="PinJoint2D" parent="Bubblebody/Bone-11"]
 visible = false
 rotation = -1.66733
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-16")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-11-Bone-25" type="PinJoint2D" parent="Bubblebody/Bone-11"]
 visible = false
 rotation = -0.757026
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-25")
-softness = 2.0
+softness = 30.0
 
 [node name="Bone-12" type="RigidBody2D" parent="Bubblebody"]
 position = Vector2(271.434, 40.4428)
@@ -1671,35 +1672,35 @@ visible = false
 rotation = 1.54585
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-7")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-12-Bone-8" type="PinJoint2D" parent="Bubblebody/Bone-12"]
 visible = false
 rotation = 0.90249
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-8")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-12-Bone-13" type="PinJoint2D" parent="Bubblebody/Bone-12"]
 visible = false
 rotation = -0.00705154
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-13")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-12-Bone-17" type="PinJoint2D" parent="Bubblebody/Bone-12"]
 visible = false
 rotation = -1.57673
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-17")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-12-Bone-18" type="PinJoint2D" parent="Bubblebody/Bone-12"]
 visible = false
 rotation = -0.893252
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-18")
-softness = 2.0
+softness = 30.0
 
 [node name="Bone-13" type="RigidBody2D" parent="Bubblebody"]
 position = Vector2(271.91, 107.898)
@@ -1724,56 +1725,56 @@ visible = false
 rotation = -4.06214
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-7")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-13-Bone-8" type="PinJoint2D" parent="Bubblebody/Bone-13"]
 visible = false
 rotation = -4.68657
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-8")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-13-Bone-12" type="PinJoint2D" parent="Bubblebody/Bone-13"]
 visible = false
 rotation = -3.14864
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-12")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-13-Bone-9" type="PinJoint2D" parent="Bubblebody/Bone-13"]
 visible = false
 rotation = 0.750977
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-9")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-13-Bone-14" type="PinJoint2D" parent="Bubblebody/Bone-13"]
 visible = false
 rotation = -0.0166879
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-14")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-13-Bone-17" type="PinJoint2D" parent="Bubblebody/Bone-13"]
 visible = false
 rotation = -2.25305
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-17")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-13-Bone-18" type="PinJoint2D" parent="Bubblebody/Bone-13"]
 visible = false
 rotation = -1.5812
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-18")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-13-Bone-19" type="PinJoint2D" parent="Bubblebody/Bone-13"]
 visible = false
 rotation = -0.732647
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-19")
-softness = 2.0
+softness = 30.0
 
 [node name="Bone-14" type="RigidBody2D" parent="Bubblebody"]
 position = Vector2(273.408, 197.674)
@@ -1798,56 +1799,56 @@ visible = false
 rotation = -3.88607
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-8")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-14-Bone-9" type="PinJoint2D" parent="Bubblebody/Bone-14"]
 visible = false
 rotation = -4.65116
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-9")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-14-Bone-13" type="PinJoint2D" parent="Bubblebody/Bone-14"]
 visible = false
 rotation = -3.15828
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-13")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-14-Bone-10" type="PinJoint2D" parent="Bubblebody/Bone-14"]
 visible = false
 rotation = 0.785398
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-10")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-14-Bone-15" type="PinJoint2D" parent="Bubblebody/Bone-14"]
 visible = false
 rotation = -0.109141
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-15")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-14-Bone-18" type="PinJoint2D" parent="Bubblebody/Bone-14"]
 visible = false
 rotation = -2.4135
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-18")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-14-Bone-19" type="PinJoint2D" parent="Bubblebody/Bone-14"]
 visible = false
 rotation = -1.60108
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-19")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-14-Bone-20" type="PinJoint2D" parent="Bubblebody/Bone-14"]
 visible = false
 rotation = -0.72906
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-20")
-softness = 2.0
+softness = 30.0
 
 [node name="Bone-15" type="RigidBody2D" parent="Bubblebody"]
 position = Vector2(282.728, 282.728)
@@ -1872,56 +1873,56 @@ visible = false
 rotation = -3.92699
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-9")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-15-Bone-10" type="PinJoint2D" parent="Bubblebody/Bone-15"]
 visible = false
 rotation = -4.60325
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-10")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-15-Bone-14" type="PinJoint2D" parent="Bubblebody/Bone-15"]
 visible = false
 rotation = -3.25073
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-14")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-15-Bone-11" type="PinJoint2D" parent="Bubblebody/Bone-15"]
 visible = false
 rotation = 0.910616
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-11")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-15-Bone-16" type="PinJoint2D" parent="Bubblebody/Bone-15"]
 visible = false
 rotation = 0.121492
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-16")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-15-Bone-19" type="PinJoint2D" parent="Bubblebody/Bone-15"]
 visible = false
 rotation = -2.48141
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-19")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-15-Bone-20" type="PinJoint2D" parent="Bubblebody/Bone-15"]
 visible = false
 rotation = -1.69229
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-20")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-15-Bone-21" type="PinJoint2D" parent="Bubblebody/Bone-15"]
 visible = false
 rotation = -0.785398
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-21")
-softness = 2.0
+softness = 30.0
 
 [node name="Bone-16" type="RigidBody2D" parent="Bubblebody"]
 position = Vector2(275.39, 342.826)
@@ -1946,56 +1947,56 @@ visible = false
 rotation = -3.98333
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-10")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-16-Bone-11" type="PinJoint2D" parent="Bubblebody/Bone-16"]
 visible = false
 rotation = 1.47427
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-11")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-16-Bone-15" type="PinJoint2D" parent="Bubblebody/Bone-16"]
 visible = false
 rotation = -3.0201
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-15")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-16-Bone-23" type="PinJoint2D" parent="Bubblebody/Bone-16"]
 visible = false
 rotation = 0.743627
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-23")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-16-Bone-25" type="PinJoint2D" parent="Bubblebody/Bone-16"]
 visible = false
 rotation = 0.0332422
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-25")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-16-Bone-20" type="PinJoint2D" parent="Bubblebody/Bone-16"]
 visible = false
 rotation = -2.35619
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-20")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-16-Bone-21" type="PinJoint2D" parent="Bubblebody/Bone-16"]
 visible = false
 rotation = -1.50902
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-21")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-16-Bone-27" type="PinJoint2D" parent="Bubblebody/Bone-16"]
 visible = false
 rotation = -0.707149
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-27")
-softness = 2.0
+softness = 30.0
 
 [node name="Bone-17" type="RigidBody2D" parent="Bubblebody"]
 position = Vector2(355.558, 39.9433)
@@ -2020,28 +2021,28 @@ visible = false
 rotation = -1.10703
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-29")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-17-Bone-12" type="PinJoint2D" parent="Bubblebody/Bone-17"]
 visible = false
 rotation = 1.56486
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-12")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-17-Bone-13" type="PinJoint2D" parent="Bubblebody/Bone-17"]
 visible = false
 rotation = 0.888546
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-13")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-17-Bone-18" type="PinJoint2D" parent="Bubblebody/Bone-17"]
 visible = false
 rotation = 0.0201406
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-18")
-softness = 2.0
+softness = 30.0
 
 [node name="Bone-18" type="RigidBody2D" parent="Bubblebody"]
 position = Vector2(354.207, 107.042)
@@ -2066,49 +2067,49 @@ visible = false
 rotation = -4.03484
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-12")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-18-Bone-13" type="PinJoint2D" parent="Bubblebody/Bone-18"]
 visible = false
 rotation = 1.56039
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-13")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-18-Bone-17" type="PinJoint2D" parent="Bubblebody/Bone-18"]
 visible = false
 rotation = -3.12145
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-17")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-18-Bone-14" type="PinJoint2D" parent="Bubblebody/Bone-18"]
 visible = false
 rotation = 0.728098
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-14")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-18-Bone-19" type="PinJoint2D" parent="Bubblebody/Bone-18"]
 visible = false
 rotation = 0.041075
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-19")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-18-Bone-29" type="PinJoint2D" parent="Bubblebody/Bone-18"]
 visible = false
 rotation = -1.70965
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-29")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-18-Bone-30" type="PinJoint2D" parent="Bubblebody/Bone-18"]
 visible = false
 rotation = -0.771754
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-30")
-softness = 2.0
+softness = 30.0
 
 [node name="Bone-19" type="RigidBody2D" parent="Bubblebody"]
 position = Vector2(350.578, 195.337)
@@ -2133,56 +2134,56 @@ visible = false
 rotation = -3.87424
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-13")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-19-Bone-14" type="PinJoint2D" parent="Bubblebody/Bone-19"]
 visible = false
 rotation = 1.54052
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-14")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-19-Bone-18" type="PinJoint2D" parent="Bubblebody/Bone-19"]
 visible = false
 rotation = -3.10052
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-18")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-19-Bone-15" type="PinJoint2D" parent="Bubblebody/Bone-19"]
 visible = false
 rotation = 0.66018
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-15")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-19-Bone-20" type="PinJoint2D" parent="Bubblebody/Bone-19"]
 visible = false
 rotation = 0.0965307
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-20")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-19-Bone-29" type="PinJoint2D" parent="Bubblebody/Bone-19"]
 visible = false
 rotation = -2.32588
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-29")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-19-Bone-30" type="PinJoint2D" parent="Bubblebody/Bone-19"]
 visible = false
 rotation = -1.62953
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-30")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-19-Bone-31" type="PinJoint2D" parent="Bubblebody/Bone-19"]
 visible = false
 rotation = -0.813771
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-31")
-softness = 2.0
+softness = 30.0
 
 [node name="Bone-20" type="RigidBody2D" parent="Bubblebody"]
 position = Vector2(342.826, 275.39)
@@ -2207,56 +2208,56 @@ visible = false
 rotation = -3.87065
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-14")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-20-Bone-15" type="PinJoint2D" parent="Bubblebody/Bone-20"]
 visible = false
 rotation = 1.4493
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-15")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-20-Bone-19" type="PinJoint2D" parent="Bubblebody/Bone-20"]
 visible = false
 rotation = -3.04506
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-19")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-20-Bone-16" type="PinJoint2D" parent="Bubblebody/Bone-20"]
 visible = false
 rotation = 0.785398
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-16")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-20-Bone-21" type="PinJoint2D" parent="Bubblebody/Bone-20"]
 visible = false
 rotation = -0.0617731
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-21")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-20-Bone-30" type="PinJoint2D" parent="Bubblebody/Bone-20"]
 visible = false
 rotation = -2.31442
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-30")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-20-Bone-31" type="PinJoint2D" parent="Bubblebody/Bone-20"]
 visible = false
 rotation = -1.60404
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-31")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-20-Bone-32" type="PinJoint2D" parent="Bubblebody/Bone-20"]
 visible = false
 rotation = -0.863648
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-32")
-softness = 2.0
+softness = 30.0
 
 [node name="Bone-21" type="RigidBody2D" parent="Bubblebody"]
 position = Vector2(347.272, 347.272)
@@ -2281,56 +2282,56 @@ visible = false
 rotation = -3.92699
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-15")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-21-Bone-16" type="PinJoint2D" parent="Bubblebody/Bone-21"]
 visible = false
 rotation = -4.65062
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-16")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-21-Bone-20" type="PinJoint2D" parent="Bubblebody/Bone-21"]
 visible = false
 rotation = -3.20337
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-20")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-21-Bone-25" type="PinJoint2D" parent="Bubblebody/Bone-21"]
 visible = false
 rotation = 0.722638
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-25")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-21-Bone-27" type="PinJoint2D" parent="Bubblebody/Bone-21"]
 visible = false
 rotation = -0.0647212
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-27")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-21-Bone-31" type="PinJoint2D" parent="Bubblebody/Bone-21"]
 visible = false
 rotation = -2.29343
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-31")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-21-Bone-32" type="PinJoint2D" parent="Bubblebody/Bone-21"]
 visible = false
 rotation = -1.50608
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-32")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-21-Bone-36" type="PinJoint2D" parent="Bubblebody/Bone-21"]
 visible = false
 rotation = -0.785398
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-36")
-softness = 2.0
+softness = 30.0
 
 [node name="Bone-22" type="RigidBody2D" parent="Bubblebody"]
 position = Vector2(92.2483, 459.882)
@@ -2355,35 +2356,35 @@ visible = false
 rotation = -3.60634
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-2")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-22-Bone-6" type="PinJoint2D" parent="Bubblebody/Bone-22"]
 visible = false
 rotation = -3.0025
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-6")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-22-Bone-11" type="PinJoint2D" parent="Bubblebody/Bone-22"]
 visible = false
 rotation = -2.38545
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-11")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-22-Bone-23" type="PinJoint2D" parent="Bubblebody/Bone-22"]
 visible = false
 rotation = -1.81651
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-23")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-22-Bone-24" type="PinJoint2D" parent="Bubblebody/Bone-22"]
 visible = false
 rotation = -1.01592
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-24")
-softness = 2.0
+softness = 30.0
 
 [node name="Bone-23" type="RigidBody2D" parent="Bubblebody"]
 position = Vector2(190.357, 435.278)
@@ -2408,49 +2409,49 @@ visible = false
 rotation = -3.94063
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-6")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-23-Bone-11" type="PinJoint2D" parent="Bubblebody/Bone-23"]
 visible = false
 rotation = -3.08286
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-11")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-23-Bone-22" type="PinJoint2D" parent="Bubblebody/Bone-23"]
 visible = false
 rotation = 1.32508
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-22")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-23-Bone-16" type="PinJoint2D" parent="Bubblebody/Bone-23"]
 visible = false
 rotation = -2.39797
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-16")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-23-Bone-25" type="PinJoint2D" parent="Bubblebody/Bone-23"]
 visible = false
 rotation = -1.60873
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-25")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-23-Bone-24" type="PinJoint2D" parent="Bubblebody/Bone-23"]
 visible = false
 rotation = 0.0342993
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-24")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-23-Bone-26" type="PinJoint2D" parent="Bubblebody/Bone-23"]
 visible = false
 rotation = -0.752109
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-26")
-softness = 2.0
+softness = 30.0
 
 [node name="Bone-24" type="RigidBody2D" parent="Bubblebody"]
 position = Vector2(187.487, 518.914)
@@ -2475,28 +2476,28 @@ visible = false
 rotation = -4.15752
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-22")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-24-Bone-23" type="PinJoint2D" parent="Bubblebody/Bone-24"]
 visible = false
 rotation = -3.10729
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-23")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-24-Bone-25" type="PinJoint2D" parent="Bubblebody/Bone-24"]
 visible = false
 rotation = -2.36678
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-25")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-24-Bone-26" type="PinJoint2D" parent="Bubblebody/Bone-24"]
 visible = false
 rotation = -1.5333
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-26")
-softness = 2.0
+softness = 30.0
 
 [node name="Bone-25" type="RigidBody2D" parent="Bubblebody"]
 position = Vector2(272.419, 432.163)
@@ -2521,56 +2522,56 @@ visible = false
 rotation = -3.89862
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-11")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-25-Bone-16" type="PinJoint2D" parent="Bubblebody/Bone-25"]
 visible = false
 rotation = -3.10835
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-16")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-25-Bone-23" type="PinJoint2D" parent="Bubblebody/Bone-25"]
 visible = false
 rotation = 1.53286
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-23")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-25-Bone-21" type="PinJoint2D" parent="Bubblebody/Bone-25"]
 visible = false
 rotation = -2.41895
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-21")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-25-Bone-27" type="PinJoint2D" parent="Bubblebody/Bone-25"]
 visible = false
 rotation = -1.55447
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-27")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-25-Bone-24" type="PinJoint2D" parent="Bubblebody/Bone-25"]
 visible = false
 rotation = 0.774812
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-24")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-25-Bone-26" type="PinJoint2D" parent="Bubblebody/Bone-25"]
 visible = false
 rotation = 0.00965397
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-26")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-25-Bone-28" type="PinJoint2D" parent="Bubblebody/Bone-25"]
 visible = false
 rotation = -0.748211
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-28")
-softness = 2.0
+softness = 30.0
 
 [node name="Bone-26" type="RigidBody2D" parent="Bubblebody"]
 position = Vector2(271.552, 522.067)
@@ -2595,35 +2596,35 @@ visible = false
 rotation = -3.8937
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-23")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-26-Bone-24" type="PinJoint2D" parent="Bubblebody/Bone-26"]
 visible = false
 rotation = -4.67489
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-24")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-26-Bone-25" type="PinJoint2D" parent="Bubblebody/Bone-26"]
 visible = false
 rotation = -3.13194
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-25")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-26-Bone-27" type="PinJoint2D" parent="Bubblebody/Bone-26"]
 visible = false
 rotation = -2.39903
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-27")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-26-Bone-28" type="PinJoint2D" parent="Bubblebody/Bone-26"]
 visible = false
 rotation = -1.57956
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-28")
-softness = 2.0
+softness = 30.0
 
 [node name="Bone-27" type="RigidBody2D" parent="Bubblebody"]
 position = Vector2(352.859, 433.477)
@@ -2648,56 +2649,56 @@ visible = false
 rotation = -3.84874
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-16")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-27-Bone-21" type="PinJoint2D" parent="Bubblebody/Bone-27"]
 visible = false
 rotation = -3.20631
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-21")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-27-Bone-25" type="PinJoint2D" parent="Bubblebody/Bone-27"]
 visible = false
 rotation = -4.69606
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-25")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-27-Bone-32" type="PinJoint2D" parent="Bubblebody/Bone-27"]
 visible = false
 rotation = -2.35619
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-32")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-27-Bone-36" type="PinJoint2D" parent="Bubblebody/Bone-27"]
 visible = false
 rotation = -1.52587
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-36")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-27-Bone-26" type="PinJoint2D" parent="Bubblebody/Bone-27"]
 visible = false
 rotation = 0.742561
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-26")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-27-Bone-28" type="PinJoint2D" parent="Bubblebody/Bone-27"]
 visible = false
 rotation = -0.0265568
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-28")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-27-Bone-37" type="PinJoint2D" parent="Bubblebody/Bone-27"]
 visible = false
 rotation = -0.848149
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-37")
-softness = 2.0
+softness = 30.0
 
 [node name="Bone-28" type="RigidBody2D" parent="Bubblebody"]
 position = Vector2(355.193, 521.334)
@@ -2722,35 +2723,35 @@ visible = false
 rotation = -3.8898
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-25")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-28-Bone-26" type="PinJoint2D" parent="Bubblebody/Bone-28"]
 visible = false
 rotation = 1.56203
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-26")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-28-Bone-27" type="PinJoint2D" parent="Bubblebody/Bone-28"]
 visible = false
 rotation = -3.16815
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-27")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-28-Bone-36" type="PinJoint2D" parent="Bubblebody/Bone-28"]
 visible = false
 rotation = -2.36813
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-36")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-28-Bone-37" type="PinJoint2D" parent="Bubblebody/Bone-28"]
 visible = false
 rotation = -1.67311
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-37")
-softness = 2.0
+softness = 30.0
 
 [node name="Bone-29" type="RigidBody2D" parent="Bubblebody"]
 position = Vector2(460.122, 92.2403)
@@ -2775,35 +2776,35 @@ visible = false
 rotation = -4.24863
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-17")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-29-Bone-18" type="PinJoint2D" parent="Bubblebody/Bone-29"]
 visible = false
 rotation = 1.43194
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-18")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-29-Bone-19" type="PinJoint2D" parent="Bubblebody/Bone-29"]
 visible = false
 rotation = 0.815712
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-19")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-29-Bone-30" type="PinJoint2D" parent="Bubblebody/Bone-29"]
 visible = false
 rotation = 0.248002
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-30")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-29-Bone-33" type="PinJoint2D" parent="Bubblebody/Bone-29"]
 visible = false
 rotation = -0.552179
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-33")
-softness = 2.0
+softness = 30.0
 
 [node name="Bone-30" type="RigidBody2D" parent="Bubblebody"]
 position = Vector2(435.278, 190.357)
@@ -2828,49 +2829,49 @@ visible = false
 rotation = -3.91335
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-18")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-30-Bone-19" type="PinJoint2D" parent="Bubblebody/Bone-30"]
 visible = false
 rotation = 1.51206
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-19")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-30-Bone-29" type="PinJoint2D" parent="Bubblebody/Bone-30"]
 visible = false
 rotation = -2.89359
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-29")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-30-Bone-20" type="PinJoint2D" parent="Bubblebody/Bone-30"]
 visible = false
 rotation = 0.827169
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-20")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-30-Bone-31" type="PinJoint2D" parent="Bubblebody/Bone-30"]
 visible = false
 rotation = 0.0379343
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-31")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-30-Bone-33" type="PinJoint2D" parent="Bubblebody/Bone-30"]
 visible = false
 rotation = -1.60511
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-33")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-30-Bone-34" type="PinJoint2D" parent="Bubblebody/Bone-30"]
 visible = false
 rotation = -0.812869
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-34")
-softness = 2.0
+softness = 30.0
 
 [node name="Bone-31" type="RigidBody2D" parent="Bubblebody"]
 position = Vector2(432.163, 272.419)
@@ -2895,56 +2896,56 @@ visible = false
 rotation = -3.95536
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-19")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-31-Bone-20" type="PinJoint2D" parent="Bubblebody/Bone-31"]
 visible = false
 rotation = 1.53755
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-20")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-31-Bone-30" type="PinJoint2D" parent="Bubblebody/Bone-31"]
 visible = false
 rotation = -3.10366
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-30")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-31-Bone-21" type="PinJoint2D" parent="Bubblebody/Bone-31"]
 visible = false
 rotation = 0.848158
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-21")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-31-Bone-32" type="PinJoint2D" parent="Bubblebody/Bone-31"]
 visible = false
 rotation = -0.01633
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-32")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-31-Bone-33" type="PinJoint2D" parent="Bubblebody/Bone-31"]
 visible = false
 rotation = -2.34621
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-33")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-31-Bone-34" type="PinJoint2D" parent="Bubblebody/Bone-31"]
 visible = false
 rotation = -1.58049
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-34")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-31-Bone-35" type="PinJoint2D" parent="Bubblebody/Bone-31"]
 visible = false
 rotation = -0.821602
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-35")
-softness = 2.0
+softness = 30.0
 
 [node name="Bone-32" type="RigidBody2D" parent="Bubblebody"]
 position = Vector2(433.477, 352.859)
@@ -2969,56 +2970,56 @@ visible = false
 rotation = -4.00524
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-20")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-32-Bone-21" type="PinJoint2D" parent="Bubblebody/Bone-32"]
 visible = false
 rotation = -4.64767
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-21")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-32-Bone-31" type="PinJoint2D" parent="Bubblebody/Bone-32"]
 visible = false
 rotation = -3.15792
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-31")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-32-Bone-27" type="PinJoint2D" parent="Bubblebody/Bone-32"]
 visible = false
 rotation = 0.785398
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-27")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-32-Bone-36" type="PinJoint2D" parent="Bubblebody/Bone-32"]
 visible = false
 rotation = -0.0449274
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-36")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-32-Bone-34" type="PinJoint2D" parent="Bubblebody/Bone-32"]
 visible = false
 rotation = -2.31897
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-34")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-32-Bone-35" type="PinJoint2D" parent="Bubblebody/Bone-32"]
 visible = false
 rotation = -1.54422
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-35")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-32-Bone-38" type="PinJoint2D" parent="Bubblebody/Bone-32"]
 visible = false
 rotation = -0.737146
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-38")
-softness = 2.0
+softness = 30.0
 
 [node name="Bone-33" type="RigidBody2D" parent="Bubblebody"]
 position = Vector2(518.806, 187.49)
@@ -3043,28 +3044,28 @@ visible = false
 rotation = -3.69377
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-29")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-33-Bone-30" type="PinJoint2D" parent="Bubblebody/Bone-33"]
 visible = false
 rotation = 1.53649
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-30")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-33-Bone-31" type="PinJoint2D" parent="Bubblebody/Bone-33"]
 visible = false
 rotation = 0.795381
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-31")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-33-Bone-34" type="PinJoint2D" parent="Bubblebody/Bone-33"]
 visible = false
 rotation = -0.0268932
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-34")
-softness = 2.0
+softness = 30.0
 
 [node name="Bone-34" type="RigidBody2D" parent="Bubblebody"]
 position = Vector2(521.068, 271.558)
@@ -3089,35 +3090,35 @@ visible = false
 rotation = -3.95446
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-30")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-34-Bone-31" type="PinJoint2D" parent="Bubblebody/Bone-34"]
 visible = false
 rotation = 1.5611
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-31")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-34-Bone-33" type="PinJoint2D" parent="Bubblebody/Bone-34"]
 visible = false
 rotation = -3.16849
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-33")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-34-Bone-32" type="PinJoint2D" parent="Bubblebody/Bone-34"]
 visible = false
 rotation = 0.822618
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-32")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-34-Bone-35" type="PinJoint2D" parent="Bubblebody/Bone-34"]
 visible = false
 rotation = -0.0010422
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-35")
-softness = 2.0
+softness = 30.0
 
 [node name="Bone-35" type="RigidBody2D" parent="Bubblebody"]
 position = Vector2(521.155, 355.19)
@@ -3142,35 +3143,35 @@ visible = false
 rotation = 0.101069
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-38")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-35-Bone-31" type="PinJoint2D" parent="Bubblebody/Bone-35"]
 visible = false
 rotation = -3.96319
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-31")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-35-Bone-32" type="PinJoint2D" parent="Bubblebody/Bone-35"]
 visible = false
 rotation = -4.68581
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-32")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-35-Bone-34" type="PinJoint2D" parent="Bubblebody/Bone-35"]
 visible = false
 rotation = -3.14263
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-34")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-35-Bone-36" type="PinJoint2D" parent="Bubblebody/Bone-35"]
 visible = false
 rotation = 0.796245
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-36")
-softness = 2.0
+softness = 30.0
 
 [node name="Bone-36" type="RigidBody2D" parent="Bubblebody"]
 position = Vector2(437.272, 437.272)
@@ -3195,49 +3196,49 @@ visible = false
 rotation = -3.92699
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-21")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-36-Bone-27" type="PinJoint2D" parent="Bubblebody/Bone-36"]
 visible = false
 rotation = -4.66746
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-27")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-36-Bone-32" type="PinJoint2D" parent="Bubblebody/Bone-36"]
 visible = false
 rotation = -3.18652
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-32")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-36-Bone-28" type="PinJoint2D" parent="Bubblebody/Bone-36"]
 visible = false
 rotation = 0.773466
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-28")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-36-Bone-37" type="PinJoint2D" parent="Bubblebody/Bone-36"]
 visible = false
 rotation = -0.0674835
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-37")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-36-Bone-35" type="PinJoint2D" parent="Bubblebody/Bone-36"]
 visible = false
 rotation = -2.34535
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-35")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-36-Bone-38" type="PinJoint2D" parent="Bubblebody/Bone-36"]
 visible = false
 rotation = -1.53505
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-38")
-softness = 2.0
+softness = 30.0
 
 [node name="Bone-37" type="RigidBody2D" parent="Bubblebody"]
 position = Vector2(442.349, 512.386)
@@ -3262,28 +3263,28 @@ visible = false
 rotation = -3.98974
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-27")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-37-Bone-28" type="PinJoint2D" parent="Bubblebody/Bone-37"]
 visible = false
 rotation = 1.46849
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-28")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-37-Bone-36" type="PinJoint2D" parent="Bubblebody/Bone-37"]
 visible = false
 rotation = -3.20908
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-36")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-37-Bone-38" type="PinJoint2D" parent="Bubblebody/Bone-37"]
 visible = false
 rotation = -2.37171
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-38")
-softness = 2.0
+softness = 30.0
 
 [node name="Bone-38" type="RigidBody2D" parent="Bubblebody"]
 position = Vector2(512.557, 439.964)
@@ -3308,28 +3309,28 @@ visible = false
 rotation = -3.04052
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-35")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-38-Bone-32" type="PinJoint2D" parent="Bubblebody/Bone-38"]
 visible = false
 rotation = -3.87874
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-32")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-38-Bone-36" type="PinJoint2D" parent="Bubblebody/Bone-38"]
 visible = false
 rotation = -4.67664
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-36")
-softness = 2.0
+softness = 30.0
 
 [node name="Joint2D-Bone-38-Bone-37" type="PinJoint2D" parent="Bubblebody/Bone-38"]
 visible = false
 rotation = 0.769886
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-37")
-softness = 2.0
+softness = 30.0
 
 [node name="Player" type="RigidBody2D" parent="."]
 position = Vector2(77, -61)
