@@ -1,5 +1,4 @@
 extends Node2D
-class_name Player
 
 @export var force_function: Curve
 
@@ -8,6 +7,8 @@ class_name Player
 @onready var bubblebody = $Bubblebody
 
 const radius = 15
+
+var center := Vector2.ZERO
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -18,6 +19,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	var sword_data = find_angle()
 	
+	
 
 	if sign(sword_data[2]) != sign(sword.angular_velocity):
 		sword.angular_velocity = 0
@@ -27,9 +29,10 @@ func _process(delta: float) -> void:
 	
 	#$StaticBody2D.global_position = get_global_mouse_position()
 	
-	var cent = bubble_center()
+	center = bubble_center()
 	#print(cent)
-	$StaticBody2D.global_position = cent
+	$StaticBody2D.global_position = center
+	
 	
 
 func find_angle():
