@@ -20,9 +20,7 @@ func _process(delta: float) -> void:
 	position.x += dir * delta
 
 
-
-
-func _on_hitbox_component_area_entered(area: HitboxComponent) -> void:
+func _on_hitbox_area_entered(area: HitboxComponent) -> void:
 	if area is HitboxComponent:
 		var attack = Attack.new()
 		attack.attack_damage == attack_damage

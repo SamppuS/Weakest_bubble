@@ -11,6 +11,8 @@ extends Node2D
 
 const radius = 15
 
+var center := Vector2.ZERO
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$Health_Component.player_death.connect(_on_player_death)
@@ -19,6 +21,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	var sword_data = find_angle()
+	
 	
 
 	if sign(sword_data[2]) != sign(sword.angular_velocity):
@@ -29,9 +32,10 @@ func _process(delta: float) -> void:
 	
 	#$StaticBody2D.global_position = get_global_mouse_position()
 	
-	var cent = bubble_center()
+	center = bubble_center()
 	#print(cent)
-	$StaticBody2D.global_position = cent
+	$StaticBody2D.global_position = center
+	
 	
 
 func find_angle():
