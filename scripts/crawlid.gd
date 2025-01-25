@@ -8,7 +8,8 @@ func _ready() -> void:
 
 func half_second():
 	await get_tree().create_timer(0.5).timeout
-	if(%RayCast2DLeft.is_colliding() or %RayCast2DRight.is_colliding()):
+	
+	if(%RayCast2DLeft.is_colliding() or %RayCast2DRight.is_colliding()or %RayCast2DDown.is_colliding()==false or$Area2D/RayCast2DDown2.is_colliding()==false):
 		dir = dir*-1
 	half_second()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
