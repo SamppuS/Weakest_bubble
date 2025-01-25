@@ -2,7 +2,9 @@
 
 [ext_resource type="Script" path="res://Scenes/bubble.gd" id="1_riexd"]
 [ext_resource type="Texture2D" uid="uid://ufq4hk20mbpu" path="res://Images/Testikuvat/Misc/plus_ball.png" id="2_2a2md"]
-[ext_resource type="Texture2D" uid="uid://dont7p10snumj" path="res://Images/Testikuvat/Weapons/bubble_sword.png" id="2_rcd7q"]
+[ext_resource type="PackedScene" uid="uid://bgg618tvsw6rk" path="res://components/hitbox_component.tscn" id="2_qjp66"]
+[ext_resource type="PackedScene" uid="uid://6m73mgg7sud6" path="res://components/health_component.tscn" id="4_u4r0c"]
+[ext_resource type="PackedScene" uid="uid://dd3uebshevgbv" path="res://Scenes/bubble_sword.tscn" id="5_rq5qm"]
 [ext_resource type="Texture2D" uid="uid://dgm5hbx4p4btl" path="res://Images/Testikuvat/BasicShapes/Ympyrät/Ympyrä2.png" id="4_j5wmu"]
 [ext_resource type="Script" path="res://addons/softbody2d/softbody2d.gd" id="5_4xt01"]
 
@@ -11,9 +13,6 @@ _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fbcfy"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_sava3"]
-size = Vector2(2, 24.03)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bollt"]
 radius = 5.0
@@ -345,7 +344,7 @@ force_function = SubResource("Curve_s5j5j")
 
 [node name="PinJoint2D" type="PinJoint2D" parent="."]
 node_a = NodePath("../Player")
-node_b = NodePath("../BubbleSword")
+node_b = NodePath("../Bubble_Sword")
 
 [node name="Player" type="RigidBody2D" parent="."]
 gravity_scale = 0.402
@@ -353,6 +352,7 @@ lock_rotation = true
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 zoom = Vector2(2, 2)
+position_smoothing_enabled = true
 
 [node name="Ympyrä1" type="Sprite2D" parent="Player"]
 scale = Vector2(0.05, 0.05)
@@ -361,22 +361,23 @@ texture = ExtResource("2_2a2md")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 shape = SubResource("CircleShape2D_fbcfy")
 
-[node name="BubbleSword" type="RigidBody2D" parent="."]
-position = Vector2(0, 21)
-gravity_scale = 0.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BubbleSword"]
-shape = SubResource("RectangleShape2D_sava3")
-
-[node name="BubbleSword" type="Sprite2D" parent="BubbleSword/CollisionShape2D"]
-scale = Vector2(0.0375, 0.0375)
-texture = ExtResource("2_rcd7q")
-
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("CircleShape2D_bollt")
 disabled = true
+
+[node name="Hitbox_Component" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("2_qjp66")]
+health_component = NodePath("../Health_Component")
+
+[node name="HitboxCollisionShape2D" type="CollisionShape2D" parent="Hitbox_Component"]
+shape = SubResource("CircleShape2D_fbcfy")
+
+[node name="Health_Component" parent="." instance=ExtResource("4_u4r0c")]
+Max_Health = 20
+
+[node name="Bubble_Sword" parent="." instance=ExtResource("5_rq5qm")]
+position = Vector2(0, 23)
 
 [node name="SoftBody2D" type="Polygon2D" parent="."]
 position = Vector2(12, -12)
