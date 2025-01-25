@@ -30,7 +30,7 @@ lock_rotation = true
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 unique_name_in_owner = true
-zoom = Vector2(3, 3)
+zoom = Vector2(2, 2)
 
 [node name="Ympyrä1" type="Sprite2D" parent="Player"]
 scale = Vector2(0.05, 0.05)
