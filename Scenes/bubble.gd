@@ -1,6 +1,6 @@
 extends Node2D
 
-@export var force_funciton: Curve
+@export var force_function: Curve
 
 @onready var player = $Player
 @onready var sword = $BubbleSword
@@ -30,7 +30,7 @@ func _process(delta: float) -> void:
 	if sign(sword_data[2]) != sign(sword.angular_velocity):
 		sword.angular_velocity = 0
 		
-	sword.apply_torque_impulse(-1500 * force_funciton.sample(abs(sword_data[2]) / 180)  * sign(sword_data[2]))
+	sword.apply_torque_impulse(-1500 * force_function.sample(abs(sword_data[2]) / 180)  * sign(sword_data[2]))
 	
 	$StaticBody2D.global_position = get_global_mouse_position()
 	
