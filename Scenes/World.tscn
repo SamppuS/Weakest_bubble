@@ -13,6 +13,3 @@ position = Vector2(34, -66)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource("WorldBoundaryShape2D_y8thw")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2.655, 2.655)

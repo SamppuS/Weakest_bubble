@@ -1,34 +1,55 @@
-[gd_scene load_steps=5 format=3 uid="uid://bt5fji5342xuf"]
+[gd_scene load_steps=8 format=3 uid="uid://bt5fji5342xuf"]
 
-[ext_resource type="Texture2D" uid="uid://q8dqihtvd7ya" path="res://Images/Testikuvat/BasicShapes/Ympyrät/Ympyrä1.png" id="1_taheu"]
+[ext_resource type="Script" path="res://Scenes/bubble.gd" id="1_riexd"]
+[ext_resource type="Texture2D" uid="uid://ufq4hk20mbpu" path="res://Images/Testikuvat/Misc/plus_ball.png" id="2_2a2md"]
 [ext_resource type="Texture2D" uid="uid://dont7p10snumj" path="res://Images/Testikuvat/Weapons/bubble_sword.png" id="2_rcd7q"]
+
+[sub_resource type="Curve" id="Curve_kqmex"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.490099, 1), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fbcfy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sava3"]
-size = Vector2(3, 17)
+size = Vector2(2, 24.03)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bollt"]
+radius = 5.0
 
 [node name="Bubble" type="Node2D"]
+script = ExtResource("1_riexd")
+force_funciton = SubResource("Curve_kqmex")
 
 [node name="PinJoint2D" type="PinJoint2D" parent="."]
-node_a = NodePath("../RigidBody2D")
-node_b = NodePath("../RigidBody2D2")
+node_a = NodePath("../Player")
+node_b = NodePath("../BubbleSword")
 
-[node name="RigidBody2D" type="RigidBody2D" parent="."]
+[node name="Player" type="RigidBody2D" parent="."]
+lock_rotation = true
 
-[node name="Ympyrä1" type="Sprite2D" parent="RigidBody2D"]
-scale = Vector2(0.0395683, 0.0395683)
-texture = ExtResource("1_taheu")
+[node name="Ympyrä1" type="Sprite2D" parent="Player"]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_2a2md")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 shape = SubResource("CircleShape2D_fbcfy")
 
-[node name="RigidBody2D2" type="RigidBody2D" parent="."]
+[node name="BubbleSword" type="RigidBody2D" parent="."]
 position = Vector2(0, 13.985)
+gravity_scale = 0.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BubbleSword"]
 shape = SubResource("RectangleShape2D_sava3")
 
-[node name="BubbleSword" type="Sprite2D" parent="RigidBody2D2/CollisionShape2D"]
-scale = Vector2(0.025, 0.025)
+[node name="BubbleSword" type="Sprite2D" parent="BubbleSword/CollisionShape2D"]
+scale = Vector2(0.0375, 0.0375)
 texture = ExtResource("2_rcd7q")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("CircleShape2D_bollt")
+disabled = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)
