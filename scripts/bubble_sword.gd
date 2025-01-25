@@ -18,3 +18,7 @@ func _on_hitbox_area_entered(area: HitboxComponent) -> void:
 		attack.knockback_force == knockback_force
 		attack.attack_position == global_position
 		area.damage(attack)
+
+
+func _on_hitbox_body_entered(body: Node2D) -> void:
+	%AudioStreamPlayer2D.play()

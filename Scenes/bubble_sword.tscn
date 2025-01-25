@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://dd3uebshevgbv"]
+[gd_scene load_steps=7 format=3 uid="uid://dd3uebshevgbv"]
 
 [ext_resource type="Script" path="res://scripts/bubble_sword.gd" id="1_etxfk"]
 [ext_resource type="Texture2D" uid="uid://dont7p10snumj" path="res://Images/Testikuvat/Weapons/bubble_sword.png" id="1_indje"]
-[ext_resource type="AudioStream" uid="uid://pmpmnqupwmdc" path="res://kivi1.mp3" id="3_mfct7"]
 [ext_resource type="AudioStream" uid="uid://d2rjx8tu0u0he" path="res://kivi2.mp3" id="4_paf81"]
 [ext_resource type="AudioStream" uid="uid://beo6gcn6x6dwy" path="res://kivi3.mp3" id="5_hcpnd"]
 
@@ -10,10 +9,9 @@
 size = Vector2(4, 34)
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_m265n"]
-streams_count = 3
-stream_0/stream = ExtResource("3_mfct7")
-stream_1/stream = ExtResource("4_paf81")
-stream_2/stream = ExtResource("5_hcpnd")
+streams_count = 2
+stream_0/stream = ExtResource("4_paf81")
+stream_1/stream = ExtResource("5_hcpnd")
 
 [node name="Bubble_Sword" type="RigidBody2D" groups=["Sword"]]
 gravity_scale = 0.0
@@ -36,3 +34,4 @@ unique_name_in_owner = true
 stream = SubResource("AudioStreamRandomizer_m265n")
 
 [connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
+[connection signal="body_entered" from="Hitbox" to="." method="_on_hitbox_body_entered"]
