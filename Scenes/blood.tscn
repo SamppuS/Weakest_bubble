@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://bi4gfs3qb16db"]
+
+[ext_resource type="Texture2D" uid="uid://cfn2dy0bq726e" path="res://Images/Testikuvat/BasicShapes/Ympyrät/Ympyrä3.png" id="1_jrwvf"]
+[ext_resource type="Script" path="res://Scenes/blood.gd" id="2_shiy4"]
+
+[node name="Blood" type="CPUParticles2D"]
+emitting = false
+amount = 32
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+randomness = 0.5
+texture = ExtResource("1_jrwvf")
+spread = 57.97
+initial_velocity_min = 60.0
+initial_velocity_max = 403.95
+scale_amount_min = 0.01
+scale_amount_max = 0.03
+color = Color(0.7877, 0.166687, 9.43363e-06, 1)
+script = ExtResource("2_shiy4")
+
+[node name="Timer2" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]
