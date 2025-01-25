@@ -4,11 +4,11 @@ var attack_damage := 10
 var knockback_force := 10
 var attack_position : Vector2
 
+@onready var bubble = get_parent()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
-
+	pass
 
 
 

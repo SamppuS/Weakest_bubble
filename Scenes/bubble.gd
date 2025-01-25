@@ -1,16 +1,19 @@
 extends Node2D
 
-@export var force_function: Curve
 
+@export var force_function: Curve
 @onready var player = $Player
 @onready var sword = get_node("Bubble_Sword")
 @onready var bubblebody = $Bubblebody
+@onready var bubblesword = $Bubble_Sword
+@onready var camera = $StaticBody2D/Camera2D
+
 
 const radius = 15
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	$Health_Component.player_death.connect(_on_player_death)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -62,3 +65,11 @@ func bubble_center():
 	total_pos /= boneniness
 	
 	return total_pos
+
+
+func _on_player_death():
+	get_tree().root.add_child(bubblesword)
+	remove_child(bubblebody)
+	remove_child(camera)
+	get_tree().root.add_child(camera)
+	queue_free()

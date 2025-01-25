@@ -1,6 +1,8 @@
 extends Node2D
 class_name HealthComponent
 
+signal player_death
+
 
 @export var Max_Health := 10
 var health : float
@@ -11,4 +13,7 @@ func ready():
 func damage(attack:Attack):
 	health -= attack.attack_damage
 	if health <= 0:
-		get_parent().queue_free()
+		if get_parent().is_in_group("Player"):
+			emit_signal("player_death")
+		else:
+			get_parent().queue_free()

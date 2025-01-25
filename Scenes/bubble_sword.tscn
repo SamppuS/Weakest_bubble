@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_imvxl"]
 size = Vector2(4, 34)
 
-[node name="Bubble_Sword" type="RigidBody2D"]
+[node name="Bubble_Sword" type="RigidBody2D" groups=["Sword"]]
 gravity_scale = 0.0
 script = ExtResource("1_etxfk")
 

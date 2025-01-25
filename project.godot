@@ -27,3 +27,8 @@ project/assembly_name="Weakest Bubble"
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/softbody2d/plugin.cfg")
+
+[global_group]
+
+Sword=""
+Player=""
