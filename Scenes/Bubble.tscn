@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://ufq4hk20mbpu" path="res://Images/Testikuvat/Misc/plus_ball.png" id="2_2a2md"]
 [ext_resource type="PackedScene" uid="uid://bgg618tvsw6rk" path="res://components/hitbox_component.tscn" id="2_qjp66"]
 [ext_resource type="PackedScene" uid="uid://6m73mgg7sud6" path="res://components/health_component.tscn" id="4_u4r0c"]
-[ext_resource type="PackedScene" uid="uid://dd3uebshevgbv" path="res://Scenes/bubble_sword.tscn" id="5_rq5qm"]
+[ext_resource type="PackedScene" path="res://Scenes/bubble_sword.tscn" id="5_rq5qm"]
 
 [sub_resource type="Curve" id="Curve_s5j5j"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0]
