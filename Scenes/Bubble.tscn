@@ -17,8 +17,8 @@ point_count = 2
 shader = ExtResource("2_ejm2v")
 shader_parameter/edge_color = Vector4(0.3, 0.7, 1, 1)
 shader_parameter/center_color = Vector4(1, 1, 1, 0)
-shader_parameter/edge_width = 1.02
-shader_parameter/softness = 2.0
+shader_parameter/edge_width = 1.14
+shader_parameter/softness = 0.2
 
 [sub_resource type="SkeletonModification2DLookAt" id="SkeletonModification2DLookAt_874sa"]
 resource_local_to_scene = true
