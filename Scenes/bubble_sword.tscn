@@ -17,4 +17,9 @@ shape = SubResource("RectangleShape2D_imvxl")
 scale = Vector2(0.0375, 0.0375)
 texture = ExtResource("1_indje")
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[node name="Hitbox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Hitbox"]
+shape = SubResource("RectangleShape2D_imvxl")
+
+[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]

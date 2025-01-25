@@ -10,7 +10,9 @@ func _ready() -> void:
 	pass # Replace with function body.
 
 
-func _on_body_entered(area: HitboxComponent) -> void:
+
+
+func _on_hitbox_area_entered(area: HitboxComponent) -> void:
 	if area is HitboxComponent:
 		var attack = Attack.new()
 		attack.attack_damage == attack_damage
