@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dgm5hbx4p4btl" path="res://Images/Testikuvat/BasicShapes/Ympyrät/Ympyrä2.png" id="4_j5wmu"]
 [ext_resource type="PackedScene" uid="uid://6m73mgg7sud6" path="res://components/health_component.tscn" id="4_u4r0c"]
 [ext_resource type="Script" path="res://addons/softbody2d/softbody2d.gd" id="5_4xt01"]
-[ext_resource type="PackedScene" uid="uid://dd3uebshevgbv" path="res://Scenes/bubble_sword.tscn" id="5_rq5qm"]
+[ext_resource type="PackedScene" uid="uid://rn8l5k2aim7p" path="res://Scenes/bubble_sword.tscn" id="5_rq5qm"]
 
 [sub_resource type="Curve" id="Curve_s5j5j"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0]
@@ -455,7 +455,6 @@ metadata/_local_pose_override_enabled_ = true
 [node name="Bone-6" type="Bone2D" parent="Bubblebody/Skeleton2D"]
 position = Vector2(107.042, 354.207)
 rotation = 1.70989
-scale = Vector2(1, 1)
 rest = Transform2D(-0.138642, 0.990343, -0.990343, -0.138642, 107.042, 354.207)
 auto_calculate_length_and_angle = false
 length = 90.0
@@ -497,7 +496,6 @@ metadata/_local_pose_override_enabled_ = true
 [node name="Bone-9" type="Bone2D" parent="Bubblebody/Skeleton2D"]
 position = Vector2(192.728, 192.728)
 rotation = 1.50957
-scale = Vector2(1, 1)
 rest = Transform2D(0.0611955, 0.998126, -0.998126, 0.0611955, 192.728, 192.728)
 auto_calculate_length_and_angle = false
 length = 90.0
@@ -608,6 +606,7 @@ metadata/_local_pose_override_enabled_ = true
 [node name="Bone-17" type="Bone2D" parent="Bubblebody/Skeleton2D"]
 position = Vector2(355.558, 39.9433)
 rotation = 2.45934
+scale = Vector2(1, 1)
 rest = Transform2D(-0.776156, 0.630541, -0.630541, -0.776156, 355.558, 39.9433)
 auto_calculate_length_and_angle = false
 length = 90.0
@@ -634,7 +633,6 @@ metadata/_local_pose_override_enabled_ = true
 [node name="Bone-19" type="Bone2D" parent="Bubblebody/Skeleton2D"]
 position = Vector2(350.578, 195.337)
 rotation = 1.66733
-scale = Vector2(1, 1)
 rest = Transform2D(-0.0963802, 0.995345, -0.995345, -0.0963802, 350.578, 195.337)
 auto_calculate_length_and_angle = false
 length = 90.0
@@ -676,7 +674,6 @@ metadata/_local_pose_override_enabled_ = true
 [node name="Bone-22" type="Bone2D" parent="Bubblebody/Skeleton2D"]
 position = Vector2(92.2483, 459.882)
 rotation = -0.814653
-scale = Vector2(1, 1)
 rest = Transform2D(0.686121, -0.727488, 0.727488, 0.686121, 92.2483, 459.882)
 auto_calculate_length_and_angle = false
 length = 90.0
@@ -704,7 +701,6 @@ metadata/_local_pose_override_enabled_ = true
 [node name="Bone-24" type="Bone2D" parent="Bubblebody/Skeleton2D"]
 position = Vector2(187.487, 518.914)
 rotation = -0.795992
-scale = Vector2(1, 1)
 rest = Transform2D(0.699582, -0.714552, 0.714552, 0.699582, 187.487, 518.914)
 auto_calculate_length_and_angle = false
 length = 90.0
@@ -718,7 +714,6 @@ metadata/_local_pose_override_enabled_ = true
 [node name="Bone-25" type="Bone2D" parent="Bubblebody/Skeleton2D"]
 position = Vector2(272.419, 432.163)
 rotation = 0.0163337
-scale = Vector2(1, 1)
 rest = Transform2D(0.999867, 0.016329, -0.016329, 0.999867, 272.419, 432.163)
 auto_calculate_length_and_angle = false
 length = 90.0
@@ -773,7 +768,6 @@ metadata/_local_pose_override_enabled_ = true
 [node name="Bone-29" type="Bone2D" parent="Bubblebody/Skeleton2D"]
 position = Vector2(460.122, 92.2403)
 rotation = 2.38651
-scale = Vector2(1, 1)
 rest = Transform2D(-0.728214, 0.68535, -0.68535, -0.728214, 460.122, 92.2403)
 auto_calculate_length_and_angle = false
 length = 90.0
@@ -855,7 +849,6 @@ metadata/_local_pose_override_enabled_ = true
 [node name="Bone-35" type="Bone2D" parent="Bubblebody/Skeleton2D"]
 position = Vector2(521.155, 355.19)
 rotation = -3.11501
-scale = Vector2(1, 1)
 rest = Transform2D(-0.999647, -0.0265709, 0.0265709, -0.999647, 521.155, 355.19)
 auto_calculate_length_and_angle = false
 length = 90.0
@@ -897,6 +890,7 @@ metadata/_local_pose_override_enabled_ = true
 [node name="Bone-38" type="Bone2D" parent="Bubblebody/Skeleton2D"]
 position = Vector2(512.557, 439.964)
 rotation = -3.10585
+scale = Vector2(1, 1)
 rest = Transform2D(-0.999361, -0.0357379, 0.0357379, -0.999361, 512.557, 439.964)
 auto_calculate_length_and_angle = false
 length = 90.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://h0dilpfs73k"]
+[gd_scene load_steps=7 format=3 uid="uid://dlvnog3euhiho"]
 
 [ext_resource type="Script" path="res://scripts/crawlid.gd" id="1_o4rpg"]
 [ext_resource type="Texture2D" uid="uid://buhksaapngga5" path="res://Images/Testikuvat/BasicShapes/Neliöt/Neliö2.png" id="2_qkt1y"]
