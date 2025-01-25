@@ -38,13 +38,6 @@ collision_mask = 2
 hit_from_inside = true
 collide_with_areas = true
 
-[node name="RayCast2DDown" type="RayCast2D" parent="Area2D"]
-unique_name_in_owner = true
-target_position = Vector2(0, 350)
-collision_mask = 2
-hit_from_inside = true
-collide_with_areas = true
-
 [node name="Health_Component" parent="." instance=ExtResource("4_nv8iu")]
 
 [node name="Hitbox_Component" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_tdke1")]
