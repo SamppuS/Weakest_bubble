@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://dd3uebshevgbv"]
+
+[ext_resource type="Script" path="res://scripts/bubble_sword.gd" id="1_etxfk"]
+[ext_resource type="Texture2D" uid="uid://dont7p10snumj" path="res://Images/Testikuvat/Weapons/bubble_sword.png" id="1_indje"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_imvxl"]
+size = Vector2(2, 24.03)
+
+[node name="Bubble_Sword" type="RigidBody2D"]
+gravity_scale = 0.0
+script = ExtResource("1_etxfk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_imvxl")
+
+[node name="BubbleSword" type="Sprite2D" parent="CollisionShape2D"]
+scale = Vector2(0.0375, 0.0375)
+texture = ExtResource("1_indje")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

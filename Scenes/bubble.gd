@@ -3,31 +3,20 @@ extends Node2D
 @export var force_function: Curve
 
 @onready var player = $Player
-@onready var sword = $BubbleSword
+@onready var sword = get_node("Bubble_Sword")
 
 const radius = 15
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	%Camera2D.make_current()
+	$Player/Camera2D.make_current()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	var sword_data = find_angle()
 	
-	#sword.rotation = Vector2()
-	#print(sword_data)
-	#var target_position = player.position + sword_data[0] * radius
-	#var target_rotation = sword_data[1]
-	#sword.position = player.position + sword_data[0] * radius
-	
-	#sword.apply_torque_impulse(150)
-	#print()
-	#sword.apply_impulse(sword_data[0] , sword.position)
-	
-	#if abs(sword_data[2]) > 10:
-		#sword.apply_torque_impulse(50 * sign(sword_data[2]))
+
 	if sign(sword_data[2]) != sign(sword.angular_velocity):
 		sword.angular_velocity = 0
 	print(sword_data[2])
