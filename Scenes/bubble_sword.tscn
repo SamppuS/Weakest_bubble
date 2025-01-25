@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dont7p10snumj" path="res://Images/Testikuvat/Weapons/bubble_sword.png" id="1_indje"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_imvxl"]
-size = Vector2(2, 24.03)
+size = Vector2(4, 34)
 
 [node name="Bubble_Sword" type="RigidBody2D"]
 gravity_scale = 0.0
@@ -14,7 +14,7 @@ script = ExtResource("1_etxfk")
 shape = SubResource("RectangleShape2D_imvxl")
 
 [node name="BubbleSword" type="Sprite2D" parent="CollisionShape2D"]
-scale = Vector2(0.0375, 0.0375)
+scale = Vector2(0.05, 0.05)
 texture = ExtResource("1_indje")
 
 [node name="Hitbox" type="Area2D" parent="."]
