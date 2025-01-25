@@ -9,7 +9,7 @@ uniform float softness = 0.5; // Edge softness
 void fragment() {
     vec2 uv = UV; // Get UV coordinates
     vec2 center = vec2(0.5, 0.5); // Bubble center in UV space
-    float dist = 1.3; // distance(uv, center); // Distance from the center
+    float dist = distance(uv, center); // Distance from the center
     float edge_factor = smoothstep(1.0 - edge_width, 1.0, dist); // Edge smoothing
 
     // Interpolate between center and edge colors
