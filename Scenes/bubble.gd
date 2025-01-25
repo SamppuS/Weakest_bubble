@@ -1,5 +1,4 @@
 extends Node2D
-class_name Player
 
 @export var force_function: Curve
 
