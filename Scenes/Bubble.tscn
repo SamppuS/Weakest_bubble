@@ -37,6 +37,7 @@ shape = SubResource("CircleShape2D_fbcfy")
 [node name="Camera2D" type="Camera2D" parent="Player"]
 unique_name_in_owner = true
 zoom = Vector2(2, 2)
+position_smoothing_enabled = true
 
 [node name="Ympyrä1" type="Sprite2D" parent="Player"]
 scale = Vector2(0.05, 0.05)
