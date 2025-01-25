@@ -11,7 +11,6 @@ func _ready() -> void:
 	pass
 
 
-
 func _on_hitbox_area_entered(area: HitboxComponent) -> void:
 	if area is HitboxComponent:
 		var attack = Attack.new()
