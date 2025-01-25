@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://bt5fji5342xuf"]
+[gd_scene load_steps=54 format=3 uid="uid://c0tufewd0ctbi"]
 
 [ext_resource type="Script" path="res://Scenes/bubble.gd" id="1_riexd"]
 [ext_resource type="Texture2D" uid="uid://ufq4hk20mbpu" path="res://Images/Testikuvat/Misc/plus_ball.png" id="2_2a2md"]
