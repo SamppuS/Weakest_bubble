@@ -4,7 +4,7 @@ extends Node2D
 
 @onready var player = $Player
 @onready var sword = get_node("Bubble_Sword")
-@onready var bubblebody = $Bubblebody
+@onready var bubblebody = $SoftBody2D
 
 const radius = 15
 
