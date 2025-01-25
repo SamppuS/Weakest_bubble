@@ -29,7 +29,7 @@ func _process(delta: float) -> void:
 		#sword.apply_torque_impulse(50 * sign(sword_data[2]))
 	if sign(sword_data[2]) != sign(sword.angular_velocity):
 		sword.angular_velocity = 0
-	print(sword_data)
+	print(sword_data[2])
 	sword.apply_torque_impulse(-1500 * force_funciton.sample(abs(sword_data[2]) / 180)  * sign(sword_data[2]))
 	
 	$StaticBody2D.global_position = get_global_mouse_position()
