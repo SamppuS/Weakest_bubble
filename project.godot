@@ -23,3 +23,7 @@ window/stretch/aspect="expand"
 [dotnet]
 
 project/assembly_name="Weakest Bubble"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/softbody2d/plugin.cfg")
