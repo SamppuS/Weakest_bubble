@@ -13,4 +13,4 @@ func half_second():
 	half_second()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	%Area2D.position.x += dir * delta
+	position.x += dir * delta
