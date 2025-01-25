@@ -6,16 +6,11 @@
 [ext_resource type="Texture2D" uid="uid://dgm5hbx4p4btl" path="res://Images/Testikuvat/BasicShapes/Ympyrät/Ympyrä2.png" id="4_j5wmu"]
 [ext_resource type="PackedScene" uid="uid://6m73mgg7sud6" path="res://components/health_component.tscn" id="4_u4r0c"]
 [ext_resource type="Script" path="res://addons/softbody2d/softbody2d.gd" id="5_4xt01"]
-[ext_resource type="PackedScene" path="res://Scenes/bubble_sword.tscn" id="5_rq5qm"]
+[ext_resource type="PackedScene" uid="uid://dd3uebshevgbv" path="res://Scenes/bubble_sword.tscn" id="5_rq5qm"]
 
 [sub_resource type="Curve" id="Curve_s5j5j"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0]
 point_count = 2
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_fbcfy"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_bollt"]
-radius = 5.0
 
 [sub_resource type="SkeletonModification2DLookAt" id="SkeletonModification2DLookAt_qxwf8"]
 resource_local_to_scene = true
@@ -338,49 +333,22 @@ modifications/38 = SubResource("SkeletonModification2DLookAt_ukvwo")
 resource_local_to_scene = true
 size = Vector2(2.975, 2.975)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_fbcfy"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bollt"]
+radius = 5.0
+
 [node name="Bubble" type="Node2D"]
 script = ExtResource("1_riexd")
 force_function = SubResource("Curve_s5j5j")
 
 [node name="PinJoint2D" type="PinJoint2D" parent="."]
-node_a = NodePath("../Player")
+node_a = NodePath("../Bubblebody/Bone-15")
 node_b = NodePath("../Bubble_Sword")
+disable_collision = false
 
-[node name="Player" type="RigidBody2D" parent="."]
-gravity_scale = 0.402
-lock_rotation = true
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(2, 2)
-position_smoothing_enabled = true
-
-[node name="Ympyrä1" type="Sprite2D" parent="Player"]
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("2_2a2md")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-shape = SubResource("CircleShape2D_fbcfy")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-shape = SubResource("CircleShape2D_bollt")
-disabled = true
-
-[node name="Hitbox_Component" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("2_qjp66")]
-health_component = NodePath("../Health_Component")
-
-[node name="HitboxCollisionShape2D" type="CollisionShape2D" parent="Hitbox_Component"]
-shape = SubResource("CircleShape2D_fbcfy")
-
-[node name="Health_Component" parent="." instance=ExtResource("4_u4r0c")]
-Max_Health = 20
-
-[node name="Bubble_Sword" parent="." instance=ExtResource("5_rq5qm")]
-position = Vector2(0, 23)
-
-[node name="SoftBody2D" type="Polygon2D" parent="."]
-position = Vector2(12, -12)
+[node name="Bubblebody" type="Polygon2D" parent="."]
+position = Vector2(-10.1, -10.14)
 scale = Vector2(0.035, 0.035)
 texture = ExtResource("4_j5wmu")
 skeleton = NodePath("Skeleton2D")
@@ -390,17 +358,21 @@ bones = ["Bone-0", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
 internal_vertex_count = 882
 script = ExtResource("5_4xt01")
 vertex_interval = 90
-softness = 1.0
+softness = 2.0
 radius = 85
 margin_offset_edge = 18.0
+mass = 0.05
+gravity_scale = 0.2
+collision_layer = 4
 
-[node name="Skeleton2D" type="Skeleton2D" parent="SoftBody2D"]
+[node name="Skeleton2D" type="Skeleton2D" parent="Bubblebody"]
 visible = false
 modification_stack = SubResource("SkeletonModificationStack2D_7jgwy")
 
-[node name="Bone-0" type="Bone2D" parent="SoftBody2D/Skeleton2D"]
+[node name="Bone-0" type="Bone2D" parent="Bubblebody/Skeleton2D"]
 position = Vector2(42.5623, 185.549)
-rotation = 0.0500612
+rotation = 0.0500625
+scale = Vector2(1, 1)
 rest = Transform2D(0.998747, 0.0500403, -0.0500403, 0.998747, 42.5623, 185.549)
 auto_calculate_length_and_angle = false
 length = 90.0
@@ -411,9 +383,9 @@ metadata/connected_nodes_paths = [NodePath("Bone-3"), NodePath("Bone-1"), NodePa
 metadata/connected_nodes_idx = [3, 1, 4, 5]
 metadata/_local_pose_override_enabled_ = true
 
-[node name="Bone-1" type="Bone2D" parent="SoftBody2D/Skeleton2D"]
+[node name="Bone-1" type="Bone2D" parent="Bubblebody/Skeleton2D"]
 position = Vector2(40.4428, 271.434)
-rotation = 0.00705182
+rotation = 0.00705671
 scale = Vector2(1, 1)
 rest = Transform2D(0.999975, 0.00705176, -0.00705176, 0.999975, 40.4428, 271.434)
 auto_calculate_length_and_angle = false
@@ -425,10 +397,10 @@ metadata/connected_nodes_paths = [NodePath("Bone-0"), NodePath("Bone-4"), NodePa
 metadata/connected_nodes_idx = [0, 4, 5, 2, 6]
 metadata/_local_pose_override_enabled_ = true
 
-[node name="Bone-2" type="Bone2D" parent="SoftBody2D/Skeleton2D"]
+[node name="Bone-2" type="Bone2D" parent="Bubblebody/Skeleton2D"]
 position = Vector2(39.9433, 355.558)
-rotation = -0.0201403
-scale = Vector2(1, 1)
+rotation = -0.0201317
+scale = Vector2(1.00003, 1.00003)
 rest = Transform2D(0.999797, -0.0201389, 0.0201389, 0.999797, 39.9433, 355.558)
 auto_calculate_length_and_angle = false
 length = 90.0
@@ -439,9 +411,10 @@ metadata/connected_nodes_paths = [NodePath("Bone-1"), NodePath("Bone-5"), NodePa
 metadata/connected_nodes_idx = [1, 5, 6, 22]
 metadata/_local_pose_override_enabled_ = true
 
-[node name="Bone-3" type="Bone2D" parent="SoftBody2D/Skeleton2D"]
+[node name="Bone-3" type="Bone2D" parent="Bubblebody/Skeleton2D"]
 position = Vector2(102.728, 102.728)
-rotation = 0.0351263
+rotation = 0.0351305
+scale = Vector2(1, 1)
 rest = Transform2D(0.999383, 0.0351191, -0.0351191, 0.999383, 102.728, 102.728)
 auto_calculate_length_and_angle = false
 length = 90.0
@@ -452,9 +425,9 @@ metadata/connected_nodes_paths = [NodePath("Bone-0"), NodePath("Bone-4"), NodePa
 metadata/connected_nodes_idx = [0, 4, 8, 9, 7]
 metadata/_local_pose_override_enabled_ = true
 
-[node name="Bone-4" type="Bone2D" parent="SoftBody2D/Skeleton2D"]
+[node name="Bone-4" type="Bone2D" parent="Bubblebody/Skeleton2D"]
 position = Vector2(105.75, 188.715)
-rotation = -1.60592
+rotation = -1.60593
 scale = Vector2(1, 1)
 rest = Transform2D(-0.0351193, -0.999383, 0.999383, -0.0351193, 105.75, 188.715)
 auto_calculate_length_and_angle = false
@@ -466,7 +439,7 @@ metadata/connected_nodes_paths = [NodePath("Bone-0"), NodePath("Bone-1"), NodePa
 metadata/connected_nodes_idx = [0, 1, 5, 3, 8, 9, 10]
 metadata/_local_pose_override_enabled_ = true
 
-[node name="Bone-5" type="Bone2D" parent="SoftBody2D/Skeleton2D"]
+[node name="Bone-5" type="Bone2D" parent="Bubblebody/Skeleton2D"]
 position = Vector2(107.898, 271.91)
 rotation = 1.5812
 rest = Transform2D(-0.0104036, 0.999946, -0.999946, -0.0104036, 107.898, 271.91)
@@ -479,9 +452,10 @@ metadata/connected_nodes_paths = [NodePath("Bone-0"), NodePath("Bone-1"), NodePa
 metadata/connected_nodes_idx = [0, 1, 4, 2, 6, 9, 10, 11]
 metadata/_local_pose_override_enabled_ = true
 
-[node name="Bone-6" type="Bone2D" parent="SoftBody2D/Skeleton2D"]
+[node name="Bone-6" type="Bone2D" parent="Bubblebody/Skeleton2D"]
 position = Vector2(107.042, 354.207)
-rotation = 1.70989
+rotation = 1.70988
+scale = Vector2(1, 1)
 rest = Transform2D(-0.138642, 0.990343, -0.990343, -0.138642, 107.042, 354.207)
 auto_calculate_length_and_angle = false
 length = 90.0
@@ -492,9 +466,10 @@ metadata/connected_nodes_paths = [NodePath("Bone-1"), NodePath("Bone-2"), NodePa
 metadata/connected_nodes_idx = [1, 2, 5, 22, 10, 11, 23]
 metadata/_local_pose_override_enabled_ = true
 
-[node name="Bone-7" type="Bone2D" parent="SoftBody2D/Skeleton2D"]
+[node name="Bone-7" type="Bone2D" parent="Bubblebody/Skeleton2D"]
 position = Vector2(186.023, 42.5735)
 rotation = 1.52821
+scale = Vector2(0.999993, 0.999993)
 rest = Transform2D(0.0425776, 0.999093, -0.999093, 0.0425776, 186.023, 42.5735)
 auto_calculate_length_and_angle = false
 length = 90.0
@@ -505,9 +480,10 @@ metadata/connected_nodes_paths = [NodePath("Bone-12"), NodePath("Bone-3"), NodeP
 metadata/connected_nodes_idx = [12, 3, 8, 13]
 metadata/_local_pose_override_enabled_ = true
 
-[node name="Bone-8" type="Bone2D" parent="SoftBody2D/Skeleton2D"]
+[node name="Bone-8" type="Bone2D" parent="Bubblebody/Skeleton2D"]
 position = Vector2(188.715, 105.75)
-rotation = -1.61339
+rotation = -1.61338
+scale = Vector2(0.999988, 0.999988)
 rest = Transform2D(-0.0425775, -0.999093, 0.999093, -0.0425775, 188.715, 105.75)
 auto_calculate_length_and_angle = false
 length = 90.0
@@ -518,9 +494,9 @@ metadata/connected_nodes_paths = [NodePath("Bone-3"), NodePath("Bone-4"), NodePa
 metadata/connected_nodes_idx = [3, 4, 9, 7, 12, 13, 14]
 metadata/_local_pose_override_enabled_ = true
 
-[node name="Bone-9" type="Bone2D" parent="SoftBody2D/Skeleton2D"]
+[node name="Bone-9" type="Bone2D" parent="Bubblebody/Skeleton2D"]
 position = Vector2(192.728, 192.728)
-rotation = 1.50956
+rotation = 1.50957
 scale = Vector2(1, 1)
 rest = Transform2D(0.0611955, 0.998126, -0.998126, 0.0611955, 192.728, 192.728)
 auto_calculate_length_and_angle = false
@@ -532,9 +508,9 @@ metadata/connected_nodes_paths = [NodePath("Bone-3"), NodePath("Bone-4"), NodePa
 metadata/connected_nodes_idx = [3, 4, 8, 5, 10, 13, 14, 15]
 metadata/_local_pose_override_enabled_ = true
 
-[node name="Bone-10" type="Bone2D" parent="SoftBody2D/Skeleton2D"]
+[node name="Bone-10" type="Bone2D" parent="Bubblebody/Skeleton2D"]
 position = Vector2(197.674, 273.408)
-rotation = 1.60108
+rotation = 1.60107
 rest = Transform2D(-0.0302776, 0.999542, -0.999542, -0.0302776, 197.674, 273.408)
 auto_calculate_length_and_angle = false
 length = 90.0
@@ -545,9 +521,10 @@ metadata/connected_nodes_paths = [NodePath("Bone-4"), NodePath("Bone-5"), NodePa
 metadata/connected_nodes_idx = [4, 5, 9, 6, 11, 14, 15, 16]
 metadata/_local_pose_override_enabled_ = true
 
-[node name="Bone-11" type="Bone2D" parent="SoftBody2D/Skeleton2D"]
+[node name="Bone-11" type="Bone2D" parent="Bubblebody/Skeleton2D"]
 position = Vector2(195.337, 350.578)
-rotation = 1.62953
+rotation = 1.62952
+scale = Vector2(1, 1)
 rest = Transform2D(-0.0586984, 0.998276, -0.998276, -0.0586984, 195.337, 350.578)
 auto_calculate_length_and_angle = false
 length = 90.0
@@ -558,7 +535,7 @@ metadata/connected_nodes_paths = [NodePath("Bone-5"), NodePath("Bone-6"), NodePa
 metadata/connected_nodes_idx = [5, 6, 10, 22, 23, 15, 16, 25]
 metadata/_local_pose_override_enabled_ = true
 
-[node name="Bone-12" type="Bone2D" parent="SoftBody2D/Skeleton2D"]
+[node name="Bone-12" type="Bone2D" parent="Bubblebody/Skeleton2D"]
 position = Vector2(271.434, 40.4428)
 rotation = 1.56374
 scale = Vector2(1, 1)
@@ -572,7 +549,7 @@ metadata/connected_nodes_paths = [NodePath("Bone-7"), NodePath("Bone-8"), NodePa
 metadata/connected_nodes_idx = [7, 8, 13, 17, 18]
 metadata/_local_pose_override_enabled_ = true
 
-[node name="Bone-13" type="Bone2D" parent="SoftBody2D/Skeleton2D"]
+[node name="Bone-13" type="Bone2D" parent="Bubblebody/Skeleton2D"]
 position = Vector2(271.91, 107.898)
 rotation = 1.55411
 scale = Vector2(1, 1)
@@ -586,9 +563,10 @@ metadata/connected_nodes_paths = [NodePath("Bone-7"), NodePath("Bone-8"), NodePa
 metadata/connected_nodes_idx = [7, 8, 12, 9, 14, 17, 18, 19]
 metadata/_local_pose_override_enabled_ = true
 
-[node name="Bone-14" type="Bone2D" parent="SoftBody2D/Skeleton2D"]
+[node name="Bone-14" type="Bone2D" parent="Bubblebody/Skeleton2D"]
 position = Vector2(273.408, 197.674)
-rotation = 1.46166
+rotation = 1.46165
+scale = Vector2(0.999999, 0.999999)
 rest = Transform2D(0.108925, 0.99405, -0.99405, 0.108925, 273.408, 197.674)
 auto_calculate_length_and_angle = false
 length = 90.0
@@ -599,10 +577,10 @@ metadata/connected_nodes_paths = [NodePath("Bone-8"), NodePath("Bone-9"), NodePa
 metadata/connected_nodes_idx = [8, 9, 13, 10, 15, 18, 19, 20]
 metadata/_local_pose_override_enabled_ = true
 
-[node name="Bone-15" type="Bone2D" parent="SoftBody2D/Skeleton2D"]
+[node name="Bone-15" type="Bone2D" parent="Bubblebody/Skeleton2D"]
 position = Vector2(282.728, 282.728)
 rotation = 1.69229
-scale = Vector2(1, 1)
+scale = Vector2(0.999997, 0.999997)
 rest = Transform2D(-0.121194, 0.992629, -0.992629, -0.121194, 282.728, 282.728)
 auto_calculate_length_and_angle = false
 length = 90.0
@@ -613,7 +591,7 @@ metadata/connected_nodes_paths = [NodePath("Bone-9"), NodePath("Bone-10"), NodeP
 metadata/connected_nodes_idx = [9, 10, 14, 11, 16, 19, 20, 21]
 metadata/_local_pose_override_enabled_ = true
 
-[node name="Bone-16" type="Bone2D" parent="SoftBody2D/Skeleton2D"]
+[node name="Bone-16" type="Bone2D" parent="Bubblebody/Skeleton2D"]
 position = Vector2(275.39, 342.826)
 rotation = 1.60404
 scale = Vector2(1, 1)
@@ -627,10 +605,9 @@ metadata/connected_nodes_paths = [NodePath("Bone-10"), NodePath("Bone-11"), Node
 metadata/connected_nodes_idx = [10, 11, 15, 23, 25, 20, 21, 27]
 metadata/_local_pose_override_enabled_ = true
 
-[node name="Bone-17" type="Bone2D" parent="SoftBody2D/Skeleton2D"]
+[node name="Bone-17" type="Bone2D" parent="Bubblebody/Skeleton2D"]
 position = Vector2(355.558, 39.9433)
 rotation = 2.45934
-scale = Vector2(1, 1)
 rest = Transform2D(-0.776156, 0.630541, -0.630541, -0.776156, 355.558, 39.9433)
 auto_calculate_length_and_angle = false
 length = 90.0
@@ -641,10 +618,9 @@ metadata/connected_nodes_paths = [NodePath("Bone-29"), NodePath("Bone-12"), Node
 metadata/connected_nodes_idx = [29, 12, 13, 18]
 metadata/_local_pose_override_enabled_ = true
 
-[node name="Bone-18" type="Bone2D" parent="SoftBody2D/Skeleton2D"]
+[node name="Bone-18" type="Bone2D" parent="Bubblebody/Skeleton2D"]
 position = Vector2(354.207, 107.042)
-rotation = 2.29889
-scale = Vector2(1, 1)
+rotation = 2.2989
 rest = Transform2D(-0.665451, 0.746441, -0.746441, -0.665451, 354.207, 107.042)
 auto_calculate_length_and_angle = false
 length = 90.0
@@ -655,9 +631,10 @@ metadata/connected_nodes_paths = [NodePath("Bone-12"), NodePath("Bone-13"), Node
 metadata/connected_nodes_idx = [12, 13, 17, 14, 19, 29, 30]
 metadata/_local_pose_override_enabled_ = true
 
-[node name="Bone-19" type="Bone2D" parent="SoftBody2D/Skeleton2D"]
+[node name="Bone-19" type="Bone2D" parent="Bubblebody/Skeleton2D"]
 position = Vector2(350.578, 195.337)
 rotation = 1.66733
+scale = Vector2(1, 1)
 rest = Transform2D(-0.0963802, 0.995345, -0.995345, -0.0963802, 350.578, 195.337)
 auto_calculate_length_and_angle = false
 length = 90.0
@@ -668,7 +645,7 @@ metadata/connected_nodes_paths = [NodePath("Bone-13"), NodePath("Bone-14"), Node
 metadata/connected_nodes_idx = [13, 14, 18, 15, 20, 29, 30, 31]
 metadata/_local_pose_override_enabled_ = true
 
-[node name="Bone-20" type="Bone2D" parent="SoftBody2D/Skeleton2D"]
+[node name="Bone-20" type="Bone2D" parent="Bubblebody/Skeleton2D"]
 position = Vector2(342.826, 275.39)
 rotation = 1.50902
 scale = Vector2(1, 1)
@@ -682,7 +659,7 @@ metadata/connected_nodes_paths = [NodePath("Bone-14"), NodePath("Bone-15"), Node
 metadata/connected_nodes_idx = [14, 15, 19, 16, 21, 30, 31, 32]
 metadata/_local_pose_override_enabled_ = true
 
-[node name="Bone-21" type="Bone2D" parent="SoftBody2D/Skeleton2D"]
+[node name="Bone-21" type="Bone2D" parent="Bubblebody/Skeleton2D"]
 position = Vector2(347.272, 347.272)
 rotation = 1.50608
 scale = Vector2(1, 1)
@@ -696,9 +673,10 @@ metadata/connected_nodes_paths = [NodePath("Bone-15"), NodePath("Bone-16"), Node
 metadata/connected_nodes_idx = [15, 16, 20, 25, 27, 31, 32, 36]
 metadata/_local_pose_override_enabled_ = true
 
-[node name="Bone-22" type="Bone2D" parent="SoftBody2D/Skeleton2D"]
+[node name="Bone-22" type="Bone2D" parent="Bubblebody/Skeleton2D"]
 position = Vector2(92.2483, 459.882)
 rotation = -0.814653
+scale = Vector2(1, 1)
 rest = Transform2D(0.686121, -0.727488, 0.727488, 0.686121, 92.2483, 459.882)
 auto_calculate_length_and_angle = false
 length = 90.0
@@ -709,9 +687,10 @@ metadata/connected_nodes_paths = [NodePath("Bone-2"), NodePath("Bone-6"), NodePa
 metadata/connected_nodes_idx = [2, 6, 11, 23, 24]
 metadata/_local_pose_override_enabled_ = true
 
-[node name="Bone-23" type="Bone2D" parent="SoftBody2D/Skeleton2D"]
+[node name="Bone-23" type="Bone2D" parent="Bubblebody/Skeleton2D"]
 position = Vector2(190.357, 435.278)
-rotation = -0.827169
+rotation = -0.827174
+scale = Vector2(0.999999, 0.999999)
 rest = Transform2D(0.676962, -0.736018, 0.736018, 0.676962, 190.357, 435.278)
 auto_calculate_length_and_angle = false
 length = 90.0
@@ -722,9 +701,10 @@ metadata/connected_nodes_paths = [NodePath("Bone-6"), NodePath("Bone-11"), NodeP
 metadata/connected_nodes_idx = [6, 11, 22, 16, 25, 24, 26]
 metadata/_local_pose_override_enabled_ = true
 
-[node name="Bone-24" type="Bone2D" parent="SoftBody2D/Skeleton2D"]
+[node name="Bone-24" type="Bone2D" parent="Bubblebody/Skeleton2D"]
 position = Vector2(187.487, 518.914)
-rotation = -0.795984
+rotation = -0.795992
+scale = Vector2(1, 1)
 rest = Transform2D(0.699582, -0.714552, 0.714552, 0.699582, 187.487, 518.914)
 auto_calculate_length_and_angle = false
 length = 90.0
@@ -735,9 +715,9 @@ metadata/connected_nodes_paths = [NodePath("Bone-22"), NodePath("Bone-23"), Node
 metadata/connected_nodes_idx = [22, 23, 25, 26]
 metadata/_local_pose_override_enabled_ = true
 
-[node name="Bone-25" type="Bone2D" parent="SoftBody2D/Skeleton2D"]
+[node name="Bone-25" type="Bone2D" parent="Bubblebody/Skeleton2D"]
 position = Vector2(272.419, 432.163)
-rotation = 0.0163297
+rotation = 0.0163337
 scale = Vector2(1, 1)
 rest = Transform2D(0.999867, 0.016329, -0.016329, 0.999867, 272.419, 432.163)
 auto_calculate_length_and_angle = false
@@ -749,9 +729,9 @@ metadata/connected_nodes_paths = [NodePath("Bone-11"), NodePath("Bone-16"), Node
 metadata/connected_nodes_idx = [11, 16, 23, 21, 27, 24, 26, 28]
 metadata/_local_pose_override_enabled_ = true
 
-[node name="Bone-26" type="Bone2D" parent="SoftBody2D/Skeleton2D"]
+[node name="Bone-26" type="Bone2D" parent="Bubblebody/Skeleton2D"]
 position = Vector2(271.552, 522.067)
-rotation = -1.56114
+rotation = -1.56115
 rest = Transform2D(0.00965481, -0.999953, 0.999953, 0.00965481, 271.552, 522.067)
 auto_calculate_length_and_angle = false
 length = 90.0
@@ -762,9 +742,10 @@ metadata/connected_nodes_paths = [NodePath("Bone-23"), NodePath("Bone-24"), Node
 metadata/connected_nodes_idx = [23, 24, 25, 27, 28]
 metadata/_local_pose_override_enabled_ = true
 
-[node name="Bone-27" type="Bone2D" parent="SoftBody2D/Skeleton2D"]
+[node name="Bone-27" type="Bone2D" parent="Bubblebody/Skeleton2D"]
 position = Vector2(352.859, 433.477)
-rotation = 0.0449276
+rotation = 0.044928
+scale = Vector2(1, 1)
 rest = Transform2D(0.998991, 0.0449125, -0.0449125, 0.998991, 352.859, 433.477)
 auto_calculate_length_and_angle = false
 length = 90.0
@@ -775,9 +756,10 @@ metadata/connected_nodes_paths = [NodePath("Bone-16"), NodePath("Bone-21"), Node
 metadata/connected_nodes_idx = [16, 21, 25, 32, 36, 26, 28, 37]
 metadata/_local_pose_override_enabled_ = true
 
-[node name="Bone-28" type="Bone2D" parent="SoftBody2D/Skeleton2D"]
+[node name="Bone-28" type="Bone2D" parent="Bubblebody/Skeleton2D"]
 position = Vector2(355.193, 521.334)
-rotation = -1.59735
+rotation = -1.59736
+scale = Vector2(0.999999, 0.999999)
 rest = Transform2D(-0.0265537, -0.999647, 0.999647, -0.0265537, 355.193, 521.334)
 auto_calculate_length_and_angle = false
 length = 90.0
@@ -788,9 +770,10 @@ metadata/connected_nodes_paths = [NodePath("Bone-25"), NodePath("Bone-26"), Node
 metadata/connected_nodes_idx = [25, 26, 27, 36, 37]
 metadata/_local_pose_override_enabled_ = true
 
-[node name="Bone-29" type="Bone2D" parent="SoftBody2D/Skeleton2D"]
+[node name="Bone-29" type="Bone2D" parent="Bubblebody/Skeleton2D"]
 position = Vector2(460.122, 92.2403)
 rotation = 2.38651
+scale = Vector2(1, 1)
 rest = Transform2D(-0.728214, 0.68535, -0.68535, -0.728214, 460.122, 92.2403)
 auto_calculate_length_and_angle = false
 length = 90.0
@@ -801,7 +784,7 @@ metadata/connected_nodes_paths = [NodePath("Bone-17"), NodePath("Bone-18"), Node
 metadata/connected_nodes_idx = [17, 18, 19, 30, 33]
 metadata/_local_pose_override_enabled_ = true
 
-[node name="Bone-30" type="Bone2D" parent="SoftBody2D/Skeleton2D"]
+[node name="Bone-30" type="Bone2D" parent="Bubblebody/Skeleton2D"]
 position = Vector2(435.278, 190.357)
 rotation = 2.39797
 rest = Transform2D(-0.736018, 0.676962, -0.676962, -0.736018, 435.278, 190.357)
@@ -814,9 +797,10 @@ metadata/connected_nodes_paths = [NodePath("Bone-18"), NodePath("Bone-19"), Node
 metadata/connected_nodes_idx = [18, 19, 29, 20, 31, 33, 34]
 metadata/_local_pose_override_enabled_ = true
 
-[node name="Bone-31" type="Bone2D" parent="SoftBody2D/Skeleton2D"]
+[node name="Bone-31" type="Bone2D" parent="Bubblebody/Skeleton2D"]
 position = Vector2(432.163, 272.419)
-rotation = 1.55447
+rotation = 1.55446
+scale = Vector2(1, 1)
 rest = Transform2D(0.0163288, 0.999867, -0.999867, 0.0163288, 432.163, 272.419)
 auto_calculate_length_and_angle = false
 length = 90.0
@@ -827,10 +811,9 @@ metadata/connected_nodes_paths = [NodePath("Bone-19"), NodePath("Bone-20"), Node
 metadata/connected_nodes_idx = [19, 20, 30, 21, 32, 33, 34, 35]
 metadata/_local_pose_override_enabled_ = true
 
-[node name="Bone-32" type="Bone2D" parent="SoftBody2D/Skeleton2D"]
+[node name="Bone-32" type="Bone2D" parent="Bubblebody/Skeleton2D"]
 position = Vector2(433.477, 352.859)
 rotation = 1.52587
-scale = Vector2(1, 1)
 rest = Transform2D(0.0449128, 0.998991, -0.998991, 0.0449128, 433.477, 352.859)
 auto_calculate_length_and_angle = false
 length = 90.0
@@ -841,9 +824,10 @@ metadata/connected_nodes_paths = [NodePath("Bone-20"), NodePath("Bone-21"), Node
 metadata/connected_nodes_idx = [20, 21, 31, 27, 36, 34, 35, 38]
 metadata/_local_pose_override_enabled_ = true
 
-[node name="Bone-33" type="Bone2D" parent="SoftBody2D/Skeleton2D"]
+[node name="Bone-33" type="Bone2D" parent="Bubblebody/Skeleton2D"]
 position = Vector2(518.806, 187.49)
 rotation = 2.36618
+scale = Vector2(1, 1)
 rest = Transform2D(-0.71413, 0.700013, -0.700013, -0.71413, 518.806, 187.49)
 auto_calculate_length_and_angle = false
 length = 90.0
@@ -854,10 +838,10 @@ metadata/connected_nodes_paths = [NodePath("Bone-29"), NodePath("Bone-30"), Node
 metadata/connected_nodes_idx = [29, 30, 31, 34]
 metadata/_local_pose_override_enabled_ = true
 
-[node name="Bone-34" type="Bone2D" parent="SoftBody2D/Skeleton2D"]
+[node name="Bone-34" type="Bone2D" parent="Bubblebody/Skeleton2D"]
 position = Vector2(521.068, 271.558)
-rotation = -1.59769
-scale = Vector2(1, 1)
+rotation = -1.5977
+scale = Vector2(0.999999, 0.999999)
 rest = Transform2D(-0.0268901, -0.999638, 0.999638, -0.0268901, 521.068, 271.558)
 auto_calculate_length_and_angle = false
 length = 90.0
@@ -868,9 +852,10 @@ metadata/connected_nodes_paths = [NodePath("Bone-30"), NodePath("Bone-31"), Node
 metadata/connected_nodes_idx = [30, 31, 33, 32, 35]
 metadata/_local_pose_override_enabled_ = true
 
-[node name="Bone-35" type="Bone2D" parent="SoftBody2D/Skeleton2D"]
+[node name="Bone-35" type="Bone2D" parent="Bubblebody/Skeleton2D"]
 position = Vector2(521.155, 355.19)
-rotation = -3.11502
+rotation = -3.11501
+scale = Vector2(1, 1)
 rest = Transform2D(-0.999647, -0.0265709, 0.0265709, -0.999647, 521.155, 355.19)
 auto_calculate_length_and_angle = false
 length = 90.0
@@ -881,7 +866,7 @@ metadata/connected_nodes_paths = [NodePath("Bone-38"), NodePath("Bone-31"), Node
 metadata/connected_nodes_idx = [38, 31, 32, 34, 36]
 metadata/_local_pose_override_enabled_ = true
 
-[node name="Bone-36" type="Bone2D" parent="SoftBody2D/Skeleton2D"]
+[node name="Bone-36" type="Bone2D" parent="Bubblebody/Skeleton2D"]
 position = Vector2(437.272, 437.272)
 rotation = 2.34426
 scale = Vector2(1, 1)
@@ -895,10 +880,10 @@ metadata/connected_nodes_paths = [NodePath("Bone-21"), NodePath("Bone-27"), Node
 metadata/connected_nodes_idx = [21, 27, 32, 28, 37, 35, 38]
 metadata/_local_pose_override_enabled_ = true
 
-[node name="Bone-37" type="Bone2D" parent="SoftBody2D/Skeleton2D"]
+[node name="Bone-37" type="Bone2D" parent="Bubblebody/Skeleton2D"]
 position = Vector2(442.349, 512.386)
 rotation = -1.63828
-scale = Vector2(1, 1)
+scale = Vector2(0.999999, 0.999999)
 rest = Transform2D(-0.0674319, -0.997724, 0.997724, -0.0674319, 442.349, 512.386)
 auto_calculate_length_and_angle = false
 length = 90.0
@@ -909,10 +894,9 @@ metadata/connected_nodes_paths = [NodePath("Bone-27"), NodePath("Bone-28"), Node
 metadata/connected_nodes_idx = [27, 28, 36, 38]
 metadata/_local_pose_override_enabled_ = true
 
-[node name="Bone-38" type="Bone2D" parent="SoftBody2D/Skeleton2D"]
+[node name="Bone-38" type="Bone2D" parent="Bubblebody/Skeleton2D"]
 position = Vector2(512.557, 439.964)
 rotation = -3.10585
-scale = Vector2(1, 1)
 rest = Transform2D(-0.999361, -0.0357379, 0.0357379, -0.999361, 512.557, 439.964)
 auto_calculate_length_and_angle = false
 length = 90.0
@@ -923,2348 +907,2461 @@ metadata/connected_nodes_paths = [NodePath("Bone-35"), NodePath("Bone-32"), Node
 metadata/connected_nodes_idx = [35, 32, 36, 37]
 metadata/_local_pose_override_enabled_ = true
 
-[node name="Bone-0" type="RigidBody2D" parent="SoftBody2D"]
+[node name="Bone-0" type="RigidBody2D" parent="Bubblebody"]
 position = Vector2(42.5623, 185.549)
-mass = 0.1
+collision_layer = 4
+mass = 0.05
+gravity_scale = 0.2
 metadata/idx = 0
 metadata/bone_name = &"Bone-0"
 
-[node name="RectangleShape2D" type="CollisionShape2D" parent="SoftBody2D/Bone-0"]
+[node name="RectangleShape2D" type="CollisionShape2D" parent="Bubblebody/Bone-0"]
 visible = false
 shape = SubResource("RectangleShape2D_njwcm")
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="SoftBody2D/Bone-0"]
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Bubblebody/Bone-0"]
 visible = false
 remote_path = NodePath("../../Skeleton2D/Bone-0")
 update_rotation = false
 update_scale = false
 
-[node name="Joint2D-Bone-0-Bone-3" type="PinJoint2D" parent="SoftBody2D/Bone-0"]
+[node name="Joint2D-Bone-0-Bone-3" type="PinJoint2D" parent="Bubblebody/Bone-0"]
 visible = false
 rotation = -2.51333
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-3")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-0-Bone-1" type="PinJoint2D" parent="SoftBody2D/Bone-0"]
+[node name="Joint2D-Bone-0-Bone-1" type="PinJoint2D" parent="Bubblebody/Bone-0"]
 visible = false
 rotation = 0.0246736
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-1")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-0-Bone-4" type="PinJoint2D" parent="SoftBody2D/Bone-0"]
+[node name="Joint2D-Bone-0-Bone-4" type="PinJoint2D" parent="Bubblebody/Bone-0"]
 visible = false
 rotation = -1.52073
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-4")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-0-Bone-5" type="PinJoint2D" parent="SoftBody2D/Bone-0"]
+[node name="Joint2D-Bone-0-Bone-5" type="PinJoint2D" parent="Bubblebody/Bone-0"]
 visible = false
 rotation = -0.64768
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-5")
-softness = 1.0
+softness = 2.0
 
-[node name="Bone-1" type="RigidBody2D" parent="SoftBody2D"]
+[node name="Bone-1" type="RigidBody2D" parent="Bubblebody"]
 position = Vector2(40.4428, 271.434)
-mass = 0.1
+collision_layer = 4
+mass = 0.05
+gravity_scale = 0.2
 metadata/idx = 1
 metadata/bone_name = &"Bone-1"
 
-[node name="RectangleShape2D" type="CollisionShape2D" parent="SoftBody2D/Bone-1"]
+[node name="RectangleShape2D" type="CollisionShape2D" parent="Bubblebody/Bone-1"]
 visible = false
 shape = SubResource("RectangleShape2D_njwcm")
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="SoftBody2D/Bone-1"]
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Bubblebody/Bone-1"]
 visible = false
 remote_path = NodePath("../../Skeleton2D/Bone-1")
 update_rotation = false
 update_scale = false
 
-[node name="Joint2D-Bone-1-Bone-0" type="PinJoint2D" parent="SoftBody2D/Bone-1"]
+[node name="Joint2D-Bone-1-Bone-0" type="PinJoint2D" parent="Bubblebody/Bone-1"]
 visible = false
 rotation = -3.11692
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-0")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-1-Bone-4" type="PinJoint2D" parent="SoftBody2D/Bone-1"]
+[node name="Joint2D-Bone-1-Bone-4" type="PinJoint2D" parent="Bubblebody/Bone-1"]
 visible = false
 rotation = -2.47329
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-4")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-1-Bone-5" type="PinJoint2D" parent="SoftBody2D/Bone-1"]
+[node name="Joint2D-Bone-1-Bone-5" type="PinJoint2D" parent="Bubblebody/Bone-1"]
 visible = false
 rotation = -1.56374
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-5")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-1-Bone-2" type="PinJoint2D" parent="SoftBody2D/Bone-1"]
+[node name="Joint2D-Bone-1-Bone-2" type="PinJoint2D" parent="Bubblebody/Bone-1"]
 visible = false
 rotation = 0.00593702
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-2")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-1-Bone-6" type="PinJoint2D" parent="SoftBody2D/Bone-1"]
+[node name="Joint2D-Bone-1-Bone-6" type="PinJoint2D" parent="Bubblebody/Bone-1"]
 visible = false
 rotation = -0.677545
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-6")
-softness = 1.0
+softness = 2.0
 
-[node name="Bone-2" type="RigidBody2D" parent="SoftBody2D"]
+[node name="Bone-2" type="RigidBody2D" parent="Bubblebody"]
 position = Vector2(39.9433, 355.558)
-mass = 0.1
+collision_layer = 4
+mass = 0.05
+gravity_scale = 0.2
 metadata/idx = 2
 metadata/bone_name = &"Bone-2"
 
-[node name="RectangleShape2D" type="CollisionShape2D" parent="SoftBody2D/Bone-2"]
+[node name="RectangleShape2D" type="CollisionShape2D" parent="Bubblebody/Bone-2"]
 visible = false
 shape = SubResource("RectangleShape2D_njwcm")
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="SoftBody2D/Bone-2"]
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Bubblebody/Bone-2"]
 visible = false
 remote_path = NodePath("../../Skeleton2D/Bone-2")
 update_rotation = false
 update_scale = false
 
-[node name="Joint2D-Bone-2-Bone-1" type="PinJoint2D" parent="SoftBody2D/Bone-2"]
+[node name="Joint2D-Bone-2-Bone-1" type="PinJoint2D" parent="Bubblebody/Bone-2"]
 visible = false
 rotation = -3.13566
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-1")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-2-Bone-5" type="PinJoint2D" parent="SoftBody2D/Bone-2"]
+[node name="Joint2D-Bone-2-Bone-5" type="PinJoint2D" parent="Bubblebody/Bone-2"]
 visible = false
 rotation = -2.45934
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-5")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-2-Bone-6" type="PinJoint2D" parent="SoftBody2D/Bone-2"]
+[node name="Joint2D-Bone-2-Bone-6" type="PinJoint2D" parent="Bubblebody/Bone-2"]
 visible = false
 rotation = -1.59094
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-6")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-2-Bone-22" type="PinJoint2D" parent="SoftBody2D/Bone-2"]
+[node name="Joint2D-Bone-2-Bone-22" type="PinJoint2D" parent="Bubblebody/Bone-2"]
 visible = false
 rotation = -0.464745
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-22")
-softness = 1.0
+softness = 2.0
 
-[node name="Bone-3" type="RigidBody2D" parent="SoftBody2D"]
+[node name="Bone-3" type="RigidBody2D" parent="Bubblebody"]
 position = Vector2(102.728, 102.728)
-mass = 0.1
+collision_layer = 4
+mass = 0.05
+gravity_scale = 0.2
 metadata/idx = 3
 metadata/bone_name = &"Bone-3"
 
-[node name="RectangleShape2D" type="CollisionShape2D" parent="SoftBody2D/Bone-3"]
+[node name="RectangleShape2D" type="CollisionShape2D" parent="Bubblebody/Bone-3"]
 visible = false
 shape = SubResource("RectangleShape2D_njwcm")
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="SoftBody2D/Bone-3"]
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Bubblebody/Bone-3"]
 visible = false
 remote_path = NodePath("../../Skeleton2D/Bone-3")
 update_rotation = false
 update_scale = false
 
-[node name="Joint2D-Bone-3-Bone-0" type="PinJoint2D" parent="SoftBody2D/Bone-3"]
+[node name="Joint2D-Bone-3-Bone-0" type="PinJoint2D" parent="Bubblebody/Bone-3"]
 visible = false
 rotation = 0.628259
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-0")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-3-Bone-4" type="PinJoint2D" parent="SoftBody2D/Bone-3"]
+[node name="Joint2D-Bone-3-Bone-4" type="PinJoint2D" parent="Bubblebody/Bone-3"]
 visible = false
 rotation = -0.0351262
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-4")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-3-Bone-8" type="PinJoint2D" parent="SoftBody2D/Bone-3"]
+[node name="Joint2D-Bone-3-Bone-8" type="PinJoint2D" parent="Bubblebody/Bone-3"]
 visible = false
 rotation = -1.53567
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-8")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-3-Bone-9" type="PinJoint2D" parent="SoftBody2D/Bone-3"]
+[node name="Joint2D-Bone-3-Bone-9" type="PinJoint2D" parent="Bubblebody/Bone-3"]
 visible = false
 rotation = -0.785398
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-9")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-3-Bone-7" type="PinJoint2D" parent="SoftBody2D/Bone-3"]
+[node name="Joint2D-Bone-3-Bone-7" type="PinJoint2D" parent="Bubblebody/Bone-3"]
 visible = false
 rotation = -2.19626
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-7")
-softness = 1.0
+softness = 2.0
 
-[node name="Bone-4" type="RigidBody2D" parent="SoftBody2D"]
+[node name="Bone-4" type="RigidBody2D" parent="Bubblebody"]
 position = Vector2(105.75, 188.715)
-mass = 0.1
+collision_layer = 4
+mass = 0.05
+gravity_scale = 0.2
 metadata/idx = 4
 metadata/bone_name = &"Bone-4"
 
-[node name="RectangleShape2D" type="CollisionShape2D" parent="SoftBody2D/Bone-4"]
+[node name="RectangleShape2D" type="CollisionShape2D" parent="Bubblebody/Bone-4"]
 visible = false
 shape = SubResource("RectangleShape2D_njwcm")
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="SoftBody2D/Bone-4"]
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Bubblebody/Bone-4"]
 visible = false
 remote_path = NodePath("../../Skeleton2D/Bone-4")
 update_rotation = false
 update_scale = false
 
-[node name="Joint2D-Bone-4-Bone-0" type="PinJoint2D" parent="SoftBody2D/Bone-4"]
+[node name="Joint2D-Bone-4-Bone-0" type="PinJoint2D" parent="Bubblebody/Bone-4"]
 visible = false
 rotation = -4.66233
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-0")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-4-Bone-1" type="PinJoint2D" parent="SoftBody2D/Bone-4"]
+[node name="Joint2D-Bone-4-Bone-1" type="PinJoint2D" parent="Bubblebody/Bone-4"]
 visible = false
 rotation = 0.668306
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-1")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-4-Bone-5" type="PinJoint2D" parent="SoftBody2D/Bone-4"]
+[node name="Joint2D-Bone-4-Bone-5" type="PinJoint2D" parent="Bubblebody/Bone-4"]
 visible = false
 rotation = -0.0258234
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-5")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-4-Bone-3" type="PinJoint2D" parent="SoftBody2D/Bone-4"]
+[node name="Joint2D-Bone-4-Bone-3" type="PinJoint2D" parent="Bubblebody/Bone-4"]
 visible = false
 rotation = -3.17672
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-3")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-4-Bone-8" type="PinJoint2D" parent="SoftBody2D/Bone-4"]
+[node name="Joint2D-Bone-4-Bone-8" type="PinJoint2D" parent="Bubblebody/Bone-4"]
 visible = false
 rotation = -2.35619
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-8")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-4-Bone-9" type="PinJoint2D" parent="SoftBody2D/Bone-4"]
+[node name="Joint2D-Bone-4-Bone-9" type="PinJoint2D" parent="Bubblebody/Bone-4"]
 visible = false
 rotation = -1.52469
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-9")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-4-Bone-10" type="PinJoint2D" parent="SoftBody2D/Bone-4"]
+[node name="Joint2D-Bone-4-Bone-10" type="PinJoint2D" parent="Bubblebody/Bone-4"]
 visible = false
 rotation = -0.826321
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-10")
-softness = 1.0
+softness = 2.0
 
-[node name="Bone-5" type="RigidBody2D" parent="SoftBody2D"]
+[node name="Bone-5" type="RigidBody2D" parent="Bubblebody"]
 position = Vector2(107.898, 271.91)
-mass = 0.1
+collision_layer = 4
+mass = 0.05
+gravity_scale = 0.2
 metadata/idx = 5
 metadata/bone_name = &"Bone-5"
 
-[node name="RectangleShape2D" type="CollisionShape2D" parent="SoftBody2D/Bone-5"]
+[node name="RectangleShape2D" type="CollisionShape2D" parent="Bubblebody/Bone-5"]
 visible = false
 shape = SubResource("RectangleShape2D_njwcm")
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="SoftBody2D/Bone-5"]
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Bubblebody/Bone-5"]
 visible = false
 remote_path = NodePath("../../Skeleton2D/Bone-5")
 update_rotation = false
 update_scale = false
 
-[node name="Joint2D-Bone-5-Bone-0" type="PinJoint2D" parent="SoftBody2D/Bone-5"]
+[node name="Joint2D-Bone-5-Bone-0" type="PinJoint2D" parent="Bubblebody/Bone-5"]
 visible = false
 rotation = -3.78927
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-0")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-5-Bone-1" type="PinJoint2D" parent="SoftBody2D/Bone-5"]
+[node name="Joint2D-Bone-5-Bone-1" type="PinJoint2D" parent="Bubblebody/Bone-5"]
 visible = false
 rotation = -4.70534
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-1")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-5-Bone-4" type="PinJoint2D" parent="SoftBody2D/Bone-5"]
+[node name="Joint2D-Bone-5-Bone-4" type="PinJoint2D" parent="Bubblebody/Bone-5"]
 visible = false
 rotation = -3.16742
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-4")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-5-Bone-2" type="PinJoint2D" parent="SoftBody2D/Bone-5"]
+[node name="Joint2D-Bone-5-Bone-2" type="PinJoint2D" parent="Bubblebody/Bone-5"]
 visible = false
 rotation = 0.68225
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-2")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-5-Bone-6" type="PinJoint2D" parent="SoftBody2D/Bone-5"]
+[node name="Joint2D-Bone-5-Bone-6" type="PinJoint2D" parent="Bubblebody/Bone-5"]
 visible = false
 rotation = 0.0104039
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-6")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-5-Bone-9" type="PinJoint2D" parent="SoftBody2D/Bone-5"]
+[node name="Joint2D-Bone-5-Bone-9" type="PinJoint2D" parent="Bubblebody/Bone-5"]
 visible = false
 rotation = -2.32177
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-9")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-5-Bone-10" type="PinJoint2D" parent="SoftBody2D/Bone-5"]
+[node name="Joint2D-Bone-5-Bone-10" type="PinJoint2D" parent="Bubblebody/Bone-5"]
 visible = false
 rotation = -1.55411
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-10")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-5-Bone-11" type="PinJoint2D" parent="SoftBody2D/Bone-5"]
+[node name="Joint2D-Bone-5-Bone-11" type="PinJoint2D" parent="Bubblebody/Bone-5"]
 visible = false
 rotation = -0.83815
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-11")
-softness = 1.0
+softness = 2.0
 
-[node name="Bone-6" type="RigidBody2D" parent="SoftBody2D"]
+[node name="Bone-6" type="RigidBody2D" parent="Bubblebody"]
 position = Vector2(107.042, 354.207)
-mass = 0.1
+collision_layer = 4
+mass = 0.05
+gravity_scale = 0.2
 metadata/idx = 6
 metadata/bone_name = &"Bone-6"
 
-[node name="RectangleShape2D" type="CollisionShape2D" parent="SoftBody2D/Bone-6"]
+[node name="RectangleShape2D" type="CollisionShape2D" parent="Bubblebody/Bone-6"]
 visible = false
 shape = SubResource("RectangleShape2D_njwcm")
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="SoftBody2D/Bone-6"]
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Bubblebody/Bone-6"]
 visible = false
 remote_path = NodePath("../../Skeleton2D/Bone-6")
 update_rotation = false
 update_scale = false
 
-[node name="Joint2D-Bone-6-Bone-1" type="PinJoint2D" parent="SoftBody2D/Bone-6"]
+[node name="Joint2D-Bone-6-Bone-1" type="PinJoint2D" parent="Bubblebody/Bone-6"]
 visible = false
 rotation = -3.81914
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-1")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-6-Bone-2" type="PinJoint2D" parent="SoftBody2D/Bone-6"]
+[node name="Joint2D-Bone-6-Bone-2" type="PinJoint2D" parent="Bubblebody/Bone-6"]
 visible = false
 rotation = 1.55066
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-2")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-6-Bone-5" type="PinJoint2D" parent="SoftBody2D/Bone-6"]
+[node name="Joint2D-Bone-6-Bone-5" type="PinJoint2D" parent="Bubblebody/Bone-6"]
 visible = false
 rotation = -3.13119
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-5")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-6-Bone-22" type="PinJoint2D" parent="SoftBody2D/Bone-6"]
+[node name="Joint2D-Bone-6-Bone-22" type="PinJoint2D" parent="Bubblebody/Bone-6"]
 visible = false
 rotation = 0.13909
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-22")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-6-Bone-10" type="PinJoint2D" parent="SoftBody2D/Bone-6"]
+[node name="Joint2D-Bone-6-Bone-10" type="PinJoint2D" parent="Bubblebody/Bone-6"]
 visible = false
 rotation = -2.29889
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-10")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-6-Bone-11" type="PinJoint2D" parent="SoftBody2D/Bone-6"]
+[node name="Joint2D-Bone-6-Bone-11" type="PinJoint2D" parent="Bubblebody/Bone-6"]
 visible = false
 rotation = -1.61187
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-11")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-6-Bone-23" type="PinJoint2D" parent="SoftBody2D/Bone-6"]
+[node name="Joint2D-Bone-6-Bone-23" type="PinJoint2D" parent="Bubblebody/Bone-6"]
 visible = false
 rotation = -0.799042
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-23")
-softness = 1.0
+softness = 2.0
 
-[node name="Bone-7" type="RigidBody2D" parent="SoftBody2D"]
+[node name="Bone-7" type="RigidBody2D" parent="Bubblebody"]
 position = Vector2(186.023, 42.5735)
-mass = 0.1
+collision_layer = 4
+mass = 0.05
+gravity_scale = 0.2
 metadata/idx = 7
 metadata/bone_name = &"Bone-7"
 
-[node name="RectangleShape2D" type="CollisionShape2D" parent="SoftBody2D/Bone-7"]
+[node name="RectangleShape2D" type="CollisionShape2D" parent="Bubblebody/Bone-7"]
 visible = false
 shape = SubResource("RectangleShape2D_njwcm")
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="SoftBody2D/Bone-7"]
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Bubblebody/Bone-7"]
 visible = false
 remote_path = NodePath("../../Skeleton2D/Bone-7")
 update_rotation = false
 update_scale = false
 
-[node name="Joint2D-Bone-7-Bone-12" type="PinJoint2D" parent="SoftBody2D/Bone-7"]
+[node name="Joint2D-Bone-7-Bone-12" type="PinJoint2D" parent="Bubblebody/Bone-7"]
 visible = false
 rotation = -1.59574
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-12")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-7-Bone-3" type="PinJoint2D" parent="SoftBody2D/Bone-7"]
+[node name="Joint2D-Bone-7-Bone-3" type="PinJoint2D" parent="Bubblebody/Bone-7"]
 visible = false
 rotation = 0.945335
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-3")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-7-Bone-8" type="PinJoint2D" parent="SoftBody2D/Bone-7"]
+[node name="Joint2D-Bone-7-Bone-8" type="PinJoint2D" parent="Bubblebody/Bone-7"]
 visible = false
 rotation = -0.0425905
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-8")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-7-Bone-13" type="PinJoint2D" parent="SoftBody2D/Bone-7"]
+[node name="Joint2D-Bone-7-Bone-13" type="PinJoint2D" parent="Bubblebody/Bone-7"]
 visible = false
 rotation = -0.920552
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-13")
-softness = 1.0
+softness = 2.0
 
-[node name="Bone-8" type="RigidBody2D" parent="SoftBody2D"]
+[node name="Bone-8" type="RigidBody2D" parent="Bubblebody"]
 position = Vector2(188.715, 105.75)
-mass = 0.1
+collision_layer = 4
+mass = 0.05
+gravity_scale = 0.2
 metadata/idx = 8
 metadata/bone_name = &"Bone-8"
 
-[node name="RectangleShape2D" type="CollisionShape2D" parent="SoftBody2D/Bone-8"]
+[node name="RectangleShape2D" type="CollisionShape2D" parent="Bubblebody/Bone-8"]
 visible = false
 shape = SubResource("RectangleShape2D_njwcm")
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="SoftBody2D/Bone-8"]
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Bubblebody/Bone-8"]
 visible = false
 remote_path = NodePath("../../Skeleton2D/Bone-8")
 update_rotation = false
 update_scale = false
 
-[node name="Joint2D-Bone-8-Bone-3" type="PinJoint2D" parent="SoftBody2D/Bone-8"]
+[node name="Joint2D-Bone-8-Bone-3" type="PinJoint2D" parent="Bubblebody/Bone-8"]
 visible = false
 rotation = -4.67726
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-3")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-8-Bone-4" type="PinJoint2D" parent="SoftBody2D/Bone-8"]
+[node name="Joint2D-Bone-8-Bone-4" type="PinJoint2D" parent="Bubblebody/Bone-8"]
 visible = false
 rotation = 0.785398
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-4")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-8-Bone-9" type="PinJoint2D" parent="SoftBody2D/Bone-8"]
+[node name="Joint2D-Bone-8-Bone-9" type="PinJoint2D" parent="Bubblebody/Bone-8"]
 visible = false
 rotation = -0.0461041
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-9")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-8-Bone-7" type="PinJoint2D" parent="SoftBody2D/Bone-8"]
+[node name="Joint2D-Bone-8-Bone-7" type="PinJoint2D" parent="Bubblebody/Bone-8"]
 visible = false
 rotation = -3.18418
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-7")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-8-Bone-12" type="PinJoint2D" parent="SoftBody2D/Bone-8"]
+[node name="Joint2D-Bone-8-Bone-12" type="PinJoint2D" parent="Bubblebody/Bone-8"]
 visible = false
 rotation = -2.2391
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-12")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-8-Bone-13" type="PinJoint2D" parent="SoftBody2D/Bone-8"]
+[node name="Joint2D-Bone-8-Bone-13" type="PinJoint2D" parent="Bubblebody/Bone-8"]
 visible = false
 rotation = -1.54497
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-13")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-8-Bone-14" type="PinJoint2D" parent="SoftBody2D/Bone-8"]
+[node name="Joint2D-Bone-8-Bone-14" type="PinJoint2D" parent="Bubblebody/Bone-8"]
 visible = false
 rotation = -0.744475
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-14")
-softness = 1.0
+softness = 2.0
 
-[node name="Bone-9" type="RigidBody2D" parent="SoftBody2D"]
+[node name="Bone-9" type="RigidBody2D" parent="Bubblebody"]
 position = Vector2(192.728, 192.728)
-mass = 0.1
+collision_layer = 4
+mass = 0.05
+gravity_scale = 0.2
 metadata/idx = 9
 metadata/bone_name = &"Bone-9"
 
-[node name="RectangleShape2D" type="CollisionShape2D" parent="SoftBody2D/Bone-9"]
+[node name="RectangleShape2D" type="CollisionShape2D" parent="Bubblebody/Bone-9"]
 visible = false
 shape = SubResource("RectangleShape2D_njwcm")
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="SoftBody2D/Bone-9"]
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Bubblebody/Bone-9"]
 visible = false
 remote_path = NodePath("../../Skeleton2D/Bone-9")
 update_rotation = false
 update_scale = false
 
-[node name="Joint2D-Bone-9-Bone-3" type="PinJoint2D" parent="SoftBody2D/Bone-9"]
+[node name="Joint2D-Bone-9-Bone-3" type="PinJoint2D" parent="Bubblebody/Bone-9"]
 visible = false
 rotation = -3.92699
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-3")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-9-Bone-4" type="PinJoint2D" parent="SoftBody2D/Bone-9"]
+[node name="Joint2D-Bone-9-Bone-4" type="PinJoint2D" parent="Bubblebody/Bone-9"]
 visible = false
 rotation = -4.66629
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-4")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-9-Bone-8" type="PinJoint2D" parent="SoftBody2D/Bone-9"]
+[node name="Joint2D-Bone-9-Bone-8" type="PinJoint2D" parent="Bubblebody/Bone-9"]
 visible = false
 rotation = -3.1877
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-8")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-9-Bone-5" type="PinJoint2D" parent="SoftBody2D/Bone-9"]
+[node name="Joint2D-Bone-9-Bone-5" type="PinJoint2D" parent="Bubblebody/Bone-9"]
 visible = false
 rotation = 0.819819
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-5")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-9-Bone-10" type="PinJoint2D" parent="SoftBody2D/Bone-9"]
+[node name="Joint2D-Bone-9-Bone-10" type="PinJoint2D" parent="Bubblebody/Bone-9"]
 visible = false
 rotation = -0.0612334
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-10")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-9-Bone-13" type="PinJoint2D" parent="SoftBody2D/Bone-9"]
+[node name="Joint2D-Bone-9-Bone-13" type="PinJoint2D" parent="Bubblebody/Bone-9"]
 visible = false
 rotation = -2.39062
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-13")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-9-Bone-14" type="PinJoint2D" parent="SoftBody2D/Bone-9"]
+[node name="Joint2D-Bone-9-Bone-14" type="PinJoint2D" parent="Bubblebody/Bone-9"]
 visible = false
 rotation = -1.50956
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-14")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-9-Bone-15" type="PinJoint2D" parent="SoftBody2D/Bone-9"]
+[node name="Joint2D-Bone-9-Bone-15" type="PinJoint2D" parent="Bubblebody/Bone-9"]
 visible = false
 rotation = -0.785398
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-15")
-softness = 1.0
+softness = 2.0
 
-[node name="Bone-10" type="RigidBody2D" parent="SoftBody2D"]
+[node name="Bone-10" type="RigidBody2D" parent="Bubblebody"]
 position = Vector2(197.674, 273.408)
-mass = 0.1
+collision_layer = 4
+mass = 0.05
+gravity_scale = 0.2
 metadata/idx = 10
 metadata/bone_name = &"Bone-10"
 
-[node name="RectangleShape2D" type="CollisionShape2D" parent="SoftBody2D/Bone-10"]
+[node name="RectangleShape2D" type="CollisionShape2D" parent="Bubblebody/Bone-10"]
 visible = false
 shape = SubResource("RectangleShape2D_njwcm")
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="SoftBody2D/Bone-10"]
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Bubblebody/Bone-10"]
 visible = false
 remote_path = NodePath("../../Skeleton2D/Bone-10")
 update_rotation = false
 update_scale = false
 
-[node name="Joint2D-Bone-10-Bone-4" type="PinJoint2D" parent="SoftBody2D/Bone-10"]
+[node name="Joint2D-Bone-10-Bone-4" type="PinJoint2D" parent="Bubblebody/Bone-10"]
 visible = false
 rotation = -3.96791
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-4")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-10-Bone-5" type="PinJoint2D" parent="SoftBody2D/Bone-10"]
+[node name="Joint2D-Bone-10-Bone-5" type="PinJoint2D" parent="Bubblebody/Bone-10"]
 visible = false
 rotation = -4.6957
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-5")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-10-Bone-9" type="PinJoint2D" parent="SoftBody2D/Bone-10"]
+[node name="Joint2D-Bone-10-Bone-9" type="PinJoint2D" parent="Bubblebody/Bone-10"]
 visible = false
 rotation = -3.20283
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-9")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-10-Bone-6" type="PinJoint2D" parent="SoftBody2D/Bone-10"]
+[node name="Joint2D-Bone-10-Bone-6" type="PinJoint2D" parent="Bubblebody/Bone-10"]
 visible = false
 rotation = 0.842699
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-6")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-10-Bone-11" type="PinJoint2D" parent="SoftBody2D/Bone-10"]
+[node name="Joint2D-Bone-10-Bone-11" type="PinJoint2D" parent="Bubblebody/Bone-10"]
 visible = false
 rotation = 0.0302811
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-11")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-10-Bone-14" type="PinJoint2D" parent="SoftBody2D/Bone-10"]
+[node name="Joint2D-Bone-10-Bone-14" type="PinJoint2D" parent="Bubblebody/Bone-10"]
 visible = false
 rotation = -2.35619
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-14")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-10-Bone-15" type="PinJoint2D" parent="SoftBody2D/Bone-10"]
+[node name="Joint2D-Bone-10-Bone-15" type="PinJoint2D" parent="Bubblebody/Bone-10"]
 visible = false
 rotation = -1.46166
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-15")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-10-Bone-16" type="PinJoint2D" parent="SoftBody2D/Bone-10"]
+[node name="Joint2D-Bone-10-Bone-16" type="PinJoint2D" parent="Bubblebody/Bone-10"]
 visible = false
 rotation = -0.841736
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-16")
-softness = 1.0
+softness = 2.0
 
-[node name="Bone-11" type="RigidBody2D" parent="SoftBody2D"]
+[node name="Bone-11" type="RigidBody2D" parent="Bubblebody"]
 position = Vector2(195.337, 350.578)
-mass = 0.1
+collision_layer = 4
+mass = 0.05
+gravity_scale = 0.2
 metadata/idx = 11
 metadata/bone_name = &"Bone-11"
 
-[node name="RectangleShape2D" type="CollisionShape2D" parent="SoftBody2D/Bone-11"]
+[node name="RectangleShape2D" type="CollisionShape2D" parent="Bubblebody/Bone-11"]
 visible = false
 shape = SubResource("RectangleShape2D_njwcm")
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="SoftBody2D/Bone-11"]
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Bubblebody/Bone-11"]
 visible = false
 remote_path = NodePath("../../Skeleton2D/Bone-11")
 update_rotation = false
 update_scale = false
 
-[node name="Joint2D-Bone-11-Bone-5" type="PinJoint2D" parent="SoftBody2D/Bone-11"]
+[node name="Joint2D-Bone-11-Bone-5" type="PinJoint2D" parent="Bubblebody/Bone-11"]
 visible = false
 rotation = -3.97974
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-5")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-11-Bone-6" type="PinJoint2D" parent="SoftBody2D/Bone-11"]
+[node name="Joint2D-Bone-11-Bone-6" type="PinJoint2D" parent="Bubblebody/Bone-11"]
 visible = false
 rotation = 1.52972
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-6")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-11-Bone-10" type="PinJoint2D" parent="SoftBody2D/Bone-11"]
+[node name="Joint2D-Bone-11-Bone-10" type="PinJoint2D" parent="Bubblebody/Bone-11"]
 visible = false
 rotation = -3.11131
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-10")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-11-Bone-22" type="PinJoint2D" parent="SoftBody2D/Bone-11"]
+[node name="Joint2D-Bone-11-Bone-22" type="PinJoint2D" parent="Bubblebody/Bone-11"]
 visible = false
 rotation = 0.756143
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-22")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-11-Bone-23" type="PinJoint2D" parent="SoftBody2D/Bone-11"]
+[node name="Joint2D-Bone-11-Bone-23" type="PinJoint2D" parent="Bubblebody/Bone-11"]
 visible = false
 rotation = 0.0587322
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-23")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-11-Bone-15" type="PinJoint2D" parent="SoftBody2D/Bone-11"]
+[node name="Joint2D-Bone-11-Bone-15" type="PinJoint2D" parent="Bubblebody/Bone-11"]
 visible = false
 rotation = -2.23098
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-15")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-11-Bone-16" type="PinJoint2D" parent="SoftBody2D/Bone-11"]
+[node name="Joint2D-Bone-11-Bone-16" type="PinJoint2D" parent="Bubblebody/Bone-11"]
 visible = false
 rotation = -1.66733
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-16")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-11-Bone-25" type="PinJoint2D" parent="SoftBody2D/Bone-11"]
+[node name="Joint2D-Bone-11-Bone-25" type="PinJoint2D" parent="Bubblebody/Bone-11"]
 visible = false
 rotation = -0.757026
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-25")
-softness = 1.0
+softness = 2.0
 
-[node name="Bone-12" type="RigidBody2D" parent="SoftBody2D"]
+[node name="Bone-12" type="RigidBody2D" parent="Bubblebody"]
 position = Vector2(271.434, 40.4428)
-mass = 0.1
+collision_layer = 4
+mass = 0.05
+gravity_scale = 0.2
 metadata/idx = 12
 metadata/bone_name = &"Bone-12"
 
-[node name="RectangleShape2D" type="CollisionShape2D" parent="SoftBody2D/Bone-12"]
+[node name="RectangleShape2D" type="CollisionShape2D" parent="Bubblebody/Bone-12"]
 visible = false
 shape = SubResource("RectangleShape2D_njwcm")
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="SoftBody2D/Bone-12"]
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Bubblebody/Bone-12"]
 visible = false
 remote_path = NodePath("../../Skeleton2D/Bone-12")
 update_rotation = false
 update_scale = false
 
-[node name="Joint2D-Bone-12-Bone-7" type="PinJoint2D" parent="SoftBody2D/Bone-12"]
+[node name="Joint2D-Bone-12-Bone-7" type="PinJoint2D" parent="Bubblebody/Bone-12"]
 visible = false
 rotation = 1.54585
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-7")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-12-Bone-8" type="PinJoint2D" parent="SoftBody2D/Bone-12"]
+[node name="Joint2D-Bone-12-Bone-8" type="PinJoint2D" parent="Bubblebody/Bone-12"]
 visible = false
 rotation = 0.90249
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-8")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-12-Bone-13" type="PinJoint2D" parent="SoftBody2D/Bone-12"]
+[node name="Joint2D-Bone-12-Bone-13" type="PinJoint2D" parent="Bubblebody/Bone-12"]
 visible = false
 rotation = -0.00705154
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-13")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-12-Bone-17" type="PinJoint2D" parent="SoftBody2D/Bone-12"]
+[node name="Joint2D-Bone-12-Bone-17" type="PinJoint2D" parent="Bubblebody/Bone-12"]
 visible = false
 rotation = -1.57673
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-17")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-12-Bone-18" type="PinJoint2D" parent="SoftBody2D/Bone-12"]
+[node name="Joint2D-Bone-12-Bone-18" type="PinJoint2D" parent="Bubblebody/Bone-12"]
 visible = false
 rotation = -0.893252
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-18")
-softness = 1.0
+softness = 2.0
 
-[node name="Bone-13" type="RigidBody2D" parent="SoftBody2D"]
+[node name="Bone-13" type="RigidBody2D" parent="Bubblebody"]
 position = Vector2(271.91, 107.898)
-mass = 0.1
+collision_layer = 4
+mass = 0.05
+gravity_scale = 0.2
 metadata/idx = 13
 metadata/bone_name = &"Bone-13"
 
-[node name="RectangleShape2D" type="CollisionShape2D" parent="SoftBody2D/Bone-13"]
+[node name="RectangleShape2D" type="CollisionShape2D" parent="Bubblebody/Bone-13"]
 visible = false
 shape = SubResource("RectangleShape2D_njwcm")
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="SoftBody2D/Bone-13"]
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Bubblebody/Bone-13"]
 visible = false
 remote_path = NodePath("../../Skeleton2D/Bone-13")
 update_rotation = false
 update_scale = false
 
-[node name="Joint2D-Bone-13-Bone-7" type="PinJoint2D" parent="SoftBody2D/Bone-13"]
+[node name="Joint2D-Bone-13-Bone-7" type="PinJoint2D" parent="Bubblebody/Bone-13"]
 visible = false
 rotation = -4.06214
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-7")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-13-Bone-8" type="PinJoint2D" parent="SoftBody2D/Bone-13"]
+[node name="Joint2D-Bone-13-Bone-8" type="PinJoint2D" parent="Bubblebody/Bone-13"]
 visible = false
 rotation = -4.68657
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-8")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-13-Bone-12" type="PinJoint2D" parent="SoftBody2D/Bone-13"]
+[node name="Joint2D-Bone-13-Bone-12" type="PinJoint2D" parent="Bubblebody/Bone-13"]
 visible = false
 rotation = -3.14864
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-12")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-13-Bone-9" type="PinJoint2D" parent="SoftBody2D/Bone-13"]
+[node name="Joint2D-Bone-13-Bone-9" type="PinJoint2D" parent="Bubblebody/Bone-13"]
 visible = false
 rotation = 0.750977
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-9")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-13-Bone-14" type="PinJoint2D" parent="SoftBody2D/Bone-13"]
+[node name="Joint2D-Bone-13-Bone-14" type="PinJoint2D" parent="Bubblebody/Bone-13"]
 visible = false
 rotation = -0.0166879
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-14")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-13-Bone-17" type="PinJoint2D" parent="SoftBody2D/Bone-13"]
+[node name="Joint2D-Bone-13-Bone-17" type="PinJoint2D" parent="Bubblebody/Bone-13"]
 visible = false
 rotation = -2.25305
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-17")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-13-Bone-18" type="PinJoint2D" parent="SoftBody2D/Bone-13"]
+[node name="Joint2D-Bone-13-Bone-18" type="PinJoint2D" parent="Bubblebody/Bone-13"]
 visible = false
 rotation = -1.5812
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-18")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-13-Bone-19" type="PinJoint2D" parent="SoftBody2D/Bone-13"]
+[node name="Joint2D-Bone-13-Bone-19" type="PinJoint2D" parent="Bubblebody/Bone-13"]
 visible = false
 rotation = -0.732647
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-19")
-softness = 1.0
+softness = 2.0
 
-[node name="Bone-14" type="RigidBody2D" parent="SoftBody2D"]
+[node name="Bone-14" type="RigidBody2D" parent="Bubblebody"]
 position = Vector2(273.408, 197.674)
-mass = 0.1
+collision_layer = 4
+mass = 0.05
+gravity_scale = 0.2
 metadata/idx = 14
 metadata/bone_name = &"Bone-14"
 
-[node name="RectangleShape2D" type="CollisionShape2D" parent="SoftBody2D/Bone-14"]
+[node name="RectangleShape2D" type="CollisionShape2D" parent="Bubblebody/Bone-14"]
 visible = false
 shape = SubResource("RectangleShape2D_njwcm")
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="SoftBody2D/Bone-14"]
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Bubblebody/Bone-14"]
 visible = false
 remote_path = NodePath("../../Skeleton2D/Bone-14")
 update_rotation = false
 update_scale = false
 
-[node name="Joint2D-Bone-14-Bone-8" type="PinJoint2D" parent="SoftBody2D/Bone-14"]
+[node name="Joint2D-Bone-14-Bone-8" type="PinJoint2D" parent="Bubblebody/Bone-14"]
 visible = false
 rotation = -3.88607
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-8")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-14-Bone-9" type="PinJoint2D" parent="SoftBody2D/Bone-14"]
+[node name="Joint2D-Bone-14-Bone-9" type="PinJoint2D" parent="Bubblebody/Bone-14"]
 visible = false
 rotation = -4.65116
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-9")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-14-Bone-13" type="PinJoint2D" parent="SoftBody2D/Bone-14"]
+[node name="Joint2D-Bone-14-Bone-13" type="PinJoint2D" parent="Bubblebody/Bone-14"]
 visible = false
 rotation = -3.15828
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-13")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-14-Bone-10" type="PinJoint2D" parent="SoftBody2D/Bone-14"]
+[node name="Joint2D-Bone-14-Bone-10" type="PinJoint2D" parent="Bubblebody/Bone-14"]
 visible = false
 rotation = 0.785398
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-10")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-14-Bone-15" type="PinJoint2D" parent="SoftBody2D/Bone-14"]
+[node name="Joint2D-Bone-14-Bone-15" type="PinJoint2D" parent="Bubblebody/Bone-14"]
 visible = false
 rotation = -0.109141
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-15")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-14-Bone-18" type="PinJoint2D" parent="SoftBody2D/Bone-14"]
+[node name="Joint2D-Bone-14-Bone-18" type="PinJoint2D" parent="Bubblebody/Bone-14"]
 visible = false
 rotation = -2.4135
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-18")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-14-Bone-19" type="PinJoint2D" parent="SoftBody2D/Bone-14"]
+[node name="Joint2D-Bone-14-Bone-19" type="PinJoint2D" parent="Bubblebody/Bone-14"]
 visible = false
 rotation = -1.60108
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-19")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-14-Bone-20" type="PinJoint2D" parent="SoftBody2D/Bone-14"]
+[node name="Joint2D-Bone-14-Bone-20" type="PinJoint2D" parent="Bubblebody/Bone-14"]
 visible = false
 rotation = -0.72906
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-20")
-softness = 1.0
+softness = 2.0
 
-[node name="Bone-15" type="RigidBody2D" parent="SoftBody2D"]
+[node name="Bone-15" type="RigidBody2D" parent="Bubblebody"]
 position = Vector2(282.728, 282.728)
-mass = 0.1
+collision_layer = 4
+mass = 0.05
+gravity_scale = 0.2
 metadata/idx = 15
 metadata/bone_name = &"Bone-15"
 
-[node name="RectangleShape2D" type="CollisionShape2D" parent="SoftBody2D/Bone-15"]
+[node name="RectangleShape2D" type="CollisionShape2D" parent="Bubblebody/Bone-15"]
 visible = false
 shape = SubResource("RectangleShape2D_njwcm")
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="SoftBody2D/Bone-15"]
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Bubblebody/Bone-15"]
 visible = false
 remote_path = NodePath("../../Skeleton2D/Bone-15")
 update_rotation = false
 update_scale = false
 
-[node name="Joint2D-Bone-15-Bone-9" type="PinJoint2D" parent="SoftBody2D/Bone-15"]
+[node name="Joint2D-Bone-15-Bone-9" type="PinJoint2D" parent="Bubblebody/Bone-15"]
 visible = false
 rotation = -3.92699
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-9")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-15-Bone-10" type="PinJoint2D" parent="SoftBody2D/Bone-15"]
+[node name="Joint2D-Bone-15-Bone-10" type="PinJoint2D" parent="Bubblebody/Bone-15"]
 visible = false
 rotation = -4.60325
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-10")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-15-Bone-14" type="PinJoint2D" parent="SoftBody2D/Bone-15"]
+[node name="Joint2D-Bone-15-Bone-14" type="PinJoint2D" parent="Bubblebody/Bone-15"]
 visible = false
 rotation = -3.25073
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-14")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-15-Bone-11" type="PinJoint2D" parent="SoftBody2D/Bone-15"]
+[node name="Joint2D-Bone-15-Bone-11" type="PinJoint2D" parent="Bubblebody/Bone-15"]
 visible = false
 rotation = 0.910616
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-11")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-15-Bone-16" type="PinJoint2D" parent="SoftBody2D/Bone-15"]
+[node name="Joint2D-Bone-15-Bone-16" type="PinJoint2D" parent="Bubblebody/Bone-15"]
 visible = false
 rotation = 0.121492
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-16")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-15-Bone-19" type="PinJoint2D" parent="SoftBody2D/Bone-15"]
+[node name="Joint2D-Bone-15-Bone-19" type="PinJoint2D" parent="Bubblebody/Bone-15"]
 visible = false
 rotation = -2.48141
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-19")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-15-Bone-20" type="PinJoint2D" parent="SoftBody2D/Bone-15"]
+[node name="Joint2D-Bone-15-Bone-20" type="PinJoint2D" parent="Bubblebody/Bone-15"]
 visible = false
 rotation = -1.69229
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-20")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-15-Bone-21" type="PinJoint2D" parent="SoftBody2D/Bone-15"]
+[node name="Joint2D-Bone-15-Bone-21" type="PinJoint2D" parent="Bubblebody/Bone-15"]
 visible = false
 rotation = -0.785398
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-21")
-softness = 1.0
+softness = 2.0
 
-[node name="Bone-16" type="RigidBody2D" parent="SoftBody2D"]
+[node name="Bone-16" type="RigidBody2D" parent="Bubblebody"]
 position = Vector2(275.39, 342.826)
-mass = 0.1
+collision_layer = 4
+mass = 0.05
+gravity_scale = 0.2
 metadata/idx = 16
 metadata/bone_name = &"Bone-16"
 
-[node name="RectangleShape2D" type="CollisionShape2D" parent="SoftBody2D/Bone-16"]
+[node name="RectangleShape2D" type="CollisionShape2D" parent="Bubblebody/Bone-16"]
 visible = false
 shape = SubResource("RectangleShape2D_njwcm")
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="SoftBody2D/Bone-16"]
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Bubblebody/Bone-16"]
 visible = false
 remote_path = NodePath("../../Skeleton2D/Bone-16")
 update_rotation = false
 update_scale = false
 
-[node name="Joint2D-Bone-16-Bone-10" type="PinJoint2D" parent="SoftBody2D/Bone-16"]
+[node name="Joint2D-Bone-16-Bone-10" type="PinJoint2D" parent="Bubblebody/Bone-16"]
 visible = false
 rotation = -3.98333
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-10")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-16-Bone-11" type="PinJoint2D" parent="SoftBody2D/Bone-16"]
+[node name="Joint2D-Bone-16-Bone-11" type="PinJoint2D" parent="Bubblebody/Bone-16"]
 visible = false
 rotation = 1.47427
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-11")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-16-Bone-15" type="PinJoint2D" parent="SoftBody2D/Bone-16"]
+[node name="Joint2D-Bone-16-Bone-15" type="PinJoint2D" parent="Bubblebody/Bone-16"]
 visible = false
 rotation = -3.0201
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-15")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-16-Bone-23" type="PinJoint2D" parent="SoftBody2D/Bone-16"]
+[node name="Joint2D-Bone-16-Bone-23" type="PinJoint2D" parent="Bubblebody/Bone-16"]
 visible = false
 rotation = 0.743627
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-23")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-16-Bone-25" type="PinJoint2D" parent="SoftBody2D/Bone-16"]
+[node name="Joint2D-Bone-16-Bone-25" type="PinJoint2D" parent="Bubblebody/Bone-16"]
 visible = false
 rotation = 0.0332422
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-25")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-16-Bone-20" type="PinJoint2D" parent="SoftBody2D/Bone-16"]
+[node name="Joint2D-Bone-16-Bone-20" type="PinJoint2D" parent="Bubblebody/Bone-16"]
 visible = false
 rotation = -2.35619
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-20")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-16-Bone-21" type="PinJoint2D" parent="SoftBody2D/Bone-16"]
+[node name="Joint2D-Bone-16-Bone-21" type="PinJoint2D" parent="Bubblebody/Bone-16"]
 visible = false
 rotation = -1.50902
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-21")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-16-Bone-27" type="PinJoint2D" parent="SoftBody2D/Bone-16"]
+[node name="Joint2D-Bone-16-Bone-27" type="PinJoint2D" parent="Bubblebody/Bone-16"]
 visible = false
 rotation = -0.707149
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-27")
-softness = 1.0
+softness = 2.0
 
-[node name="Bone-17" type="RigidBody2D" parent="SoftBody2D"]
+[node name="Bone-17" type="RigidBody2D" parent="Bubblebody"]
 position = Vector2(355.558, 39.9433)
-mass = 0.1
+collision_layer = 4
+mass = 0.05
+gravity_scale = 0.2
 metadata/idx = 17
 metadata/bone_name = &"Bone-17"
 
-[node name="RectangleShape2D" type="CollisionShape2D" parent="SoftBody2D/Bone-17"]
+[node name="RectangleShape2D" type="CollisionShape2D" parent="Bubblebody/Bone-17"]
 visible = false
 shape = SubResource("RectangleShape2D_njwcm")
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="SoftBody2D/Bone-17"]
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Bubblebody/Bone-17"]
 visible = false
 remote_path = NodePath("../../Skeleton2D/Bone-17")
 update_rotation = false
 update_scale = false
 
-[node name="Joint2D-Bone-17-Bone-29" type="PinJoint2D" parent="SoftBody2D/Bone-17"]
+[node name="Joint2D-Bone-17-Bone-29" type="PinJoint2D" parent="Bubblebody/Bone-17"]
 visible = false
 rotation = -1.10703
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-29")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-17-Bone-12" type="PinJoint2D" parent="SoftBody2D/Bone-17"]
+[node name="Joint2D-Bone-17-Bone-12" type="PinJoint2D" parent="Bubblebody/Bone-17"]
 visible = false
 rotation = 1.56486
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-12")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-17-Bone-13" type="PinJoint2D" parent="SoftBody2D/Bone-17"]
+[node name="Joint2D-Bone-17-Bone-13" type="PinJoint2D" parent="Bubblebody/Bone-17"]
 visible = false
 rotation = 0.888546
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-13")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-17-Bone-18" type="PinJoint2D" parent="SoftBody2D/Bone-17"]
+[node name="Joint2D-Bone-17-Bone-18" type="PinJoint2D" parent="Bubblebody/Bone-17"]
 visible = false
 rotation = 0.0201406
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-18")
-softness = 1.0
+softness = 2.0
 
-[node name="Bone-18" type="RigidBody2D" parent="SoftBody2D"]
+[node name="Bone-18" type="RigidBody2D" parent="Bubblebody"]
 position = Vector2(354.207, 107.042)
-mass = 0.1
+collision_layer = 4
+mass = 0.05
+gravity_scale = 0.2
 metadata/idx = 18
 metadata/bone_name = &"Bone-18"
 
-[node name="RectangleShape2D" type="CollisionShape2D" parent="SoftBody2D/Bone-18"]
+[node name="RectangleShape2D" type="CollisionShape2D" parent="Bubblebody/Bone-18"]
 visible = false
 shape = SubResource("RectangleShape2D_njwcm")
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="SoftBody2D/Bone-18"]
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Bubblebody/Bone-18"]
 visible = false
 remote_path = NodePath("../../Skeleton2D/Bone-18")
 update_rotation = false
 update_scale = false
 
-[node name="Joint2D-Bone-18-Bone-12" type="PinJoint2D" parent="SoftBody2D/Bone-18"]
+[node name="Joint2D-Bone-18-Bone-12" type="PinJoint2D" parent="Bubblebody/Bone-18"]
 visible = false
 rotation = -4.03484
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-12")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-18-Bone-13" type="PinJoint2D" parent="SoftBody2D/Bone-18"]
+[node name="Joint2D-Bone-18-Bone-13" type="PinJoint2D" parent="Bubblebody/Bone-18"]
 visible = false
 rotation = 1.56039
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-13")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-18-Bone-17" type="PinJoint2D" parent="SoftBody2D/Bone-18"]
+[node name="Joint2D-Bone-18-Bone-17" type="PinJoint2D" parent="Bubblebody/Bone-18"]
 visible = false
 rotation = -3.12145
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-17")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-18-Bone-14" type="PinJoint2D" parent="SoftBody2D/Bone-18"]
+[node name="Joint2D-Bone-18-Bone-14" type="PinJoint2D" parent="Bubblebody/Bone-18"]
 visible = false
 rotation = 0.728098
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-14")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-18-Bone-19" type="PinJoint2D" parent="SoftBody2D/Bone-18"]
+[node name="Joint2D-Bone-18-Bone-19" type="PinJoint2D" parent="Bubblebody/Bone-18"]
 visible = false
 rotation = 0.041075
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-19")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-18-Bone-29" type="PinJoint2D" parent="SoftBody2D/Bone-18"]
+[node name="Joint2D-Bone-18-Bone-29" type="PinJoint2D" parent="Bubblebody/Bone-18"]
 visible = false
 rotation = -1.70965
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-29")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-18-Bone-30" type="PinJoint2D" parent="SoftBody2D/Bone-18"]
+[node name="Joint2D-Bone-18-Bone-30" type="PinJoint2D" parent="Bubblebody/Bone-18"]
 visible = false
 rotation = -0.771754
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-30")
-softness = 1.0
+softness = 2.0
 
-[node name="Bone-19" type="RigidBody2D" parent="SoftBody2D"]
+[node name="Bone-19" type="RigidBody2D" parent="Bubblebody"]
 position = Vector2(350.578, 195.337)
-mass = 0.1
+collision_layer = 4
+mass = 0.05
+gravity_scale = 0.2
 metadata/idx = 19
 metadata/bone_name = &"Bone-19"
 
-[node name="RectangleShape2D" type="CollisionShape2D" parent="SoftBody2D/Bone-19"]
+[node name="RectangleShape2D" type="CollisionShape2D" parent="Bubblebody/Bone-19"]
 visible = false
 shape = SubResource("RectangleShape2D_njwcm")
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="SoftBody2D/Bone-19"]
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Bubblebody/Bone-19"]
 visible = false
 remote_path = NodePath("../../Skeleton2D/Bone-19")
 update_rotation = false
 update_scale = false
 
-[node name="Joint2D-Bone-19-Bone-13" type="PinJoint2D" parent="SoftBody2D/Bone-19"]
+[node name="Joint2D-Bone-19-Bone-13" type="PinJoint2D" parent="Bubblebody/Bone-19"]
 visible = false
 rotation = -3.87424
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-13")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-19-Bone-14" type="PinJoint2D" parent="SoftBody2D/Bone-19"]
+[node name="Joint2D-Bone-19-Bone-14" type="PinJoint2D" parent="Bubblebody/Bone-19"]
 visible = false
 rotation = 1.54052
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-14")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-19-Bone-18" type="PinJoint2D" parent="SoftBody2D/Bone-19"]
+[node name="Joint2D-Bone-19-Bone-18" type="PinJoint2D" parent="Bubblebody/Bone-19"]
 visible = false
 rotation = -3.10052
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-18")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-19-Bone-15" type="PinJoint2D" parent="SoftBody2D/Bone-19"]
+[node name="Joint2D-Bone-19-Bone-15" type="PinJoint2D" parent="Bubblebody/Bone-19"]
 visible = false
 rotation = 0.66018
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-15")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-19-Bone-20" type="PinJoint2D" parent="SoftBody2D/Bone-19"]
+[node name="Joint2D-Bone-19-Bone-20" type="PinJoint2D" parent="Bubblebody/Bone-19"]
 visible = false
 rotation = 0.0965307
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-20")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-19-Bone-29" type="PinJoint2D" parent="SoftBody2D/Bone-19"]
+[node name="Joint2D-Bone-19-Bone-29" type="PinJoint2D" parent="Bubblebody/Bone-19"]
 visible = false
 rotation = -2.32588
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-29")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-19-Bone-30" type="PinJoint2D" parent="SoftBody2D/Bone-19"]
+[node name="Joint2D-Bone-19-Bone-30" type="PinJoint2D" parent="Bubblebody/Bone-19"]
 visible = false
 rotation = -1.62953
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-30")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-19-Bone-31" type="PinJoint2D" parent="SoftBody2D/Bone-19"]
+[node name="Joint2D-Bone-19-Bone-31" type="PinJoint2D" parent="Bubblebody/Bone-19"]
 visible = false
 rotation = -0.813771
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-31")
-softness = 1.0
+softness = 2.0
 
-[node name="Bone-20" type="RigidBody2D" parent="SoftBody2D"]
+[node name="Bone-20" type="RigidBody2D" parent="Bubblebody"]
 position = Vector2(342.826, 275.39)
-mass = 0.1
+collision_layer = 4
+mass = 0.05
+gravity_scale = 0.2
 metadata/idx = 20
 metadata/bone_name = &"Bone-20"
 
-[node name="RectangleShape2D" type="CollisionShape2D" parent="SoftBody2D/Bone-20"]
+[node name="RectangleShape2D" type="CollisionShape2D" parent="Bubblebody/Bone-20"]
 visible = false
 shape = SubResource("RectangleShape2D_njwcm")
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="SoftBody2D/Bone-20"]
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Bubblebody/Bone-20"]
 visible = false
 remote_path = NodePath("../../Skeleton2D/Bone-20")
 update_rotation = false
 update_scale = false
 
-[node name="Joint2D-Bone-20-Bone-14" type="PinJoint2D" parent="SoftBody2D/Bone-20"]
+[node name="Joint2D-Bone-20-Bone-14" type="PinJoint2D" parent="Bubblebody/Bone-20"]
 visible = false
 rotation = -3.87065
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-14")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-20-Bone-15" type="PinJoint2D" parent="SoftBody2D/Bone-20"]
+[node name="Joint2D-Bone-20-Bone-15" type="PinJoint2D" parent="Bubblebody/Bone-20"]
 visible = false
 rotation = 1.4493
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-15")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-20-Bone-19" type="PinJoint2D" parent="SoftBody2D/Bone-20"]
+[node name="Joint2D-Bone-20-Bone-19" type="PinJoint2D" parent="Bubblebody/Bone-20"]
 visible = false
 rotation = -3.04506
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-19")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-20-Bone-16" type="PinJoint2D" parent="SoftBody2D/Bone-20"]
+[node name="Joint2D-Bone-20-Bone-16" type="PinJoint2D" parent="Bubblebody/Bone-20"]
 visible = false
 rotation = 0.785398
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-16")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-20-Bone-21" type="PinJoint2D" parent="SoftBody2D/Bone-20"]
+[node name="Joint2D-Bone-20-Bone-21" type="PinJoint2D" parent="Bubblebody/Bone-20"]
 visible = false
 rotation = -0.0617731
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-21")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-20-Bone-30" type="PinJoint2D" parent="SoftBody2D/Bone-20"]
+[node name="Joint2D-Bone-20-Bone-30" type="PinJoint2D" parent="Bubblebody/Bone-20"]
 visible = false
 rotation = -2.31442
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-30")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-20-Bone-31" type="PinJoint2D" parent="SoftBody2D/Bone-20"]
+[node name="Joint2D-Bone-20-Bone-31" type="PinJoint2D" parent="Bubblebody/Bone-20"]
 visible = false
 rotation = -1.60404
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-31")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-20-Bone-32" type="PinJoint2D" parent="SoftBody2D/Bone-20"]
+[node name="Joint2D-Bone-20-Bone-32" type="PinJoint2D" parent="Bubblebody/Bone-20"]
 visible = false
 rotation = -0.863648
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-32")
-softness = 1.0
+softness = 2.0
 
-[node name="Bone-21" type="RigidBody2D" parent="SoftBody2D"]
+[node name="Bone-21" type="RigidBody2D" parent="Bubblebody"]
 position = Vector2(347.272, 347.272)
-mass = 0.1
+collision_layer = 4
+mass = 0.05
+gravity_scale = 0.2
 metadata/idx = 21
 metadata/bone_name = &"Bone-21"
 
-[node name="RectangleShape2D" type="CollisionShape2D" parent="SoftBody2D/Bone-21"]
+[node name="RectangleShape2D" type="CollisionShape2D" parent="Bubblebody/Bone-21"]
 visible = false
 shape = SubResource("RectangleShape2D_njwcm")
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="SoftBody2D/Bone-21"]
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Bubblebody/Bone-21"]
 visible = false
 remote_path = NodePath("../../Skeleton2D/Bone-21")
 update_rotation = false
 update_scale = false
 
-[node name="Joint2D-Bone-21-Bone-15" type="PinJoint2D" parent="SoftBody2D/Bone-21"]
+[node name="Joint2D-Bone-21-Bone-15" type="PinJoint2D" parent="Bubblebody/Bone-21"]
 visible = false
 rotation = -3.92699
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-15")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-21-Bone-16" type="PinJoint2D" parent="SoftBody2D/Bone-21"]
+[node name="Joint2D-Bone-21-Bone-16" type="PinJoint2D" parent="Bubblebody/Bone-21"]
 visible = false
 rotation = -4.65062
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-16")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-21-Bone-20" type="PinJoint2D" parent="SoftBody2D/Bone-21"]
+[node name="Joint2D-Bone-21-Bone-20" type="PinJoint2D" parent="Bubblebody/Bone-21"]
 visible = false
 rotation = -3.20337
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-20")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-21-Bone-25" type="PinJoint2D" parent="SoftBody2D/Bone-21"]
+[node name="Joint2D-Bone-21-Bone-25" type="PinJoint2D" parent="Bubblebody/Bone-21"]
 visible = false
 rotation = 0.722638
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-25")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-21-Bone-27" type="PinJoint2D" parent="SoftBody2D/Bone-21"]
+[node name="Joint2D-Bone-21-Bone-27" type="PinJoint2D" parent="Bubblebody/Bone-21"]
 visible = false
 rotation = -0.0647212
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-27")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-21-Bone-31" type="PinJoint2D" parent="SoftBody2D/Bone-21"]
+[node name="Joint2D-Bone-21-Bone-31" type="PinJoint2D" parent="Bubblebody/Bone-21"]
 visible = false
 rotation = -2.29343
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-31")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-21-Bone-32" type="PinJoint2D" parent="SoftBody2D/Bone-21"]
+[node name="Joint2D-Bone-21-Bone-32" type="PinJoint2D" parent="Bubblebody/Bone-21"]
 visible = false
 rotation = -1.50608
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-32")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-21-Bone-36" type="PinJoint2D" parent="SoftBody2D/Bone-21"]
+[node name="Joint2D-Bone-21-Bone-36" type="PinJoint2D" parent="Bubblebody/Bone-21"]
 visible = false
 rotation = -0.785398
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-36")
-softness = 1.0
+softness = 2.0
 
-[node name="Bone-22" type="RigidBody2D" parent="SoftBody2D"]
+[node name="Bone-22" type="RigidBody2D" parent="Bubblebody"]
 position = Vector2(92.2483, 459.882)
-mass = 0.1
+collision_layer = 4
+mass = 0.05
+gravity_scale = 0.2
 metadata/idx = 22
 metadata/bone_name = &"Bone-22"
 
-[node name="RectangleShape2D" type="CollisionShape2D" parent="SoftBody2D/Bone-22"]
+[node name="RectangleShape2D" type="CollisionShape2D" parent="Bubblebody/Bone-22"]
 visible = false
 shape = SubResource("RectangleShape2D_njwcm")
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="SoftBody2D/Bone-22"]
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Bubblebody/Bone-22"]
 visible = false
 remote_path = NodePath("../../Skeleton2D/Bone-22")
 update_rotation = false
 update_scale = false
 
-[node name="Joint2D-Bone-22-Bone-2" type="PinJoint2D" parent="SoftBody2D/Bone-22"]
+[node name="Joint2D-Bone-22-Bone-2" type="PinJoint2D" parent="Bubblebody/Bone-22"]
 visible = false
 rotation = -3.60634
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-2")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-22-Bone-6" type="PinJoint2D" parent="SoftBody2D/Bone-22"]
+[node name="Joint2D-Bone-22-Bone-6" type="PinJoint2D" parent="Bubblebody/Bone-22"]
 visible = false
 rotation = -3.0025
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-6")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-22-Bone-11" type="PinJoint2D" parent="SoftBody2D/Bone-22"]
+[node name="Joint2D-Bone-22-Bone-11" type="PinJoint2D" parent="Bubblebody/Bone-22"]
 visible = false
 rotation = -2.38545
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-11")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-22-Bone-23" type="PinJoint2D" parent="SoftBody2D/Bone-22"]
+[node name="Joint2D-Bone-22-Bone-23" type="PinJoint2D" parent="Bubblebody/Bone-22"]
 visible = false
 rotation = -1.81651
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-23")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-22-Bone-24" type="PinJoint2D" parent="SoftBody2D/Bone-22"]
+[node name="Joint2D-Bone-22-Bone-24" type="PinJoint2D" parent="Bubblebody/Bone-22"]
 visible = false
 rotation = -1.01592
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-24")
-softness = 1.0
+softness = 2.0
 
-[node name="Bone-23" type="RigidBody2D" parent="SoftBody2D"]
+[node name="Bone-23" type="RigidBody2D" parent="Bubblebody"]
 position = Vector2(190.357, 435.278)
-mass = 0.1
+collision_layer = 4
+mass = 0.05
+gravity_scale = 0.2
 metadata/idx = 23
 metadata/bone_name = &"Bone-23"
 
-[node name="RectangleShape2D" type="CollisionShape2D" parent="SoftBody2D/Bone-23"]
+[node name="RectangleShape2D" type="CollisionShape2D" parent="Bubblebody/Bone-23"]
 visible = false
 shape = SubResource("RectangleShape2D_njwcm")
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="SoftBody2D/Bone-23"]
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Bubblebody/Bone-23"]
 visible = false
 remote_path = NodePath("../../Skeleton2D/Bone-23")
 update_rotation = false
 update_scale = false
 
-[node name="Joint2D-Bone-23-Bone-6" type="PinJoint2D" parent="SoftBody2D/Bone-23"]
+[node name="Joint2D-Bone-23-Bone-6" type="PinJoint2D" parent="Bubblebody/Bone-23"]
 visible = false
 rotation = -3.94063
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-6")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-23-Bone-11" type="PinJoint2D" parent="SoftBody2D/Bone-23"]
+[node name="Joint2D-Bone-23-Bone-11" type="PinJoint2D" parent="Bubblebody/Bone-23"]
 visible = false
 rotation = -3.08286
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-11")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-23-Bone-22" type="PinJoint2D" parent="SoftBody2D/Bone-23"]
+[node name="Joint2D-Bone-23-Bone-22" type="PinJoint2D" parent="Bubblebody/Bone-23"]
 visible = false
 rotation = 1.32508
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-22")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-23-Bone-16" type="PinJoint2D" parent="SoftBody2D/Bone-23"]
+[node name="Joint2D-Bone-23-Bone-16" type="PinJoint2D" parent="Bubblebody/Bone-23"]
 visible = false
 rotation = -2.39797
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-16")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-23-Bone-25" type="PinJoint2D" parent="SoftBody2D/Bone-23"]
+[node name="Joint2D-Bone-23-Bone-25" type="PinJoint2D" parent="Bubblebody/Bone-23"]
 visible = false
 rotation = -1.60873
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-25")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-23-Bone-24" type="PinJoint2D" parent="SoftBody2D/Bone-23"]
+[node name="Joint2D-Bone-23-Bone-24" type="PinJoint2D" parent="Bubblebody/Bone-23"]
 visible = false
 rotation = 0.0342993
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-24")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-23-Bone-26" type="PinJoint2D" parent="SoftBody2D/Bone-23"]
+[node name="Joint2D-Bone-23-Bone-26" type="PinJoint2D" parent="Bubblebody/Bone-23"]
 visible = false
 rotation = -0.752109
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-26")
-softness = 1.0
+softness = 2.0
 
-[node name="Bone-24" type="RigidBody2D" parent="SoftBody2D"]
+[node name="Bone-24" type="RigidBody2D" parent="Bubblebody"]
 position = Vector2(187.487, 518.914)
-mass = 0.1
+collision_layer = 4
+mass = 0.05
+gravity_scale = 0.2
 metadata/idx = 24
 metadata/bone_name = &"Bone-24"
 
-[node name="RectangleShape2D" type="CollisionShape2D" parent="SoftBody2D/Bone-24"]
+[node name="RectangleShape2D" type="CollisionShape2D" parent="Bubblebody/Bone-24"]
 visible = false
 shape = SubResource("RectangleShape2D_njwcm")
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="SoftBody2D/Bone-24"]
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Bubblebody/Bone-24"]
 visible = false
 remote_path = NodePath("../../Skeleton2D/Bone-24")
 update_rotation = false
 update_scale = false
 
-[node name="Joint2D-Bone-24-Bone-22" type="PinJoint2D" parent="SoftBody2D/Bone-24"]
+[node name="Joint2D-Bone-24-Bone-22" type="PinJoint2D" parent="Bubblebody/Bone-24"]
 visible = false
 rotation = -4.15752
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-22")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-24-Bone-23" type="PinJoint2D" parent="SoftBody2D/Bone-24"]
+[node name="Joint2D-Bone-24-Bone-23" type="PinJoint2D" parent="Bubblebody/Bone-24"]
 visible = false
 rotation = -3.10729
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-23")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-24-Bone-25" type="PinJoint2D" parent="SoftBody2D/Bone-24"]
+[node name="Joint2D-Bone-24-Bone-25" type="PinJoint2D" parent="Bubblebody/Bone-24"]
 visible = false
 rotation = -2.36678
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-25")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-24-Bone-26" type="PinJoint2D" parent="SoftBody2D/Bone-24"]
+[node name="Joint2D-Bone-24-Bone-26" type="PinJoint2D" parent="Bubblebody/Bone-24"]
 visible = false
 rotation = -1.5333
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-26")
-softness = 1.0
+softness = 2.0
 
-[node name="Bone-25" type="RigidBody2D" parent="SoftBody2D"]
+[node name="Bone-25" type="RigidBody2D" parent="Bubblebody"]
 position = Vector2(272.419, 432.163)
-mass = 0.1
+collision_layer = 4
+mass = 0.05
+gravity_scale = 0.2
 metadata/idx = 25
 metadata/bone_name = &"Bone-25"
 
-[node name="RectangleShape2D" type="CollisionShape2D" parent="SoftBody2D/Bone-25"]
+[node name="RectangleShape2D" type="CollisionShape2D" parent="Bubblebody/Bone-25"]
 visible = false
 shape = SubResource("RectangleShape2D_njwcm")
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="SoftBody2D/Bone-25"]
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Bubblebody/Bone-25"]
 visible = false
 remote_path = NodePath("../../Skeleton2D/Bone-25")
 update_rotation = false
 update_scale = false
 
-[node name="Joint2D-Bone-25-Bone-11" type="PinJoint2D" parent="SoftBody2D/Bone-25"]
+[node name="Joint2D-Bone-25-Bone-11" type="PinJoint2D" parent="Bubblebody/Bone-25"]
 visible = false
 rotation = -3.89862
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-11")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-25-Bone-16" type="PinJoint2D" parent="SoftBody2D/Bone-25"]
+[node name="Joint2D-Bone-25-Bone-16" type="PinJoint2D" parent="Bubblebody/Bone-25"]
 visible = false
 rotation = -3.10835
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-16")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-25-Bone-23" type="PinJoint2D" parent="SoftBody2D/Bone-25"]
+[node name="Joint2D-Bone-25-Bone-23" type="PinJoint2D" parent="Bubblebody/Bone-25"]
 visible = false
 rotation = 1.53286
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-23")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-25-Bone-21" type="PinJoint2D" parent="SoftBody2D/Bone-25"]
+[node name="Joint2D-Bone-25-Bone-21" type="PinJoint2D" parent="Bubblebody/Bone-25"]
 visible = false
 rotation = -2.41895
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-21")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-25-Bone-27" type="PinJoint2D" parent="SoftBody2D/Bone-25"]
+[node name="Joint2D-Bone-25-Bone-27" type="PinJoint2D" parent="Bubblebody/Bone-25"]
 visible = false
 rotation = -1.55447
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-27")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-25-Bone-24" type="PinJoint2D" parent="SoftBody2D/Bone-25"]
+[node name="Joint2D-Bone-25-Bone-24" type="PinJoint2D" parent="Bubblebody/Bone-25"]
 visible = false
 rotation = 0.774812
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-24")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-25-Bone-26" type="PinJoint2D" parent="SoftBody2D/Bone-25"]
+[node name="Joint2D-Bone-25-Bone-26" type="PinJoint2D" parent="Bubblebody/Bone-25"]
 visible = false
 rotation = 0.00965397
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-26")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-25-Bone-28" type="PinJoint2D" parent="SoftBody2D/Bone-25"]
+[node name="Joint2D-Bone-25-Bone-28" type="PinJoint2D" parent="Bubblebody/Bone-25"]
 visible = false
 rotation = -0.748211
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-28")
-softness = 1.0
+softness = 2.0
 
-[node name="Bone-26" type="RigidBody2D" parent="SoftBody2D"]
+[node name="Bone-26" type="RigidBody2D" parent="Bubblebody"]
 position = Vector2(271.552, 522.067)
-mass = 0.1
+collision_layer = 4
+mass = 0.05
+gravity_scale = 0.2
 metadata/idx = 26
 metadata/bone_name = &"Bone-26"
 
-[node name="RectangleShape2D" type="CollisionShape2D" parent="SoftBody2D/Bone-26"]
+[node name="RectangleShape2D" type="CollisionShape2D" parent="Bubblebody/Bone-26"]
 visible = false
 shape = SubResource("RectangleShape2D_njwcm")
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="SoftBody2D/Bone-26"]
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Bubblebody/Bone-26"]
 visible = false
 remote_path = NodePath("../../Skeleton2D/Bone-26")
 update_rotation = false
 update_scale = false
 
-[node name="Joint2D-Bone-26-Bone-23" type="PinJoint2D" parent="SoftBody2D/Bone-26"]
+[node name="Joint2D-Bone-26-Bone-23" type="PinJoint2D" parent="Bubblebody/Bone-26"]
 visible = false
 rotation = -3.8937
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-23")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-26-Bone-24" type="PinJoint2D" parent="SoftBody2D/Bone-26"]
+[node name="Joint2D-Bone-26-Bone-24" type="PinJoint2D" parent="Bubblebody/Bone-26"]
 visible = false
 rotation = -4.67489
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-24")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-26-Bone-25" type="PinJoint2D" parent="SoftBody2D/Bone-26"]
+[node name="Joint2D-Bone-26-Bone-25" type="PinJoint2D" parent="Bubblebody/Bone-26"]
 visible = false
 rotation = -3.13194
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-25")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-26-Bone-27" type="PinJoint2D" parent="SoftBody2D/Bone-26"]
+[node name="Joint2D-Bone-26-Bone-27" type="PinJoint2D" parent="Bubblebody/Bone-26"]
 visible = false
 rotation = -2.39903
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-27")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-26-Bone-28" type="PinJoint2D" parent="SoftBody2D/Bone-26"]
+[node name="Joint2D-Bone-26-Bone-28" type="PinJoint2D" parent="Bubblebody/Bone-26"]
 visible = false
 rotation = -1.57956
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-28")
-softness = 1.0
+softness = 2.0
 
-[node name="Bone-27" type="RigidBody2D" parent="SoftBody2D"]
+[node name="Bone-27" type="RigidBody2D" parent="Bubblebody"]
 position = Vector2(352.859, 433.477)
-mass = 0.1
+collision_layer = 4
+mass = 0.05
+gravity_scale = 0.2
 metadata/idx = 27
 metadata/bone_name = &"Bone-27"
 
-[node name="RectangleShape2D" type="CollisionShape2D" parent="SoftBody2D/Bone-27"]
+[node name="RectangleShape2D" type="CollisionShape2D" parent="Bubblebody/Bone-27"]
 visible = false
 shape = SubResource("RectangleShape2D_njwcm")
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="SoftBody2D/Bone-27"]
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Bubblebody/Bone-27"]
 visible = false
 remote_path = NodePath("../../Skeleton2D/Bone-27")
 update_rotation = false
 update_scale = false
 
-[node name="Joint2D-Bone-27-Bone-16" type="PinJoint2D" parent="SoftBody2D/Bone-27"]
+[node name="Joint2D-Bone-27-Bone-16" type="PinJoint2D" parent="Bubblebody/Bone-27"]
 visible = false
 rotation = -3.84874
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-16")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-27-Bone-21" type="PinJoint2D" parent="SoftBody2D/Bone-27"]
+[node name="Joint2D-Bone-27-Bone-21" type="PinJoint2D" parent="Bubblebody/Bone-27"]
 visible = false
 rotation = -3.20631
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-21")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-27-Bone-25" type="PinJoint2D" parent="SoftBody2D/Bone-27"]
+[node name="Joint2D-Bone-27-Bone-25" type="PinJoint2D" parent="Bubblebody/Bone-27"]
 visible = false
 rotation = -4.69606
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-25")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-27-Bone-32" type="PinJoint2D" parent="SoftBody2D/Bone-27"]
+[node name="Joint2D-Bone-27-Bone-32" type="PinJoint2D" parent="Bubblebody/Bone-27"]
 visible = false
 rotation = -2.35619
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-32")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-27-Bone-36" type="PinJoint2D" parent="SoftBody2D/Bone-27"]
+[node name="Joint2D-Bone-27-Bone-36" type="PinJoint2D" parent="Bubblebody/Bone-27"]
 visible = false
 rotation = -1.52587
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-36")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-27-Bone-26" type="PinJoint2D" parent="SoftBody2D/Bone-27"]
+[node name="Joint2D-Bone-27-Bone-26" type="PinJoint2D" parent="Bubblebody/Bone-27"]
 visible = false
 rotation = 0.742561
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-26")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-27-Bone-28" type="PinJoint2D" parent="SoftBody2D/Bone-27"]
+[node name="Joint2D-Bone-27-Bone-28" type="PinJoint2D" parent="Bubblebody/Bone-27"]
 visible = false
 rotation = -0.0265568
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-28")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-27-Bone-37" type="PinJoint2D" parent="SoftBody2D/Bone-27"]
+[node name="Joint2D-Bone-27-Bone-37" type="PinJoint2D" parent="Bubblebody/Bone-27"]
 visible = false
 rotation = -0.848149
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-37")
-softness = 1.0
+softness = 2.0
 
-[node name="Bone-28" type="RigidBody2D" parent="SoftBody2D"]
+[node name="Bone-28" type="RigidBody2D" parent="Bubblebody"]
 position = Vector2(355.193, 521.334)
-mass = 0.1
+collision_layer = 4
+mass = 0.05
+gravity_scale = 0.2
 metadata/idx = 28
 metadata/bone_name = &"Bone-28"
 
-[node name="RectangleShape2D" type="CollisionShape2D" parent="SoftBody2D/Bone-28"]
+[node name="RectangleShape2D" type="CollisionShape2D" parent="Bubblebody/Bone-28"]
 visible = false
 shape = SubResource("RectangleShape2D_njwcm")
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="SoftBody2D/Bone-28"]
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Bubblebody/Bone-28"]
 visible = false
 remote_path = NodePath("../../Skeleton2D/Bone-28")
 update_rotation = false
 update_scale = false
 
-[node name="Joint2D-Bone-28-Bone-25" type="PinJoint2D" parent="SoftBody2D/Bone-28"]
+[node name="Joint2D-Bone-28-Bone-25" type="PinJoint2D" parent="Bubblebody/Bone-28"]
 visible = false
 rotation = -3.8898
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-25")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-28-Bone-26" type="PinJoint2D" parent="SoftBody2D/Bone-28"]
+[node name="Joint2D-Bone-28-Bone-26" type="PinJoint2D" parent="Bubblebody/Bone-28"]
 visible = false
 rotation = 1.56203
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-26")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-28-Bone-27" type="PinJoint2D" parent="SoftBody2D/Bone-28"]
+[node name="Joint2D-Bone-28-Bone-27" type="PinJoint2D" parent="Bubblebody/Bone-28"]
 visible = false
 rotation = -3.16815
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-27")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-28-Bone-36" type="PinJoint2D" parent="SoftBody2D/Bone-28"]
+[node name="Joint2D-Bone-28-Bone-36" type="PinJoint2D" parent="Bubblebody/Bone-28"]
 visible = false
 rotation = -2.36813
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-36")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-28-Bone-37" type="PinJoint2D" parent="SoftBody2D/Bone-28"]
+[node name="Joint2D-Bone-28-Bone-37" type="PinJoint2D" parent="Bubblebody/Bone-28"]
 visible = false
 rotation = -1.67311
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-37")
-softness = 1.0
+softness = 2.0
 
-[node name="Bone-29" type="RigidBody2D" parent="SoftBody2D"]
+[node name="Bone-29" type="RigidBody2D" parent="Bubblebody"]
 position = Vector2(460.122, 92.2403)
-mass = 0.1
+collision_layer = 4
+mass = 0.05
+gravity_scale = 0.2
 metadata/idx = 29
 metadata/bone_name = &"Bone-29"
 
-[node name="RectangleShape2D" type="CollisionShape2D" parent="SoftBody2D/Bone-29"]
+[node name="RectangleShape2D" type="CollisionShape2D" parent="Bubblebody/Bone-29"]
 visible = false
 shape = SubResource("RectangleShape2D_njwcm")
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="SoftBody2D/Bone-29"]
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Bubblebody/Bone-29"]
 visible = false
 remote_path = NodePath("../../Skeleton2D/Bone-29")
 update_rotation = false
 update_scale = false
 
-[node name="Joint2D-Bone-29-Bone-17" type="PinJoint2D" parent="SoftBody2D/Bone-29"]
+[node name="Joint2D-Bone-29-Bone-17" type="PinJoint2D" parent="Bubblebody/Bone-29"]
 visible = false
 rotation = -4.24863
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-17")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-29-Bone-18" type="PinJoint2D" parent="SoftBody2D/Bone-29"]
+[node name="Joint2D-Bone-29-Bone-18" type="PinJoint2D" parent="Bubblebody/Bone-29"]
 visible = false
 rotation = 1.43194
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-18")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-29-Bone-19" type="PinJoint2D" parent="SoftBody2D/Bone-29"]
+[node name="Joint2D-Bone-29-Bone-19" type="PinJoint2D" parent="Bubblebody/Bone-29"]
 visible = false
 rotation = 0.815712
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-19")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-29-Bone-30" type="PinJoint2D" parent="SoftBody2D/Bone-29"]
+[node name="Joint2D-Bone-29-Bone-30" type="PinJoint2D" parent="Bubblebody/Bone-29"]
 visible = false
 rotation = 0.248002
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-30")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-29-Bone-33" type="PinJoint2D" parent="SoftBody2D/Bone-29"]
+[node name="Joint2D-Bone-29-Bone-33" type="PinJoint2D" parent="Bubblebody/Bone-29"]
 visible = false
 rotation = -0.552179
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-33")
-softness = 1.0
+softness = 2.0
 
-[node name="Bone-30" type="RigidBody2D" parent="SoftBody2D"]
+[node name="Bone-30" type="RigidBody2D" parent="Bubblebody"]
 position = Vector2(435.278, 190.357)
-mass = 0.1
+collision_layer = 4
+mass = 0.05
+gravity_scale = 0.2
 metadata/idx = 30
 metadata/bone_name = &"Bone-30"
 
-[node name="RectangleShape2D" type="CollisionShape2D" parent="SoftBody2D/Bone-30"]
+[node name="RectangleShape2D" type="CollisionShape2D" parent="Bubblebody/Bone-30"]
 visible = false
 shape = SubResource("RectangleShape2D_njwcm")
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="SoftBody2D/Bone-30"]
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Bubblebody/Bone-30"]
 visible = false
 remote_path = NodePath("../../Skeleton2D/Bone-30")
 update_rotation = false
 update_scale = false
 
-[node name="Joint2D-Bone-30-Bone-18" type="PinJoint2D" parent="SoftBody2D/Bone-30"]
+[node name="Joint2D-Bone-30-Bone-18" type="PinJoint2D" parent="Bubblebody/Bone-30"]
 visible = false
 rotation = -3.91335
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-18")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-30-Bone-19" type="PinJoint2D" parent="SoftBody2D/Bone-30"]
+[node name="Joint2D-Bone-30-Bone-19" type="PinJoint2D" parent="Bubblebody/Bone-30"]
 visible = false
 rotation = 1.51206
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-19")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-30-Bone-29" type="PinJoint2D" parent="SoftBody2D/Bone-30"]
+[node name="Joint2D-Bone-30-Bone-29" type="PinJoint2D" parent="Bubblebody/Bone-30"]
 visible = false
 rotation = -2.89359
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-29")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-30-Bone-20" type="PinJoint2D" parent="SoftBody2D/Bone-30"]
+[node name="Joint2D-Bone-30-Bone-20" type="PinJoint2D" parent="Bubblebody/Bone-30"]
 visible = false
 rotation = 0.827169
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-20")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-30-Bone-31" type="PinJoint2D" parent="SoftBody2D/Bone-30"]
+[node name="Joint2D-Bone-30-Bone-31" type="PinJoint2D" parent="Bubblebody/Bone-30"]
 visible = false
 rotation = 0.0379343
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-31")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-30-Bone-33" type="PinJoint2D" parent="SoftBody2D/Bone-30"]
+[node name="Joint2D-Bone-30-Bone-33" type="PinJoint2D" parent="Bubblebody/Bone-30"]
 visible = false
 rotation = -1.60511
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-33")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-30-Bone-34" type="PinJoint2D" parent="SoftBody2D/Bone-30"]
+[node name="Joint2D-Bone-30-Bone-34" type="PinJoint2D" parent="Bubblebody/Bone-30"]
 visible = false
 rotation = -0.812869
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-34")
-softness = 1.0
+softness = 2.0
 
-[node name="Bone-31" type="RigidBody2D" parent="SoftBody2D"]
+[node name="Bone-31" type="RigidBody2D" parent="Bubblebody"]
 position = Vector2(432.163, 272.419)
-mass = 0.1
+collision_layer = 4
+mass = 0.05
+gravity_scale = 0.2
 metadata/idx = 31
 metadata/bone_name = &"Bone-31"
 
-[node name="RectangleShape2D" type="CollisionShape2D" parent="SoftBody2D/Bone-31"]
+[node name="RectangleShape2D" type="CollisionShape2D" parent="Bubblebody/Bone-31"]
 visible = false
 shape = SubResource("RectangleShape2D_njwcm")
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="SoftBody2D/Bone-31"]
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Bubblebody/Bone-31"]
 visible = false
 remote_path = NodePath("../../Skeleton2D/Bone-31")
 update_rotation = false
 update_scale = false
 
-[node name="Joint2D-Bone-31-Bone-19" type="PinJoint2D" parent="SoftBody2D/Bone-31"]
+[node name="Joint2D-Bone-31-Bone-19" type="PinJoint2D" parent="Bubblebody/Bone-31"]
 visible = false
 rotation = -3.95536
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-19")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-31-Bone-20" type="PinJoint2D" parent="SoftBody2D/Bone-31"]
+[node name="Joint2D-Bone-31-Bone-20" type="PinJoint2D" parent="Bubblebody/Bone-31"]
 visible = false
 rotation = 1.53755
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-20")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-31-Bone-30" type="PinJoint2D" parent="SoftBody2D/Bone-31"]
+[node name="Joint2D-Bone-31-Bone-30" type="PinJoint2D" parent="Bubblebody/Bone-31"]
 visible = false
 rotation = -3.10366
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-30")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-31-Bone-21" type="PinJoint2D" parent="SoftBody2D/Bone-31"]
+[node name="Joint2D-Bone-31-Bone-21" type="PinJoint2D" parent="Bubblebody/Bone-31"]
 visible = false
 rotation = 0.848158
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-21")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-31-Bone-32" type="PinJoint2D" parent="SoftBody2D/Bone-31"]
+[node name="Joint2D-Bone-31-Bone-32" type="PinJoint2D" parent="Bubblebody/Bone-31"]
 visible = false
 rotation = -0.01633
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-32")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-31-Bone-33" type="PinJoint2D" parent="SoftBody2D/Bone-31"]
+[node name="Joint2D-Bone-31-Bone-33" type="PinJoint2D" parent="Bubblebody/Bone-31"]
 visible = false
 rotation = -2.34621
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-33")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-31-Bone-34" type="PinJoint2D" parent="SoftBody2D/Bone-31"]
+[node name="Joint2D-Bone-31-Bone-34" type="PinJoint2D" parent="Bubblebody/Bone-31"]
 visible = false
 rotation = -1.58049
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-34")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-31-Bone-35" type="PinJoint2D" parent="SoftBody2D/Bone-31"]
+[node name="Joint2D-Bone-31-Bone-35" type="PinJoint2D" parent="Bubblebody/Bone-31"]
 visible = false
 rotation = -0.821602
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-35")
-softness = 1.0
+softness = 2.0
 
-[node name="Bone-32" type="RigidBody2D" parent="SoftBody2D"]
+[node name="Bone-32" type="RigidBody2D" parent="Bubblebody"]
 position = Vector2(433.477, 352.859)
-mass = 0.1
+collision_layer = 4
+mass = 0.05
+gravity_scale = 0.2
 metadata/idx = 32
 metadata/bone_name = &"Bone-32"
 
-[node name="RectangleShape2D" type="CollisionShape2D" parent="SoftBody2D/Bone-32"]
+[node name="RectangleShape2D" type="CollisionShape2D" parent="Bubblebody/Bone-32"]
 visible = false
 shape = SubResource("RectangleShape2D_njwcm")
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="SoftBody2D/Bone-32"]
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Bubblebody/Bone-32"]
 visible = false
 remote_path = NodePath("../../Skeleton2D/Bone-32")
 update_rotation = false
 update_scale = false
 
-[node name="Joint2D-Bone-32-Bone-20" type="PinJoint2D" parent="SoftBody2D/Bone-32"]
+[node name="Joint2D-Bone-32-Bone-20" type="PinJoint2D" parent="Bubblebody/Bone-32"]
 visible = false
 rotation = -4.00524
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-20")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-32-Bone-21" type="PinJoint2D" parent="SoftBody2D/Bone-32"]
+[node name="Joint2D-Bone-32-Bone-21" type="PinJoint2D" parent="Bubblebody/Bone-32"]
 visible = false
 rotation = -4.64767
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-21")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-32-Bone-31" type="PinJoint2D" parent="SoftBody2D/Bone-32"]
+[node name="Joint2D-Bone-32-Bone-31" type="PinJoint2D" parent="Bubblebody/Bone-32"]
 visible = false
 rotation = -3.15792
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-31")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-32-Bone-27" type="PinJoint2D" parent="SoftBody2D/Bone-32"]
+[node name="Joint2D-Bone-32-Bone-27" type="PinJoint2D" parent="Bubblebody/Bone-32"]
 visible = false
 rotation = 0.785398
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-27")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-32-Bone-36" type="PinJoint2D" parent="SoftBody2D/Bone-32"]
+[node name="Joint2D-Bone-32-Bone-36" type="PinJoint2D" parent="Bubblebody/Bone-32"]
 visible = false
 rotation = -0.0449274
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-36")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-32-Bone-34" type="PinJoint2D" parent="SoftBody2D/Bone-32"]
+[node name="Joint2D-Bone-32-Bone-34" type="PinJoint2D" parent="Bubblebody/Bone-32"]
 visible = false
 rotation = -2.31897
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-34")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-32-Bone-35" type="PinJoint2D" parent="SoftBody2D/Bone-32"]
+[node name="Joint2D-Bone-32-Bone-35" type="PinJoint2D" parent="Bubblebody/Bone-32"]
 visible = false
 rotation = -1.54422
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-35")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-32-Bone-38" type="PinJoint2D" parent="SoftBody2D/Bone-32"]
+[node name="Joint2D-Bone-32-Bone-38" type="PinJoint2D" parent="Bubblebody/Bone-32"]
 visible = false
 rotation = -0.737146
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-38")
-softness = 1.0
+softness = 2.0
 
-[node name="Bone-33" type="RigidBody2D" parent="SoftBody2D"]
+[node name="Bone-33" type="RigidBody2D" parent="Bubblebody"]
 position = Vector2(518.806, 187.49)
-mass = 0.1
+collision_layer = 4
+mass = 0.05
+gravity_scale = 0.2
 metadata/idx = 33
 metadata/bone_name = &"Bone-33"
 
-[node name="RectangleShape2D" type="CollisionShape2D" parent="SoftBody2D/Bone-33"]
+[node name="RectangleShape2D" type="CollisionShape2D" parent="Bubblebody/Bone-33"]
 visible = false
 shape = SubResource("RectangleShape2D_njwcm")
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="SoftBody2D/Bone-33"]
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Bubblebody/Bone-33"]
 visible = false
 remote_path = NodePath("../../Skeleton2D/Bone-33")
 update_rotation = false
 update_scale = false
 
-[node name="Joint2D-Bone-33-Bone-29" type="PinJoint2D" parent="SoftBody2D/Bone-33"]
+[node name="Joint2D-Bone-33-Bone-29" type="PinJoint2D" parent="Bubblebody/Bone-33"]
 visible = false
 rotation = -3.69377
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-29")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-33-Bone-30" type="PinJoint2D" parent="SoftBody2D/Bone-33"]
+[node name="Joint2D-Bone-33-Bone-30" type="PinJoint2D" parent="Bubblebody/Bone-33"]
 visible = false
 rotation = 1.53649
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-30")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-33-Bone-31" type="PinJoint2D" parent="SoftBody2D/Bone-33"]
+[node name="Joint2D-Bone-33-Bone-31" type="PinJoint2D" parent="Bubblebody/Bone-33"]
 visible = false
 rotation = 0.795381
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-31")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-33-Bone-34" type="PinJoint2D" parent="SoftBody2D/Bone-33"]
+[node name="Joint2D-Bone-33-Bone-34" type="PinJoint2D" parent="Bubblebody/Bone-33"]
 visible = false
 rotation = -0.0268932
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-34")
-softness = 1.0
+softness = 2.0
 
-[node name="Bone-34" type="RigidBody2D" parent="SoftBody2D"]
+[node name="Bone-34" type="RigidBody2D" parent="Bubblebody"]
 position = Vector2(521.068, 271.558)
-mass = 0.1
+collision_layer = 4
+mass = 0.05
+gravity_scale = 0.2
 metadata/idx = 34
 metadata/bone_name = &"Bone-34"
 
-[node name="RectangleShape2D" type="CollisionShape2D" parent="SoftBody2D/Bone-34"]
+[node name="RectangleShape2D" type="CollisionShape2D" parent="Bubblebody/Bone-34"]
 visible = false
 shape = SubResource("RectangleShape2D_njwcm")
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="SoftBody2D/Bone-34"]
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Bubblebody/Bone-34"]
 visible = false
 remote_path = NodePath("../../Skeleton2D/Bone-34")
 update_rotation = false
 update_scale = false
 
-[node name="Joint2D-Bone-34-Bone-30" type="PinJoint2D" parent="SoftBody2D/Bone-34"]
+[node name="Joint2D-Bone-34-Bone-30" type="PinJoint2D" parent="Bubblebody/Bone-34"]
 visible = false
 rotation = -3.95446
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-30")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-34-Bone-31" type="PinJoint2D" parent="SoftBody2D/Bone-34"]
+[node name="Joint2D-Bone-34-Bone-31" type="PinJoint2D" parent="Bubblebody/Bone-34"]
 visible = false
 rotation = 1.5611
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-31")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-34-Bone-33" type="PinJoint2D" parent="SoftBody2D/Bone-34"]
+[node name="Joint2D-Bone-34-Bone-33" type="PinJoint2D" parent="Bubblebody/Bone-34"]
 visible = false
 rotation = -3.16849
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-33")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-34-Bone-32" type="PinJoint2D" parent="SoftBody2D/Bone-34"]
+[node name="Joint2D-Bone-34-Bone-32" type="PinJoint2D" parent="Bubblebody/Bone-34"]
 visible = false
 rotation = 0.822618
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-32")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-34-Bone-35" type="PinJoint2D" parent="SoftBody2D/Bone-34"]
+[node name="Joint2D-Bone-34-Bone-35" type="PinJoint2D" parent="Bubblebody/Bone-34"]
 visible = false
 rotation = -0.0010422
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-35")
-softness = 1.0
+softness = 2.0
 
-[node name="Bone-35" type="RigidBody2D" parent="SoftBody2D"]
+[node name="Bone-35" type="RigidBody2D" parent="Bubblebody"]
 position = Vector2(521.155, 355.19)
-mass = 0.1
+collision_layer = 4
+mass = 0.05
+gravity_scale = 0.2
 metadata/idx = 35
 metadata/bone_name = &"Bone-35"
 
-[node name="RectangleShape2D" type="CollisionShape2D" parent="SoftBody2D/Bone-35"]
+[node name="RectangleShape2D" type="CollisionShape2D" parent="Bubblebody/Bone-35"]
 visible = false
 shape = SubResource("RectangleShape2D_njwcm")
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="SoftBody2D/Bone-35"]
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Bubblebody/Bone-35"]
 visible = false
 remote_path = NodePath("../../Skeleton2D/Bone-35")
 update_rotation = false
 update_scale = false
 
-[node name="Joint2D-Bone-35-Bone-38" type="PinJoint2D" parent="SoftBody2D/Bone-35"]
+[node name="Joint2D-Bone-35-Bone-38" type="PinJoint2D" parent="Bubblebody/Bone-35"]
 visible = false
 rotation = 0.101069
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-38")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-35-Bone-31" type="PinJoint2D" parent="SoftBody2D/Bone-35"]
+[node name="Joint2D-Bone-35-Bone-31" type="PinJoint2D" parent="Bubblebody/Bone-35"]
 visible = false
 rotation = -3.96319
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-31")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-35-Bone-32" type="PinJoint2D" parent="SoftBody2D/Bone-35"]
+[node name="Joint2D-Bone-35-Bone-32" type="PinJoint2D" parent="Bubblebody/Bone-35"]
 visible = false
 rotation = -4.68581
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-32")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-35-Bone-34" type="PinJoint2D" parent="SoftBody2D/Bone-35"]
+[node name="Joint2D-Bone-35-Bone-34" type="PinJoint2D" parent="Bubblebody/Bone-35"]
 visible = false
 rotation = -3.14263
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-34")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-35-Bone-36" type="PinJoint2D" parent="SoftBody2D/Bone-35"]
+[node name="Joint2D-Bone-35-Bone-36" type="PinJoint2D" parent="Bubblebody/Bone-35"]
 visible = false
 rotation = 0.796245
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-36")
-softness = 1.0
+softness = 2.0
 
-[node name="Bone-36" type="RigidBody2D" parent="SoftBody2D"]
+[node name="Bone-36" type="RigidBody2D" parent="Bubblebody"]
 position = Vector2(437.272, 437.272)
-mass = 0.1
+collision_layer = 4
+mass = 0.05
+gravity_scale = 0.2
 metadata/idx = 36
 metadata/bone_name = &"Bone-36"
 
-[node name="RectangleShape2D" type="CollisionShape2D" parent="SoftBody2D/Bone-36"]
+[node name="RectangleShape2D" type="CollisionShape2D" parent="Bubblebody/Bone-36"]
 visible = false
 shape = SubResource("RectangleShape2D_njwcm")
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="SoftBody2D/Bone-36"]
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Bubblebody/Bone-36"]
 visible = false
 remote_path = NodePath("../../Skeleton2D/Bone-36")
 update_rotation = false
 update_scale = false
 
-[node name="Joint2D-Bone-36-Bone-21" type="PinJoint2D" parent="SoftBody2D/Bone-36"]
+[node name="Joint2D-Bone-36-Bone-21" type="PinJoint2D" parent="Bubblebody/Bone-36"]
 visible = false
 rotation = -3.92699
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-21")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-36-Bone-27" type="PinJoint2D" parent="SoftBody2D/Bone-36"]
+[node name="Joint2D-Bone-36-Bone-27" type="PinJoint2D" parent="Bubblebody/Bone-36"]
 visible = false
 rotation = -4.66746
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-27")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-36-Bone-32" type="PinJoint2D" parent="SoftBody2D/Bone-36"]
+[node name="Joint2D-Bone-36-Bone-32" type="PinJoint2D" parent="Bubblebody/Bone-36"]
 visible = false
 rotation = -3.18652
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-32")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-36-Bone-28" type="PinJoint2D" parent="SoftBody2D/Bone-36"]
+[node name="Joint2D-Bone-36-Bone-28" type="PinJoint2D" parent="Bubblebody/Bone-36"]
 visible = false
 rotation = 0.773466
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-28")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-36-Bone-37" type="PinJoint2D" parent="SoftBody2D/Bone-36"]
+[node name="Joint2D-Bone-36-Bone-37" type="PinJoint2D" parent="Bubblebody/Bone-36"]
 visible = false
 rotation = -0.0674835
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-37")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-36-Bone-35" type="PinJoint2D" parent="SoftBody2D/Bone-36"]
+[node name="Joint2D-Bone-36-Bone-35" type="PinJoint2D" parent="Bubblebody/Bone-36"]
 visible = false
 rotation = -2.34535
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-35")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-36-Bone-38" type="PinJoint2D" parent="SoftBody2D/Bone-36"]
+[node name="Joint2D-Bone-36-Bone-38" type="PinJoint2D" parent="Bubblebody/Bone-36"]
 visible = false
 rotation = -1.53505
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-38")
-softness = 1.0
+softness = 2.0
 
-[node name="Bone-37" type="RigidBody2D" parent="SoftBody2D"]
+[node name="Bone-37" type="RigidBody2D" parent="Bubblebody"]
 position = Vector2(442.349, 512.386)
-mass = 0.1
+collision_layer = 4
+mass = 0.05
+gravity_scale = 0.2
 metadata/idx = 37
 metadata/bone_name = &"Bone-37"
 
-[node name="RectangleShape2D" type="CollisionShape2D" parent="SoftBody2D/Bone-37"]
+[node name="RectangleShape2D" type="CollisionShape2D" parent="Bubblebody/Bone-37"]
 visible = false
 shape = SubResource("RectangleShape2D_njwcm")
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="SoftBody2D/Bone-37"]
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Bubblebody/Bone-37"]
 visible = false
 remote_path = NodePath("../../Skeleton2D/Bone-37")
 update_rotation = false
 update_scale = false
 
-[node name="Joint2D-Bone-37-Bone-27" type="PinJoint2D" parent="SoftBody2D/Bone-37"]
+[node name="Joint2D-Bone-37-Bone-27" type="PinJoint2D" parent="Bubblebody/Bone-37"]
 visible = false
 rotation = -3.98974
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-27")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-37-Bone-28" type="PinJoint2D" parent="SoftBody2D/Bone-37"]
+[node name="Joint2D-Bone-37-Bone-28" type="PinJoint2D" parent="Bubblebody/Bone-37"]
 visible = false
 rotation = 1.46849
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-28")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-37-Bone-36" type="PinJoint2D" parent="SoftBody2D/Bone-37"]
+[node name="Joint2D-Bone-37-Bone-36" type="PinJoint2D" parent="Bubblebody/Bone-37"]
 visible = false
 rotation = -3.20908
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-36")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-37-Bone-38" type="PinJoint2D" parent="SoftBody2D/Bone-37"]
+[node name="Joint2D-Bone-37-Bone-38" type="PinJoint2D" parent="Bubblebody/Bone-37"]
 visible = false
 rotation = -2.37171
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-38")
-softness = 1.0
+softness = 2.0
 
-[node name="Bone-38" type="RigidBody2D" parent="SoftBody2D"]
+[node name="Bone-38" type="RigidBody2D" parent="Bubblebody"]
 position = Vector2(512.557, 439.964)
-mass = 0.1
+collision_layer = 4
+mass = 0.05
+gravity_scale = 0.2
 metadata/idx = 38
 metadata/bone_name = &"Bone-38"
 
-[node name="RectangleShape2D" type="CollisionShape2D" parent="SoftBody2D/Bone-38"]
+[node name="RectangleShape2D" type="CollisionShape2D" parent="Bubblebody/Bone-38"]
 visible = false
 shape = SubResource("RectangleShape2D_njwcm")
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="SoftBody2D/Bone-38"]
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Bubblebody/Bone-38"]
 visible = false
 remote_path = NodePath("../../Skeleton2D/Bone-38")
 update_rotation = false
 update_scale = false
 
-[node name="Joint2D-Bone-38-Bone-35" type="PinJoint2D" parent="SoftBody2D/Bone-38"]
+[node name="Joint2D-Bone-38-Bone-35" type="PinJoint2D" parent="Bubblebody/Bone-38"]
 visible = false
 rotation = -3.04052
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-35")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-38-Bone-32" type="PinJoint2D" parent="SoftBody2D/Bone-38"]
+[node name="Joint2D-Bone-38-Bone-32" type="PinJoint2D" parent="Bubblebody/Bone-38"]
 visible = false
 rotation = -3.87874
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-32")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-38-Bone-36" type="PinJoint2D" parent="SoftBody2D/Bone-38"]
+[node name="Joint2D-Bone-38-Bone-36" type="PinJoint2D" parent="Bubblebody/Bone-38"]
 visible = false
 rotation = -4.67664
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-36")
-softness = 1.0
+softness = 2.0
 
-[node name="Joint2D-Bone-38-Bone-37" type="PinJoint2D" parent="SoftBody2D/Bone-38"]
+[node name="Joint2D-Bone-38-Bone-37" type="PinJoint2D" parent="Bubblebody/Bone-38"]
 visible = false
 rotation = 0.769886
 node_a = NodePath("..")
 node_b = NodePath("../../Bone-37")
-softness = 1.0
+softness = 2.0
+
+[node name="Player" type="RigidBody2D" parent="."]
+position = Vector2(77, -61)
+gravity_scale = 0.402
+lock_rotation = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+shape = SubResource("CircleShape2D_fbcfy")
+
+[node name="Ympyrä1" type="Sprite2D" parent="Player"]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_2a2md")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("CircleShape2D_bollt")
+disabled = true
+
+[node name="Camera2D" type="Camera2D" parent="StaticBody2D"]
+zoom = Vector2(2, 2)
+position_smoothing_enabled = true
+
+[node name="Hitbox_Component" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("2_qjp66")]
+health_component = NodePath("../Health_Component")
+
+[node name="HitboxCollisionShape2D" type="CollisionShape2D" parent="Hitbox_Component"]
+shape = SubResource("CircleShape2D_fbcfy")
+
+[node name="Health_Component" parent="." instance=ExtResource("4_u4r0c")]
+Max_Health = 20
+
+[node name="Bubble_Sword" parent="." instance=ExtResource("5_rq5qm")]
+position = Vector2(0, 23)
+collision_layer = 4
