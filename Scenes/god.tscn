@@ -1,0 +1,130 @@
+[gd_scene load_steps=20 format=3 uid="uid://coyxg62j6kqxq"]
+
+[ext_resource type="Texture2D" uid="uid://b25ckjaxpw4im" path="res://Images/jumala/godcloth.png" id="1_4phd1"]
+[ext_resource type="Texture2D" uid="uid://c46lwmlqxxfu0" path="res://Images/jumala/godfifthchild.png" id="2_4h6jl"]
+[ext_resource type="Texture2D" uid="uid://bfs6yu5v8nqga" path="res://Images/jumala/godfirstchild.png" id="3_jjp4a"]
+[ext_resource type="Texture2D" uid="uid://bglnpou261uca" path="res://Images/jumala/godfourthchild.png" id="4_i0w2v"]
+[ext_resource type="Texture2D" uid="uid://ceu0ou7of2r6j" path="res://Images/jumala/godhead.png" id="5_gdd8y"]
+[ext_resource type="Texture2D" uid="uid://cpuo2t2o2vshn" path="res://Images/jumala/godlowerarmleft.png" id="6_ylu30"]
+[ext_resource type="Texture2D" uid="uid://bw37tpg883mrd" path="res://Images/jumala/godlowerarmright.png" id="7_a8037"]
+[ext_resource type="Texture2D" uid="uid://csejqkqv7ong" path="res://Images/jumala/godlowerlegleft.png" id="8_pxrq4"]
+[ext_resource type="Texture2D" uid="uid://b440i1bepgge7" path="res://Images/jumala/godlowerlegright.png" id="9_6dqvi"]
+[ext_resource type="Texture2D" uid="uid://bmyw0gvmsxjgu" path="res://Images/jumala/godrandomball.png" id="10_x3uha"]
+[ext_resource type="Texture2D" uid="uid://cvgi8ndpetw7h" path="res://Images/jumala/godsecondchild.png" id="11_ettwn"]
+[ext_resource type="Texture2D" uid="uid://cqawx2rmidey2" path="res://Images/jumala/godthirdchild.png" id="12_ljgwx"]
+[ext_resource type="Texture2D" uid="uid://bjh05eub5evv4" path="res://Images/jumala/godtorso.png" id="13_mj8dj"]
+[ext_resource type="Texture2D" uid="uid://c46jill5xowi0" path="res://Images/jumala/godupperarmleft.png" id="14_hrgi4"]
+[ext_resource type="Texture2D" uid="uid://daasrkspqfmg6" path="res://Images/jumala/godupperarmright.png" id="15_e1kpl"]
+[ext_resource type="Texture2D" uid="uid://bulji3g6ojv6j" path="res://Images/jumala/godupperlegleft.png" id="16_bf0jn"]
+[ext_resource type="Texture2D" uid="uid://dvutsbjlm12fc" path="res://Images/jumala/godupperlegright.png" id="17_s87aa"]
+
+[sub_resource type="GDScript" id="GDScript_2o8e6"]
+script/source = "extends RigidBody2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+
+func _on_body_entered(body: Node) -> void:
+	pass # Replace with function body.
+
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	get_parent().win()
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1d7wk"]
+size = Vector2(309, 207)
+
+[node name="God" type="RigidBody2D"]
+position = Vector2(491, -483)
+script = SubResource("GDScript_2o8e6")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-5, -4)
+shape = SubResource("RectangleShape2D_1d7wk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(126.5, 88.5001)
+scale = Vector2(0.14585, 0.14585)
+
+[node name="Godcloth" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(-959, -297)
+scale = Vector2(1.098, 1.098)
+texture = ExtResource("1_4phd1")
+
+[node name="Godfifthchild" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(-959, -297)
+texture = ExtResource("2_4h6jl")
+
+[node name="Godfirstchild" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(-959, -297)
+texture = ExtResource("3_jjp4a")
+
+[node name="Godfourthchild" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(-959, -297)
+texture = ExtResource("4_i0w2v")
+
+[node name="Godhead" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(-959, -297)
+texture = ExtResource("5_gdd8y")
+
+[node name="Godlowerarmleft" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(-959, -297)
+texture = ExtResource("6_ylu30")
+
+[node name="Godlowerarmright" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(-959, -297)
+texture = ExtResource("7_a8037")
+
+[node name="Godlowerlegleft" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(-959, -297)
+texture = ExtResource("8_pxrq4")
+
+[node name="Godlowerlegright" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(-959, -297)
+texture = ExtResource("9_6dqvi")
+
+[node name="Godrandomball" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(-959, -297)
+texture = ExtResource("10_x3uha")
+
+[node name="Godsecondchild" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(-959, -297)
+texture = ExtResource("11_ettwn")
+
+[node name="Godthirdchild" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(-959, -297)
+texture = ExtResource("12_ljgwx")
+
+[node name="Godtorso" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(-959, -297)
+texture = ExtResource("13_mj8dj")
+
+[node name="Godupperarmleft" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(-959, -297)
+texture = ExtResource("14_hrgi4")
+
+[node name="Godupperarmright" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(-959, -297)
+texture = ExtResource("15_e1kpl")
+
+[node name="Godupperlegleft" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(-959, -297)
+texture = ExtResource("16_bf0jn")
+
+[node name="Godupperlegright" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(-959, -297)
+texture = ExtResource("17_s87aa")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
