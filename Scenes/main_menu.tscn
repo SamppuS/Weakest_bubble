@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://yc7mw2n067y2"]
+[gd_scene load_steps=3 format=3 uid="uid://c57j0l0x5evrv"]
 
 [ext_resource type="Script" path="res://main_menu.gd" id="1_qhhex"]
 [ext_resource type="Texture2D" uid="uid://rgu1q6t13ffh" path="res://Images/weakestbubblemenuscreen.png" id="2_xes6x"]
@@ -33,5 +33,10 @@ layout_mode = 2
 text = "Quit
 "
 
+[node name="Button" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Credits"
+
 [connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="button_down" from="VBoxContainer/Button" to="." method="_on_button_button_down"]

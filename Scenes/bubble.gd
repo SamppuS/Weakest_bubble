@@ -109,7 +109,7 @@ func _on_hitbox_component_body_entered(body: Node2D) -> void:
 
 
 func _on_hitbox_component_area_entered(area: Area2D) -> void:
-	if area.get_child(0) is CollisionShape2D:
+	if area.get_child(0) is CollisionShape2D or area.get_child(1) is CollisionPolygon2D:
 		death_count += 1
 		print(death_count)
 		if(death_count>=2):
