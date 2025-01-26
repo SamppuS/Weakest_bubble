@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://dlvnog3euhiho"]
 
 [ext_resource type="Script" path="res://scripts/crawlid.gd" id="1_o4rpg"]
-[ext_resource type="Texture2D" path="res://Images/Testikuvat/BasicShapes/Neliöt/Neliö2.png" id="2_qkt1y"]
+[ext_resource type="Texture2D" uid="uid://buhksaapngga5" path="res://Images/Testikuvat/BasicShapes/Neliöt/Neliö2.png" id="2_qkt1y"]
 [ext_resource type="PackedScene" uid="uid://bgg618tvsw6rk" path="res://components/hitbox_component.tscn" id="3_tdke1"]
 [ext_resource type="PackedScene" uid="uid://6m73mgg7sud6" path="res://components/health_component.tscn" id="4_nv8iu"]
 
