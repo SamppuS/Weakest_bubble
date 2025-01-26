@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=4 uid="uid://cnvmj74fmtu0a"]
+[gd_scene load_steps=13 format=4 uid="uid://cnvmj74fmtu0a"]
 
 [ext_resource type="PackedScene" uid="uid://bt5fji5342xuf" path="res://Scenes/Bubble.tscn" id="1_ct2yy"]
 [ext_resource type="Script" path="res://Scenes/world.gd" id="1_lwqbh"]
 [ext_resource type="PackedScene" uid="uid://d05wdouomcpbg" path="res://Scenes/level.tscn" id="1_wst1v"]
 [ext_resource type="Texture2D" uid="uid://ddd5jpecsme4k" path="res://Images/tileSet.png" id="2_g6k0o"]
+[ext_resource type="Texture2D" uid="uid://q814eefodqp2" path="res://Images/Testikuvat/BasicShapes/Neliöt/Neliö4.png" id="3_4jvll"]
 [ext_resource type="PackedScene" uid="uid://dlvnog3euhiho" path="res://Scenes/crawlid.tscn" id="3_81h1t"]
 [ext_resource type="PackedScene" uid="uid://bfksemsph07pf" path="res://Scenes/flylid.tscn" id="5_qd0av"]
 [ext_resource type="Texture2D" uid="uid://cbir66ga6frfw" path="res://Images/spike.png" id="7_4ru55"]
@@ -155,6 +156,11 @@ script = ExtResource("1_lwqbh")
 flylid = ExtResource("5_qd0av")
 player = NodePath("Bubble")
 metadata/_edit_vertical_guides_ = [-270.0]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-302, -666)
+scale = Vector2(340.334, 1434.39)
+texture = ExtResource("3_4jvll")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 visible = false
@@ -526,7 +532,7 @@ scale = Vector2(0.8125, 0.895833)
 polygon = PackedVector2Array(-2, -7, 3, 8, -7, 8)
 
 [node name="Spike5" type="Area2D" parent="."]
-position = Vector2(1284, -641)
+position = Vector2(1291, -640)
 rotation = -0.0114462
 
 [node name="Sprite2D" type="Sprite2D" parent="Spike5"]
