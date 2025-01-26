@@ -196,7 +196,7 @@ position = Vector2(423, -5)
 position = Vector2(311, 60)
 
 [node name="Bubble" parent="." instance=ExtResource("1_ct2yy")]
-position = Vector2(1943, -1061)
+position = Vector2(69, -37)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(0, 130.071)
