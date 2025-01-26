@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://d0layh3la33yn" path="res://Scenes/crawlid.tscn" id="3_81h1t"]
 [ext_resource type="Texture2D" uid="uid://q814eefodqp2" path="res://Images/Testikuvat/BasicShapes/Neliöt/Neliö4.png" id="3_wbj8g"]
 [ext_resource type="PackedScene" uid="uid://bfksemsph07pf" path="res://Scenes/flylid.tscn" id="5_qd0av"]
-[ext_resource type="PackedScene" path="res://Scenes/god.tscn" id="6_ug8rb"]
+[ext_resource type="PackedScene" uid="uid://coyxg62j6kqxq" path="res://Scenes/god.tscn" id="6_ug8rb"]
 [ext_resource type="AudioStream" uid="uid://bpyott744dush" path="res://serbia-nature-sounds-245993.mp3" id="8_wgykg"]
 [ext_resource type="PackedScene" uid="uid://imirociph11c" path="res://components/Spike.tscn" id="9_huefa"]
 

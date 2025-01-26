@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://b6w4ukxervi3i"]
+
+[ext_resource type="Script" path="res://Scenes/win.gd" id="1_itkmo"]
+[ext_resource type="Texture2D" uid="uid://jecj83x3qhdd" path="res://Images/weakestbubbleend.png" id="1_sgrtq"]
+[ext_resource type="Texture2D" uid="uid://wq1frla8jcad" path="res://Images/weakestbubblewinscreen.png" id="2_y36yy"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7ayy4"]
+texture = ExtResource("2_y36yy")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_142pv"]
+texture = ExtResource("1_sgrtq")
+
+[node name="Win" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_itkmo")
+
+[node name="PanelContainer2" type="PanelContainer" parent="."]
+layout_mode = 0
+offset_right = 1147.0
+offset_bottom = 648.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_7ayy4")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 1149.0
+offset_bottom = 647.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_142pv")
