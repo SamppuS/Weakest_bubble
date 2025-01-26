@@ -17,7 +17,7 @@ var recoiling := false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$Health_Component.player_death.connect(_on_player_death)
+	$Health_Component_Player.player_death.connect(_on_player_death)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -94,7 +94,13 @@ func recoil(power: float, mode: String = ""):
 
 func _on_player_death():
 	get_tree().root.add_child(bubblesword)
-	remove_child(bubblebody)
-	remove_child(camera)
-	get_tree().root.add_child(camera)
-	queue_free()
+	get_child(2).visible = false
+	get_child(3).get_child(1).visible = false
+	#get_tree().root.add_child(camera)
+	#queue_free()
+
+
+func _on_hitbox_component_area_entered(area: Area2D) -> void:
+	if area.get_child(1) is CollisionPolygon2D:
+		print("d")
+		$Health_Component_Player.health = -1000
