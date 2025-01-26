@@ -1,6 +1,6 @@
 extends Node2D
 
-
+var death_count = -1
 @export var force_function: Curve
 @onready var player = $Player
 @onready var sword = get_node("Bubble_Sword")
@@ -112,5 +112,7 @@ func _on_hitbox_component_body_entered(body: Node2D) -> void:
 
 func _on_hitbox_component_area_entered(area: Area2D) -> void:
 	if area.get_child(0) is CollisionShape2D:
-		print("d")
-		$Health_Component_Player.die_player()
+		death_count += 1
+		print(death_count)
+		if(death_count>=2):
+			$Health_Component_Player.die_player()
