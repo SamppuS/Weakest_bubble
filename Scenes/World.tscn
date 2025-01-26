@@ -316,9 +316,5 @@ rotation = 3.12836
 position = Vector2(2531, -916)
 rotation = 3.12836
 
-[node name="Node2D5" parent="Spikes" instance=ExtResource("9_huefa")]
-position = Vector2(149, -1)
-rotation = -1.58715
-
 [connection signal="area_entered" from="Spawn area" to="." method="_on_spawn_area_area_entered"]
 [connection signal="area_exited" from="Spawn area" to="." method="_on_spawn_area_area_exited"]
