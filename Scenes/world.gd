@@ -48,4 +48,4 @@ func win():
 	win_count += 1
 	if(win_count>=2):
 			print("win")
-			player.ascend()
+			player.ascend($CanvasLayer/Label.text)

@@ -124,7 +124,7 @@ func ragdoll():
 		sword.gravity_scale = .5
 		sword.angular_velocity /= 100
 		
-func ascend():
+func ascend(time):
 	if control:
 		$PinJoint2D.queue_free()
 		sword.gravity_scale = .5
@@ -132,5 +132,6 @@ func ascend():
 		control = false
 		bubblebody.gravity_scale = -0.01
 		await get_tree().create_timer(4).timeout
+		Adsgw.time = time
 		get_tree().change_scene_to_file("res://Scenes/win.tscn")
 		
