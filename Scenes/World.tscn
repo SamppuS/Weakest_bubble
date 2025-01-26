@@ -469,10 +469,79 @@ texture = ExtResource("7_4ru55")
 position = Vector2(-1.875, 1.30208)
 scale = Vector2(0.8125, 0.895833)
 polygon = PackedVector2Array(-2, -7, 3, 8, -7, 8)
-
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_wgykg")
 volume_db = -12.0
 pitch_scale = 0.81
 autoplay = true
 parameters/looping = true
+
+[node name="Spike" type="Area2D" parent="."]
+position = Vector2(1170, -641)
+rotation = -0.0114462
+
+[node name="Sprite2D" type="Sprite2D" parent="Spike"]
+position = Vector2(-3.5, 1.49998)
+scale = Vector2(0.34375, 0.468751)
+texture = ExtResource("7_4ru55")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Spike"]
+position = Vector2(-2.02271, 1.97696)
+scale = Vector2(0.8125, 0.895833)
+polygon = PackedVector2Array(-2, -7, 3, 8, -7, 8)
+
+[node name="Spike2" type="Area2D" parent="."]
+position = Vector2(1251, -641)
+rotation = -0.0114462
+
+[node name="Sprite2D" type="Sprite2D" parent="Spike2"]
+position = Vector2(-3.5, 1.49998)
+scale = Vector2(0.34375, 0.468751)
+texture = ExtResource("7_4ru55")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Spike2"]
+position = Vector2(-2.02271, 1.97696)
+scale = Vector2(0.8125, 0.895833)
+polygon = PackedVector2Array(-2, -7, 3, 8, -7, 8)
+
+[node name="Spike3" type="Area2D" parent="."]
+position = Vector2(1262, -641)
+rotation = -0.0114462
+
+[node name="Sprite2D" type="Sprite2D" parent="Spike3"]
+position = Vector2(-3.5, 1.49998)
+scale = Vector2(0.34375, 0.468751)
+texture = ExtResource("7_4ru55")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Spike3"]
+position = Vector2(-2.02271, 1.97696)
+scale = Vector2(0.8125, 0.895833)
+polygon = PackedVector2Array(-2, -7, 3, 8, -7, 8)
+
+[node name="Spike4" type="Area2D" parent="."]
+position = Vector2(1273, -641)
+rotation = -0.0114462
+
+[node name="Sprite2D" type="Sprite2D" parent="Spike4"]
+position = Vector2(-3.5, 1.49998)
+scale = Vector2(0.34375, 0.468751)
+texture = ExtResource("7_4ru55")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Spike4"]
+position = Vector2(-2.02271, 1.97696)
+scale = Vector2(0.8125, 0.895833)
+polygon = PackedVector2Array(-2, -7, 3, 8, -7, 8)
+
+[node name="Spike5" type="Area2D" parent="."]
+position = Vector2(1284, -641)
+rotation = -0.0114462
+
+[node name="Sprite2D" type="Sprite2D" parent="Spike5"]
+position = Vector2(-3.5, 1.49998)
+scale = Vector2(0.34375, 0.468751)
+texture = ExtResource("7_4ru55")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Spike5"]
+position = Vector2(-2.02271, 1.97696)
+scale = Vector2(0.8125, 0.895833)
+polygon = PackedVector2Array(-2, -7, 3, 8, -7, 8)
