@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bfksemsph07pf"]
+[gd_scene load_steps=16 format=3 uid="uid://bfksemsph07pf"]
 
 [ext_resource type="Script" path="res://Scenes/flylid.gd" id="1_6ifgt"]
 [ext_resource type="PackedScene" uid="uid://bgg618tvsw6rk" path="res://components/hitbox_component.tscn" id="3_je1gb"]
@@ -15,6 +15,9 @@
 [ext_resource type="Texture2D" uid="uid://bwjoultr4vuvy" path="res://Images/enkeli/secondenemylowerarmleft.png" id="14_51jvg"]
 [ext_resource type="Texture2D" uid="uid://bgw6mp0rf48od" path="res://Images/enkeli/secondenemyhead.png" id="15_r8uby"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_nmg50"]
+radius = 24.0416
+
 [node name="Flylid" type="CharacterBody2D"]
 motion_mode = 1
 script = ExtResource("1_6ifgt")
@@ -27,8 +30,9 @@ autostart = true
 [node name="Hitbox_Component" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_je1gb")]
 health_component = NodePath("../Health_Component")
 
+[node name="Node2D" type="Node2D" parent="Hitbox_Component"]
+
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="Hitbox_Component"]
-scale = Vector2(1.1, 1.1)
 polygon = PackedVector2Array(24, -18, 15, -9, 11, -8, 2, 8, 1, 14, -15, 21, -16, 26, -18, 20, -10, 13, -19, 15, -17, 10, -8, 8, -9, -7, -14, -16, -29, -12, -13, -26, -2, -26, -2, -15, 2, -24, 8, -24, 11, -20, 8, -16, 16, -16, 21, -20, 26, -21)
 
 [node name="Health_Component" parent="." instance=ExtResource("4_13vo2")]
@@ -79,7 +83,7 @@ texture = ExtResource("14_51jvg")
 scale = Vector2(0.03, 0.03)
 texture = ExtResource("15_r8uby")
 
-[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
-polygon = PackedVector2Array(24, -18, 15, -9, 11, -8, 2, 8, 1, 14, -15, 21, -16, 26, -18, 20, -10, 13, -19, 15, -17, 10, -8, 8, -9, -7, -14, -16, -29, -12, -13, -26, -2, -26, -2, -15, 2, -24, 8, -24, 11, -20, 8, -16, 16, -16, 21, -20, 26, -21)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_nmg50")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

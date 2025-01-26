@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bfksemsph07pf" path="res://Scenes/flylid.tscn" id="5_qd0av"]
 [ext_resource type="PackedScene" path="res://Scenes/god.tscn" id="6_ug8rb"]
 [ext_resource type="AudioStream" uid="uid://bpyott744dush" path="res://serbia-nature-sounds-245993.mp3" id="8_wgykg"]
-[ext_resource type="PackedScene" path="res://components/Spike.tscn" id="9_huefa"]
+[ext_resource type="PackedScene" uid="uid://imirociph11c" path="res://components/Spike.tscn" id="9_huefa"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_qgdrw"]
 vertices = PackedVector2Array(2246.18, -541.102, 1870.96, -544.891, 1887, -717.273, 2265.84, -1602.8, 1228.87, -1806.63, 1708.34, -712.906, -377.688, -1200.57, -147.703, 90.5391, 1510.5, -552.156, 526, 55.0781, 1482.72, -294.25)
