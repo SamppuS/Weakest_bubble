@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dlvnog3euhiho" path="res://Scenes/crawlid.tscn" id="3_81h1t"]
 [ext_resource type="PackedScene" uid="uid://bfksemsph07pf" path="res://Scenes/flylid.tscn" id="5_qd0av"]
 [ext_resource type="Texture2D" uid="uid://cbir66ga6frfw" path="res://Images/spike.png" id="7_4ru55"]
+[ext_resource type="AudioStream" uid="uid://bpyott744dush" path="res://serbia-nature-sounds-245993.mp3" id="8_wgykg"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_qgdrw"]
 vertices = PackedVector2Array(2246.18, -541.102, 1870.96, -544.891, 1887, -717.273, 2265.84, -1602.8, 1228.87, -1806.63, 1708.34, -712.906, -377.688, -1200.57, -147.703, 90.5391, 1510.5, -552.156, 526, 55.0781, 1482.72, -294.25)
@@ -464,6 +465,13 @@ texture = ExtResource("7_4ru55")
 position = Vector2(-1.875, 1.30208)
 scale = Vector2(0.8125, 0.895833)
 polygon = PackedVector2Array(-2, -7, 3, 8, -7, 8)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_wgykg")
+volume_db = -12.0
+pitch_scale = 0.8
+autoplay = true
+parameters/looping = true
 
 [connection signal="area_entered" from="Spawn area" to="." method="_on_spawn_area_area_entered"]
 [connection signal="area_exited" from="Spawn area" to="." method="_on_spawn_area_area_exited"]
