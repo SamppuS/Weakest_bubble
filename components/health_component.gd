@@ -9,11 +9,6 @@ var health : float
 
 func ready():
 	health = Max_Health
-func _process(delta: float) -> void:
-	if (health == -1000):
-		print("dd")
-		%AudioStreamPlayer2D.play()
-		emit_signal("player_death")
 func damage(attack:Attack):
 	health -= attack.attack_damage
 	if health <= 0:
@@ -22,3 +17,6 @@ func damage(attack:Attack):
 			emit_signal("player_death")
 		else:
 			get_parent().queue_free()
+func die_player():
+	%AudioStreamPlayer2D.play()
+	emit_signal("player_death")
