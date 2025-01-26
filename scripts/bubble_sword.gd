@@ -15,7 +15,6 @@ func _ready() -> void:
 
 func _on_hitbox_area_entered(area: HitboxComponent) -> void:
 	if area is HitboxComponent:
-		knockdir = 1
 		var attack = Attack.new()
 		attack.attack_damage == attack_damage
 		attack.knockback_force == knockback_force
