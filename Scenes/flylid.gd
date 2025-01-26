@@ -11,7 +11,7 @@ func _physics_process(delta: float) -> void:
 	velocity = dir * speed
 	move_and_slide()
 	
-	print("man I wanna go to ", velocity, agent.target_position)
+	#print("man I wanna go to ", velocity, agent.target_position)
 	
 func generate_path():
 	agent.target_position = player.center

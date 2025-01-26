@@ -12,6 +12,8 @@ extends Node2D
 const radius = 15
 
 var center := Vector2.ZERO
+var recoiling := false
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -24,17 +26,20 @@ func _process(delta: float) -> void:
 	
 	
 
-	if sign(sword_data[2]) != sign(sword.angular_velocity):
+	if sign(sword_data[2]) != sign(sword.angular_velocity) and not recoiling:
 		sword.angular_velocity = 0
-	#print(sword_data[2])
 	if force_function:
-		sword.apply_torque_impulse(-1500 * force_function.sample(abs(sword_data[2]) / 180) * sign(sword_data[2]))
+		var force = -1500
+		if recoiling:
+			force /= 5
+		sword.apply_torque_impulse(force * force_function.sample(abs(sword_data[2]) / 180) * sign(sword_data[2]))
 	
 	#$StaticBody2D.global_position = get_global_mouse_position()
 	
 	center = bubble_center()
 	#print(cent)
 	$StaticBody2D.global_position = center
+	
 	
 	
 
@@ -69,6 +74,22 @@ func bubble_center():
 	total_pos /= boneniness
 	
 	return total_pos
+
+func recoil(power: float, mode: String = ""):
+	if not recoiling:
+		recoiling = true
+		
+		if mode != "":
+			pass
+			#sword.apply_impulse(find_angle()[0] * power / 7000, center)
+		else: 
+			sword.apply_torque_impulse(power)
+		
+		await get_tree().create_timer(0.2).timeout
+		recoiling = false
+		
+
+
 
 
 func _on_player_death():

@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=4 uid="uid://cnvmj74fmtu0a"]
+[gd_scene load_steps=11 format=4 uid="uid://cnvmj74fmtu0a"]
 
 [ext_resource type="PackedScene" uid="uid://bt5fji5342xuf" path="res://Scenes/Bubble.tscn" id="1_ct2yy"]
+[ext_resource type="Script" path="res://Scenes/world.gd" id="1_lwqbh"]
 [ext_resource type="PackedScene" uid="uid://d05wdouomcpbg" path="res://Scenes/level.tscn" id="1_wst1v"]
 [ext_resource type="Texture2D" uid="uid://ddd5jpecsme4k" path="res://Images/tileSet.png" id="2_g6k0o"]
 [ext_resource type="PackedScene" uid="uid://d0layh3la33yn" path="res://Scenes/crawlid.tscn" id="3_81h1t"]
@@ -148,7 +149,10 @@ sources/1 = SubResource("TileSetAtlasSource_b8uwr")
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_y8thw"]
 
-[node name="World" type="Node2D"]
+[node name="World" type="Node2D" node_paths=PackedStringArray("player")]
+script = ExtResource("1_lwqbh")
+flylid = ExtResource("5_qd0av")
+player = NodePath("Bubble")
 metadata/_edit_vertical_guides_ = [-270.0]
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
@@ -161,8 +165,11 @@ use_kinematic_bodies = true
 [node name="Crawlid" parent="." instance=ExtResource("3_81h1t")]
 position = Vector2(423, -5)
 
+[node name="Crawlid2" parent="." instance=ExtResource("3_81h1t")]
+position = Vector2(311, 60)
+
 [node name="Bubble" parent="." instance=ExtResource("1_ct2yy")]
-position = Vector2(2316, -964)
+position = Vector2(57, -64)
 
 [node name="TileMapDeco" type="TileMapLayer" parent="."]
 tile_map_data = PackedByteArray("AACdANf/AQABAAQAAACdANP/AQADAAQAAACCANP/AQAAAAMAADA=")
