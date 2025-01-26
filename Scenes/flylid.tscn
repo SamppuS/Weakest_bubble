@@ -1,42 +1,85 @@
-[gd_scene load_steps=7 format=3 uid="uid://bfksemsph07pf"]
+[gd_scene load_steps=15 format=3 uid="uid://bfksemsph07pf"]
 
 [ext_resource type="Script" path="res://Scenes/flylid.gd" id="1_6ifgt"]
-[ext_resource type="Texture2D" uid="uid://bjmidx8k444kd" path="res://Images/Testikuvat/Misc/lihapulla.png" id="2_04ob3"]
 [ext_resource type="PackedScene" uid="uid://bgg618tvsw6rk" path="res://components/hitbox_component.tscn" id="3_je1gb"]
 [ext_resource type="PackedScene" uid="uid://6m73mgg7sud6" path="res://components/health_component.tscn" id="4_13vo2"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_r8s14"]
-radius = 11.0
-height = 42.0
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_80wje"]
-radius = 12.0
-height = 42.0
+[ext_resource type="Texture2D" uid="uid://bvx5ubeep0fs3" path="res://Images/enkeli/secondenemywings.png" id="5_pr2q3"]
+[ext_resource type="Texture2D" uid="uid://c20r3st21rry1" path="res://Images/enkeli/secondenemylowerarmright.png" id="6_k2u5p"]
+[ext_resource type="Texture2D" uid="uid://cfn1dnul4ntty" path="res://Images/enkeli/secondenemyupperlegright.png" id="7_pfs50"]
+[ext_resource type="Texture2D" uid="uid://jir5xvm6lw0e" path="res://Images/enkeli/secondenemylowerlegright.png" id="8_wlckd"]
+[ext_resource type="Texture2D" uid="uid://bgnri8frpb6hs" path="res://Images/enkeli/secondenemylowerlegleft.png" id="9_xpewk"]
+[ext_resource type="Texture2D" uid="uid://cgjrgqen5pmmx" path="res://Images/enkeli/secondenemytorso.png" id="10_ig3t7"]
+[ext_resource type="Texture2D" uid="uid://dnl57nssufklf" path="res://Images/enkeli/secondenemyupperarmleft.png" id="11_q40g7"]
+[ext_resource type="Texture2D" uid="uid://cj6sk66y4j8ep" path="res://Images/enkeli/secondenemyupperarmright.png" id="12_jphol"]
+[ext_resource type="Texture2D" uid="uid://cvi87emern7g6" path="res://Images/enkeli/secondenemyupperlegleft.png" id="13_ad7xn"]
+[ext_resource type="Texture2D" uid="uid://bwjoultr4vuvy" path="res://Images/enkeli/secondenemylowerarmleft.png" id="14_51jvg"]
+[ext_resource type="Texture2D" uid="uid://bgw6mp0rf48od" path="res://Images/enkeli/secondenemyhead.png" id="15_r8uby"]
 
 [node name="Flylid" type="CharacterBody2D"]
 motion_mode = 1
 script = ExtResource("1_6ifgt")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.057732, 0.057732)
-texture = ExtResource("2_04ob3")
-region_enabled = true
-region_rect = Rect2(147.123, 192.123, 485.03, 696.937)
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
 [node name="Timer" type="Timer" parent="."]
 autostart = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CapsuleShape2D_r8s14")
-
 [node name="Hitbox_Component" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_je1gb")]
 health_component = NodePath("../Health_Component")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox_Component"]
-shape = SubResource("CapsuleShape2D_80wje")
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="Hitbox_Component"]
+scale = Vector2(1.1, 1.1)
+polygon = PackedVector2Array(24, -18, 15, -9, 11, -8, 2, 8, 1, 14, -15, 21, -16, 26, -18, 20, -10, 13, -19, 15, -17, 10, -8, 8, -9, -7, -14, -16, -29, -12, -13, -26, -2, -26, -2, -15, 2, -24, 8, -24, 11, -20, 8, -16, 16, -16, 21, -20, 26, -21)
 
 [node name="Health_Component" parent="." instance=ExtResource("4_13vo2")]
+
+[node name="sprites" type="Node2D" parent="."]
+
+[node name="Secondenemywings" type="Sprite2D" parent="sprites"]
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("5_pr2q3")
+
+[node name="Secondenemylowerarmright" type="Sprite2D" parent="sprites"]
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("6_k2u5p")
+
+[node name="Secondenemyupperlegright" type="Sprite2D" parent="sprites"]
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("7_pfs50")
+
+[node name="Secondenemylowerlegright" type="Sprite2D" parent="sprites"]
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("8_wlckd")
+
+[node name="Secondenemyupperarmright" type="Sprite2D" parent="sprites"]
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("12_jphol")
+
+[node name="Secondenemylowerlegleft" type="Sprite2D" parent="sprites"]
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("9_xpewk")
+
+[node name="Secondenemytorso" type="Sprite2D" parent="sprites"]
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("10_ig3t7")
+
+[node name="Secondenemyupperarmleft" type="Sprite2D" parent="sprites"]
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("11_q40g7")
+
+[node name="Secondenemyupperlegleft" type="Sprite2D" parent="sprites"]
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("13_ad7xn")
+
+[node name="Secondenemylowerarmleft" type="Sprite2D" parent="sprites"]
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("14_51jvg")
+
+[node name="Secondenemyhead" type="Sprite2D" parent="sprites"]
+scale = Vector2(0.03, 0.03)
+texture = ExtResource("15_r8uby")
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(24, -18, 15, -9, 11, -8, 2, 8, 1, 14, -15, 21, -16, 26, -18, 20, -10, 13, -19, 15, -17, 10, -8, 8, -9, -7, -14, -16, -29, -12, -13, -26, -2, -26, -2, -15, 2, -24, 8, -24, 11, -20, 8, -16, 16, -16, 21, -20, 26, -21)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
