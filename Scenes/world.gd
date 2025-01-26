@@ -2,7 +2,7 @@ extends Node2D
 
 @export var flylid : PackedScene
 @export var player : Node2D
-
+var win_count = 0
 var flylids := []
 var flyer_timer = 0
 var in_spawner := false
@@ -32,3 +32,7 @@ func _on_spawn_area_area_entered(area: Area2D) -> void:
 func _on_spawn_area_area_exited(area: Area2D) -> void:
 	if area.get_parent().get_groups().size() > 0:
 		in_spawner = false
+func win():
+	win_count += 1
+	if(win_count>=2):
+			print("win")
