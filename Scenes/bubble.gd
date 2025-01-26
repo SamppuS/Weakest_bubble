@@ -108,3 +108,9 @@ func _on_hitbox_component_body_entered(body: Node2D) -> void:
 	if body.get_child(0) is CollisionShape2D:
 		print("d")
 		$Health_Component_Player.die_player()
+
+
+func _on_hitbox_component_area_entered(area: Area2D) -> void:
+	if area.get_child(0) is CollisionShape2D:
+		print("d")
+		$Health_Component_Player.die_player()

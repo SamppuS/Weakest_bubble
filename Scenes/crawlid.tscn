@@ -38,7 +38,6 @@ collision_mask = 2
 hit_from_inside = true
 collide_with_areas = true
 
-
 [node name="RayCast2DDown" type="RayCast2D" parent="Area2D"]
 unique_name_in_owner = true
 position = Vector2(-200, 0)

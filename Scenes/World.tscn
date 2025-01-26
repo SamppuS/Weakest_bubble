@@ -205,116 +205,118 @@ pitch_scale = 0.8
 autoplay = true
 parameters/looping = true
 
-[node name="Node2D" parent="." instance=ExtResource("9_huefa")]
+[node name="Spikes" type="Node2D" parent="."]
+
+[node name="Node2D" parent="Spikes" instance=ExtResource("9_huefa")]
 position = Vector2(1485, -636)
 
-[node name="Node2D2" parent="." instance=ExtResource("9_huefa")]
+[node name="Node2D2" parent="Spikes" instance=ExtResource("9_huefa")]
 position = Vector2(1494, -636)
 
-[node name="Node2D3" parent="." instance=ExtResource("9_huefa")]
+[node name="Node2D3" parent="Spikes" instance=ExtResource("9_huefa")]
 position = Vector2(1502, -636)
 
-[node name="Node2D4" parent="." instance=ExtResource("9_huefa")]
+[node name="Node2D4" parent="Spikes" instance=ExtResource("9_huefa")]
 position = Vector2(1556, -686)
 rotation = -1.58715
 
-[node name="Node2D6" parent="." instance=ExtResource("9_huefa")]
+[node name="Node2D6" parent="Spikes" instance=ExtResource("9_huefa")]
 position = Vector2(2444, -828)
 rotation = -0.0221109
 
-[node name="Node2D7" parent="." instance=ExtResource("9_huefa")]
+[node name="Node2D7" parent="Spikes" instance=ExtResource("9_huefa")]
 position = Vector2(2452, -828)
 rotation = -0.0221109
 
-[node name="Node2D8" parent="." instance=ExtResource("9_huefa")]
+[node name="Node2D8" parent="Spikes" instance=ExtResource("9_huefa")]
 position = Vector2(2461, -828)
 rotation = -0.0221109
 
-[node name="Node2D9" parent="." instance=ExtResource("9_huefa")]
+[node name="Node2D9" parent="Spikes" instance=ExtResource("9_huefa")]
 position = Vector2(2469, -828)
 rotation = -0.0221109
 
-[node name="Node2D10" parent="." instance=ExtResource("9_huefa")]
+[node name="Node2D10" parent="Spikes" instance=ExtResource("9_huefa")]
 position = Vector2(2477, -828)
 rotation = -0.0221109
 
-[node name="Node2D11" parent="." instance=ExtResource("9_huefa")]
+[node name="Node2D11" parent="Spikes" instance=ExtResource("9_huefa")]
 position = Vector2(2484, -828)
 rotation = -0.0221109
 
-[node name="Node2D12" parent="." instance=ExtResource("9_huefa")]
+[node name="Node2D12" parent="Spikes" instance=ExtResource("9_huefa")]
 position = Vector2(2492, -828)
 rotation = -0.0221109
 
-[node name="Node2D13" parent="." instance=ExtResource("9_huefa")]
+[node name="Node2D13" parent="Spikes" instance=ExtResource("9_huefa")]
 position = Vector2(2500, -828)
 rotation = -0.0221109
 
-[node name="Node2D14" parent="." instance=ExtResource("9_huefa")]
+[node name="Node2D14" parent="Spikes" instance=ExtResource("9_huefa")]
 position = Vector2(2508, -828)
 rotation = -0.0221109
 
-[node name="Node2D15" parent="." instance=ExtResource("9_huefa")]
+[node name="Node2D15" parent="Spikes" instance=ExtResource("9_huefa")]
 position = Vector2(2516, -828)
 rotation = -0.0221109
 
-[node name="Node2D16" parent="." instance=ExtResource("9_huefa")]
+[node name="Node2D16" parent="Spikes" instance=ExtResource("9_huefa")]
 position = Vector2(2523, -828)
 rotation = -0.0221109
 
-[node name="Node2D17" parent="." instance=ExtResource("9_huefa")]
+[node name="Node2D17" parent="Spikes" instance=ExtResource("9_huefa")]
 position = Vector2(2530, -828)
 rotation = -0.0221109
 
-[node name="Node2D18" parent="." instance=ExtResource("9_huefa")]
+[node name="Node2D18" parent="Spikes" instance=ExtResource("9_huefa")]
 position = Vector2(2445, -916)
-rotation = -3.15483
+rotation = 3.12836
 
-[node name="Node2D19" parent="." instance=ExtResource("9_huefa")]
+[node name="Node2D19" parent="Spikes" instance=ExtResource("9_huefa")]
 position = Vector2(2453, -916)
-rotation = -3.15483
+rotation = 3.12836
 
-[node name="Node2D20" parent="." instance=ExtResource("9_huefa")]
+[node name="Node2D20" parent="Spikes" instance=ExtResource("9_huefa")]
 position = Vector2(2462, -916)
-rotation = -3.15483
+rotation = 3.12836
 
-[node name="Node2D21" parent="." instance=ExtResource("9_huefa")]
+[node name="Node2D21" parent="Spikes" instance=ExtResource("9_huefa")]
 position = Vector2(2470, -916)
-rotation = -3.15483
+rotation = 3.12836
 
-[node name="Node2D22" parent="." instance=ExtResource("9_huefa")]
+[node name="Node2D22" parent="Spikes" instance=ExtResource("9_huefa")]
 position = Vector2(2478, -916)
-rotation = -3.15483
+rotation = 3.12836
 
-[node name="Node2D23" parent="." instance=ExtResource("9_huefa")]
+[node name="Node2D23" parent="Spikes" instance=ExtResource("9_huefa")]
 position = Vector2(2485, -916)
-rotation = -3.15483
+rotation = 3.12836
 
-[node name="Node2D24" parent="." instance=ExtResource("9_huefa")]
+[node name="Node2D24" parent="Spikes" instance=ExtResource("9_huefa")]
 position = Vector2(2493, -916)
-rotation = -3.15483
+rotation = 3.12836
 
-[node name="Node2D25" parent="." instance=ExtResource("9_huefa")]
+[node name="Node2D25" parent="Spikes" instance=ExtResource("9_huefa")]
 position = Vector2(2501, -916)
-rotation = -3.15483
+rotation = 3.12836
 
-[node name="Node2D26" parent="." instance=ExtResource("9_huefa")]
+[node name="Node2D26" parent="Spikes" instance=ExtResource("9_huefa")]
 position = Vector2(2509, -916)
-rotation = -3.15483
+rotation = 3.12836
 
-[node name="Node2D27" parent="." instance=ExtResource("9_huefa")]
+[node name="Node2D27" parent="Spikes" instance=ExtResource("9_huefa")]
 position = Vector2(2517, -916)
-rotation = -3.15483
+rotation = 3.12836
 
-[node name="Node2D28" parent="." instance=ExtResource("9_huefa")]
+[node name="Node2D28" parent="Spikes" instance=ExtResource("9_huefa")]
 position = Vector2(2524, -916)
-rotation = -3.15483
+rotation = 3.12836
 
-[node name="Node2D29" parent="." instance=ExtResource("9_huefa")]
+[node name="Node2D29" parent="Spikes" instance=ExtResource("9_huefa")]
 position = Vector2(2531, -916)
-rotation = -3.15483
+rotation = 3.12836
 
-[node name="Node2D5" parent="." instance=ExtResource("9_huefa")]
+[node name="Node2D5" parent="Spikes" instance=ExtResource("9_huefa")]
 position = Vector2(149, -1)
 rotation = -1.58715
 

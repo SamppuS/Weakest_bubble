@@ -815,8 +815,8 @@ metadata/_local_pose_override_enabled_ = true
 
 [node name="Bone-23" type="Bone2D" parent="Bubblebody/Skeleton2D"]
 position = Vector2(162.918, 367.377)
-rotation = -0.0574922
-scale = Vector2(0.999998, 0.999998)
+rotation = -0.0574921
+scale = Vector2(0.999997, 0.999997)
 rest = Transform2D(0.998348, -0.0574511, 0.0574511, 0.998348, 162.918, 367.377)
 auto_calculate_length_and_angle = false
 length = 75.0
@@ -843,6 +843,7 @@ metadata/_local_pose_override_enabled_ = true
 [node name="Bone-25" type="Bone2D" parent="Bubblebody/Skeleton2D"]
 position = Vector2(139.939, 512.627)
 rotation = -1.30556
+scale = Vector2(1, 1)
 rest = Transform2D(0.262132, -0.965032, 0.965032, 0.262132, 139.939, 512.627)
 auto_calculate_length_and_angle = false
 length = 75.0
@@ -4616,4 +4617,5 @@ shape = SubResource("CircleShape2D_fbcfy")
 Max_Health = 20
 
 [connection signal="body_entered" from="Bubble_Sword" to="Bubble_Sword" method="_on_body_entered"]
+[connection signal="area_entered" from="StaticBody2D/Hitbox_Component" to="." method="_on_hitbox_component_area_entered"]
 [connection signal="body_entered" from="StaticBody2D/Hitbox_Component" to="." method="_on_hitbox_component_body_entered"]
