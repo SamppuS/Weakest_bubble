@@ -14,7 +14,7 @@ func damage(attack:Attack):
 	health -= attack.attack_damage
 	if health <= 0:
 		if get_parent().is_in_group("Player"):
+			%AudioStreamPlayer2D.play()
 			emit_signal("player_death")
-			$AudioStreamPlayer2D.play()
 		else:
 			get_parent().queue_free()
