@@ -20,7 +20,7 @@ func _process(delta: float) -> void:
 		enemy.player = player
 		enemy.position = player.center + Vector2.UP * 1000 + Vector2.RIGHT * randf_range(-20, 20)
 		
-		flyer_timer = Time.get_ticks_msec() + randi_range(5000, 12000)
+		flyer_timer = Time.get_ticks_msec() + randi_range(8000, 16000)
 	
 
 
