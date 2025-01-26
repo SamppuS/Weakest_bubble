@@ -7,7 +7,7 @@ var death_count = -1
 @onready var bubblebody = $Bubblebody
 @onready var bubblesword = $Bubble_Sword
 @onready var camera = $StaticBody2D/Camera2D
-
+var alive = true
 
 const radius = 15
 
@@ -29,7 +29,7 @@ func _process(delta: float) -> void:
 
 	if sign(sword_data[2]) != sign(sword.angular_velocity) and not recoiling:
 		sword.angular_velocity = 0
-	if force_function:
+	if force_function and alive:
 		var force = -1500
 		if recoiling:
 			force /= 5
@@ -83,7 +83,7 @@ func recoil(power: float, mode: String = ""):
 		if mode != "":
 			pass
 			#sword.apply_impulse(find_angle()[0] * power / 7000, center)
-		else: 
+		else:
 			sword.apply_torque_impulse(power)
 		
 		await get_tree().create_timer(0.2).timeout
