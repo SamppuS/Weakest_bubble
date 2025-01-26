@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://d05wdouomcpbg" path="res://Scenes/level.tscn" id="1_wst1v"]
 [ext_resource type="Texture2D" uid="uid://ddd5jpecsme4k" path="res://Images/tileSet.png" id="2_g6k0o"]
 [ext_resource type="PackedScene" uid="uid://d0layh3la33yn" path="res://Scenes/crawlid.tscn" id="3_81h1t"]
-[ext_resource type="Texture2D" uid="uid://q814eefodqp2" path="res://Images/Testikuvat/BasicShapes/Neliöt/Neliö4.png" id="3_wbj8g"]
+[ext_resource type="Texture2D" uid="uid://q814eefodqp2" path="res://Images/Testikuvat/BasicShapes/Neliöt/Neliö4.png" id="3_wbj8g"]
 [ext_resource type="PackedScene" uid="uid://bfksemsph07pf" path="res://Scenes/flylid.tscn" id="5_qd0av"]
 [ext_resource type="PackedScene" uid="uid://cgakd127v1gjx" path="res://Scenes/god.tscn" id="6_ug8rb"]
 [ext_resource type="AudioStream" uid="uid://bpyott744dush" path="res://serbia-nature-sounds-245993.mp3" id="8_wgykg"]
@@ -192,7 +192,7 @@ position = Vector2(423, -5)
 position = Vector2(311, 60)
 
 [node name="Bubble" parent="." instance=ExtResource("1_ct2yy")]
-position = Vector2(2084, -1247)
+position = Vector2(76, -55)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(0, 130.071)
