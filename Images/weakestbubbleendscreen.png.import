@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ct6l8li0fcrdb"
-path="res://.godot/imported/Ympyrä1.png-64054bb540d62d73dd12f695d46d865b.ctex"
+uid="uid://dd8ejprw83se6"
+path="res://.godot/imported/weakestbubbleendscreen.png-cf5d21ca6334a5d78025decd5b3d319d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/Testikuvat/BasicShapes/Ympyrät/Ympyrä1.png"
-dest_files=["res://.godot/imported/Ympyrä1.png-64054bb540d62d73dd12f695d46d865b.ctex"]
+source_file="res://Images/weakestbubbleendscreen.png"
+dest_files=["res://.godot/imported/weakestbubbleendscreen.png-cf5d21ca6334a5d78025decd5b3d319d.ctex"]
 
 [params]
 
