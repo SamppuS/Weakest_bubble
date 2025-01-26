@@ -13,7 +13,7 @@ const radius = 15
 
 var center := Vector2.ZERO
 var recoiling := false
-
+var control = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -23,6 +23,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	
+	if control == false: return
 	var sword_data = find_angle()
 	
 	
@@ -94,9 +96,11 @@ func recoil(power: float, mode: String = ""):
 
 
 func _on_player_death():
-	get_tree().root.add_child(bubblesword)
-	get_child(2).visible = false
-	get_child(3).get_child(1).visible = false
+	#print("dyeing")
+	ragdoll()
+	#get_tree().root.add_child(bubblesword)
+	#get_child(2).visible = false
+	#get_child(3).get_child(1).visible = false
 	#get_tree().root.add_child(camera)
 	#queue_free()
 
@@ -116,3 +120,12 @@ func _on_hitbox_component_area_entered(area: Area2D) -> void:
 		print(death_count)
 		if(death_count>=2):
 			$Health_Component_Player.die_player()
+			_on_player_death()
+
+func ragdoll():
+	if control:
+		bubblebody.visible = false
+		$PinJoint2D.queue_free()
+		control = false
+		sword.gravity_scale = .5
+		sword.angular_velocity /= 100
