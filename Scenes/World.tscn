@@ -5,10 +5,10 @@
 [ext_resource type="PackedScene" uid="uid://d05wdouomcpbg" path="res://Scenes/level.tscn" id="1_wst1v"]
 [ext_resource type="Texture2D" uid="uid://ddd5jpecsme4k" path="res://Images/tileSet.png" id="2_g6k0o"]
 [ext_resource type="Texture2D" uid="uid://q814eefodqp2" path="res://Images/Testikuvat/BasicShapes/Neliöt/Neliö4.png" id="3_4jvll"]
-[ext_resource type="PackedScene" uid="uid://dlvnog3euhiho" path="res://Scenes/crawlid.tscn" id="3_81h1t"]
+[ext_resource type="PackedScene" uid="uid://d0layh3la33yn" path="res://Scenes/crawlid.tscn" id="3_81h1t"]
 [ext_resource type="PackedScene" uid="uid://bfksemsph07pf" path="res://Scenes/flylid.tscn" id="5_qd0av"]
-[ext_resource type="Texture2D" uid="uid://cbir66ga6frfw" path="res://Images/spike.png" id="7_4ru55"]
 [ext_resource type="AudioStream" uid="uid://bpyott744dush" path="res://serbia-nature-sounds-245993.mp3" id="8_wgykg"]
+[ext_resource type="PackedScene" uid="uid://imirociph11c" path="res://components/Spike.tscn" id="9_huefa"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_qgdrw"]
 vertices = PackedVector2Array(2246.18, -541.102, 1870.96, -544.891, 1887, -717.273, 2265.84, -1602.8, 1228.87, -1806.63, 1708.34, -712.906, -377.688, -1200.57, -147.703, 90.5391, 1510.5, -552.156, 526, 55.0781, 1482.72, -294.25)
@@ -198,280 +198,125 @@ shape = SubResource("WorldBoundaryShape2D_y8thw")
 position = Vector2(248, -296)
 player = NodePath("../Bubble")
 
-[node name="Spikes" type="Node2D" parent="."]
-
-[node name="Spike" type="Area2D" parent="Spikes"]
-position = Vector2(1552, -694)
-rotation = -1.5765
-
-[node name="Sprite2D" type="Sprite2D" parent="Spikes/Spike"]
-position = Vector2(-3.5, 1.49998)
-scale = Vector2(0.34375, 0.468751)
-texture = ExtResource("7_4ru55")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Spikes/Spike"]
-position = Vector2(-1.875, 1.30208)
-scale = Vector2(0.8125, 0.895833)
-polygon = PackedVector2Array(-2, -7, 3, 8, -7, 8)
-
-[node name="Spike2" type="Area2D" parent="Spikes"]
-position = Vector2(2449, -833)
-rotation = 0.00381612
-
-[node name="Sprite2D" type="Sprite2D" parent="Spikes/Spike2"]
-position = Vector2(-3.5, 1.49998)
-scale = Vector2(0.34375, 0.468751)
-texture = ExtResource("7_4ru55")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Spikes/Spike2"]
-position = Vector2(-1.875, 1.30208)
-scale = Vector2(0.8125, 0.895833)
-polygon = PackedVector2Array(-2, -7, 3, 8, -7, 8)
-
-[node name="Spike3" type="Area2D" parent="Spikes"]
-position = Vector2(2460, -833)
-rotation = 0.00381612
-
-[node name="Sprite2D" type="Sprite2D" parent="Spikes/Spike3"]
-position = Vector2(-3.5, 1.49998)
-scale = Vector2(0.34375, 0.468751)
-texture = ExtResource("7_4ru55")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Spikes/Spike3"]
-position = Vector2(-1.875, 1.30208)
-scale = Vector2(0.8125, 0.895833)
-polygon = PackedVector2Array(-2, -7, 3, 8, -7, 8)
-
-[node name="Spike4" type="Area2D" parent="Spikes"]
-position = Vector2(2471, -833)
-rotation = 0.00381612
-
-[node name="Sprite2D" type="Sprite2D" parent="Spikes/Spike4"]
-position = Vector2(-3.5, 1.49998)
-scale = Vector2(0.34375, 0.468751)
-texture = ExtResource("7_4ru55")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Spikes/Spike4"]
-position = Vector2(-1.875, 1.30208)
-scale = Vector2(0.8125, 0.895833)
-polygon = PackedVector2Array(-2, -7, 3, 8, -7, 8)
-
-[node name="Spike5" type="Area2D" parent="Spikes"]
-position = Vector2(2481, -833)
-rotation = 0.00381612
-
-[node name="Sprite2D" type="Sprite2D" parent="Spikes/Spike5"]
-position = Vector2(-3.5, 1.49998)
-scale = Vector2(0.34375, 0.468751)
-texture = ExtResource("7_4ru55")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Spikes/Spike5"]
-position = Vector2(-1.875, 1.30208)
-scale = Vector2(0.8125, 0.895833)
-polygon = PackedVector2Array(-2, -7, 3, 8, -7, 8)
-
-[node name="Spike6" type="Area2D" parent="Spikes"]
-position = Vector2(2491, -833)
-rotation = 0.00381612
-
-[node name="Sprite2D" type="Sprite2D" parent="Spikes/Spike6"]
-position = Vector2(-3.5, 1.49998)
-scale = Vector2(0.34375, 0.468751)
-texture = ExtResource("7_4ru55")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Spikes/Spike6"]
-position = Vector2(-1.875, 1.30208)
-scale = Vector2(0.8125, 0.895833)
-polygon = PackedVector2Array(-2, -7, 3, 8, -7, 8)
-
-[node name="Spike7" type="Area2D" parent="Spikes"]
-position = Vector2(2501, -833)
-rotation = 0.00381612
-
-[node name="Sprite2D" type="Sprite2D" parent="Spikes/Spike7"]
-position = Vector2(-3.5, 1.49998)
-scale = Vector2(0.34375, 0.468751)
-texture = ExtResource("7_4ru55")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Spikes/Spike7"]
-position = Vector2(-1.875, 1.30208)
-scale = Vector2(0.8125, 0.895833)
-polygon = PackedVector2Array(-2, -7, 3, 8, -7, 8)
-
-[node name="Spike8" type="Area2D" parent="Spikes"]
-position = Vector2(2511, -833)
-rotation = 0.00381612
-
-[node name="Sprite2D" type="Sprite2D" parent="Spikes/Spike8"]
-position = Vector2(-3.5, 1.49998)
-scale = Vector2(0.34375, 0.468751)
-texture = ExtResource("7_4ru55")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Spikes/Spike8"]
-position = Vector2(-1.875, 1.30208)
-scale = Vector2(0.8125, 0.895833)
-polygon = PackedVector2Array(-2, -7, 3, 8, -7, 8)
-
-[node name="Spike9" type="Area2D" parent="Spikes"]
-position = Vector2(2521, -833)
-rotation = 0.00381612
-
-[node name="Sprite2D" type="Sprite2D" parent="Spikes/Spike9"]
-position = Vector2(-3.5, 1.49998)
-scale = Vector2(0.34375, 0.468751)
-texture = ExtResource("7_4ru55")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Spikes/Spike9"]
-position = Vector2(-1.875, 1.30208)
-scale = Vector2(0.8125, 0.895833)
-polygon = PackedVector2Array(-2, -7, 3, 8, -7, 8)
-
-[node name="Spike10" type="Area2D" parent="Spikes"]
-position = Vector2(2532, -833)
-rotation = 0.00381612
-
-[node name="Sprite2D" type="Sprite2D" parent="Spikes/Spike10"]
-position = Vector2(-3.5, 1.49998)
-scale = Vector2(0.34375, 0.468751)
-texture = ExtResource("7_4ru55")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Spikes/Spike10"]
-position = Vector2(-1.875, 1.30208)
-scale = Vector2(0.8125, 0.895833)
-polygon = PackedVector2Array(-2, -7, 3, 8, -7, 8)
-
-[node name="Spike11" type="Area2D" parent="Spikes"]
-position = Vector2(2442, -911)
-rotation = 3.14471
-
-[node name="Sprite2D" type="Sprite2D" parent="Spikes/Spike11"]
-position = Vector2(-3.5, 1.49998)
-scale = Vector2(0.34375, 0.468751)
-texture = ExtResource("7_4ru55")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Spikes/Spike11"]
-position = Vector2(-1.875, 1.30208)
-scale = Vector2(0.8125, 0.895833)
-polygon = PackedVector2Array(-2, -7, 3, 8, -7, 8)
-
-[node name="Spike12" type="Area2D" parent="Spikes"]
-position = Vector2(2453, -911)
-rotation = 3.14471
-
-[node name="Sprite2D" type="Sprite2D" parent="Spikes/Spike12"]
-position = Vector2(-3.5, 1.49998)
-scale = Vector2(0.34375, 0.468751)
-texture = ExtResource("7_4ru55")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Spikes/Spike12"]
-position = Vector2(-1.875, 1.30208)
-scale = Vector2(0.8125, 0.895833)
-polygon = PackedVector2Array(-2, -7, 3, 8, -7, 8)
-
-[node name="Spike13" type="Area2D" parent="Spikes"]
-position = Vector2(2464, -911)
-rotation = 3.14471
-
-[node name="Sprite2D" type="Sprite2D" parent="Spikes/Spike13"]
-position = Vector2(-3.5, 1.49998)
-scale = Vector2(0.34375, 0.468751)
-texture = ExtResource("7_4ru55")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Spikes/Spike13"]
-position = Vector2(-1.875, 1.30208)
-scale = Vector2(0.8125, 0.895833)
-polygon = PackedVector2Array(-2, -7, 3, 8, -7, 8)
-
-[node name="Spike14" type="Area2D" parent="Spikes"]
-position = Vector2(2474, -911)
-rotation = 3.14471
-
-[node name="Sprite2D" type="Sprite2D" parent="Spikes/Spike14"]
-position = Vector2(-3.5, 1.49998)
-scale = Vector2(0.34375, 0.468751)
-texture = ExtResource("7_4ru55")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Spikes/Spike14"]
-position = Vector2(-1.875, 1.30208)
-scale = Vector2(0.8125, 0.895833)
-polygon = PackedVector2Array(-2, -7, 3, 8, -7, 8)
-
-[node name="Spike15" type="Area2D" parent="Spikes"]
-position = Vector2(2484, -911)
-rotation = 3.14471
-
-[node name="Sprite2D" type="Sprite2D" parent="Spikes/Spike15"]
-position = Vector2(-3.5, 1.49998)
-scale = Vector2(0.34375, 0.468751)
-texture = ExtResource("7_4ru55")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Spikes/Spike15"]
-position = Vector2(-1.875, 1.30208)
-scale = Vector2(0.8125, 0.895833)
-polygon = PackedVector2Array(-2, -7, 3, 8, -7, 8)
-
-[node name="Spike16" type="Area2D" parent="Spikes"]
-position = Vector2(2494, -911)
-rotation = 3.14471
-
-[node name="Sprite2D" type="Sprite2D" parent="Spikes/Spike16"]
-position = Vector2(-3.5, 1.49998)
-scale = Vector2(0.34375, 0.468751)
-texture = ExtResource("7_4ru55")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Spikes/Spike16"]
-position = Vector2(-1.875, 1.30208)
-scale = Vector2(0.8125, 0.895833)
-polygon = PackedVector2Array(-2, -7, 3, 8, -7, 8)
-
-[node name="Spike17" type="Area2D" parent="Spikes"]
-position = Vector2(2504, -911)
-rotation = 3.14471
-
-[node name="Sprite2D" type="Sprite2D" parent="Spikes/Spike17"]
-position = Vector2(-3.5, 1.49998)
-scale = Vector2(0.34375, 0.468751)
-texture = ExtResource("7_4ru55")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Spikes/Spike17"]
-position = Vector2(-1.875, 1.30208)
-scale = Vector2(0.8125, 0.895833)
-polygon = PackedVector2Array(-2, -7, 3, 8, -7, 8)
-
-[node name="Spike18" type="Area2D" parent="Spikes"]
-position = Vector2(2514, -911)
-rotation = 3.14471
-
-[node name="Sprite2D" type="Sprite2D" parent="Spikes/Spike18"]
-position = Vector2(-3.5, 1.49998)
-scale = Vector2(0.34375, 0.468751)
-texture = ExtResource("7_4ru55")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Spikes/Spike18"]
-position = Vector2(-1.875, 1.30208)
-scale = Vector2(0.8125, 0.895833)
-polygon = PackedVector2Array(-2, -7, 3, 8, -7, 8)
-
-[node name="Spike19" type="Area2D" parent="Spikes"]
-position = Vector2(2525, -911)
-rotation = 3.14471
-
-[node name="Sprite2D" type="Sprite2D" parent="Spikes/Spike19"]
-position = Vector2(-3.5, 1.49998)
-scale = Vector2(0.34375, 0.468751)
-texture = ExtResource("7_4ru55")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Spikes/Spike19"]
-position = Vector2(-1.875, 1.30208)
-scale = Vector2(0.8125, 0.895833)
-polygon = PackedVector2Array(-2, -7, 3, 8, -7, 8)
-
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_wgykg")
 volume_db = -12.0
 pitch_scale = 0.8
 autoplay = true
 parameters/looping = true
+
+[node name="Node2D" parent="." instance=ExtResource("9_huefa")]
+position = Vector2(1485, -636)
+
+[node name="Node2D2" parent="." instance=ExtResource("9_huefa")]
+position = Vector2(1494, -636)
+
+[node name="Node2D3" parent="." instance=ExtResource("9_huefa")]
+position = Vector2(1502, -636)
+
+[node name="Node2D4" parent="." instance=ExtResource("9_huefa")]
+position = Vector2(1556, -686)
+rotation = -1.58715
+
+[node name="Node2D6" parent="." instance=ExtResource("9_huefa")]
+position = Vector2(2444, -828)
+rotation = -0.0221109
+
+[node name="Node2D7" parent="." instance=ExtResource("9_huefa")]
+position = Vector2(2452, -828)
+rotation = -0.0221109
+
+[node name="Node2D8" parent="." instance=ExtResource("9_huefa")]
+position = Vector2(2461, -828)
+rotation = -0.0221109
+
+[node name="Node2D9" parent="." instance=ExtResource("9_huefa")]
+position = Vector2(2469, -828)
+rotation = -0.0221109
+
+[node name="Node2D10" parent="." instance=ExtResource("9_huefa")]
+position = Vector2(2477, -828)
+rotation = -0.0221109
+
+[node name="Node2D11" parent="." instance=ExtResource("9_huefa")]
+position = Vector2(2484, -828)
+rotation = -0.0221109
+
+[node name="Node2D12" parent="." instance=ExtResource("9_huefa")]
+position = Vector2(2492, -828)
+rotation = -0.0221109
+
+[node name="Node2D13" parent="." instance=ExtResource("9_huefa")]
+position = Vector2(2500, -828)
+rotation = -0.0221109
+
+[node name="Node2D14" parent="." instance=ExtResource("9_huefa")]
+position = Vector2(2508, -828)
+rotation = -0.0221109
+
+[node name="Node2D15" parent="." instance=ExtResource("9_huefa")]
+position = Vector2(2516, -828)
+rotation = -0.0221109
+
+[node name="Node2D16" parent="." instance=ExtResource("9_huefa")]
+position = Vector2(2523, -828)
+rotation = -0.0221109
+
+[node name="Node2D17" parent="." instance=ExtResource("9_huefa")]
+position = Vector2(2530, -828)
+rotation = -0.0221109
+
+[node name="Node2D18" parent="." instance=ExtResource("9_huefa")]
+position = Vector2(2445, -916)
+rotation = -3.15483
+
+[node name="Node2D19" parent="." instance=ExtResource("9_huefa")]
+position = Vector2(2453, -916)
+rotation = -3.15483
+
+[node name="Node2D20" parent="." instance=ExtResource("9_huefa")]
+position = Vector2(2462, -916)
+rotation = -3.15483
+
+[node name="Node2D21" parent="." instance=ExtResource("9_huefa")]
+position = Vector2(2470, -916)
+rotation = -3.15483
+
+[node name="Node2D22" parent="." instance=ExtResource("9_huefa")]
+position = Vector2(2478, -916)
+rotation = -3.15483
+
+[node name="Node2D23" parent="." instance=ExtResource("9_huefa")]
+position = Vector2(2485, -916)
+rotation = -3.15483
+
+[node name="Node2D24" parent="." instance=ExtResource("9_huefa")]
+position = Vector2(2493, -916)
+rotation = -3.15483
+
+[node name="Node2D25" parent="." instance=ExtResource("9_huefa")]
+position = Vector2(2501, -916)
+rotation = -3.15483
+
+[node name="Node2D26" parent="." instance=ExtResource("9_huefa")]
+position = Vector2(2509, -916)
+rotation = -3.15483
+
+[node name="Node2D27" parent="." instance=ExtResource("9_huefa")]
+position = Vector2(2517, -916)
+rotation = -3.15483
+
+[node name="Node2D28" parent="." instance=ExtResource("9_huefa")]
+position = Vector2(2524, -916)
+rotation = -3.15483
+
+[node name="Node2D29" parent="." instance=ExtResource("9_huefa")]
+position = Vector2(2531, -916)
+rotation = -3.15483
+
+[node name="Node2D5" parent="." instance=ExtResource("9_huefa")]
+position = Vector2(149, -1)
+rotation = -1.58715
 
 [connection signal="area_entered" from="Spawn area" to="." method="_on_spawn_area_area_entered"]
 [connection signal="area_exited" from="Spawn area" to="." method="_on_spawn_area_area_exited"]
