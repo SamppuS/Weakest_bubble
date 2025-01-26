@@ -102,4 +102,5 @@ func _on_player_death():
 
 func _on_hitbox_component_area_entered(area: Area2D) -> void:
 	if area.get_child(1) is CollisionPolygon2D:
+		print("d")
 		$Health_Component_Player.health = -1000
