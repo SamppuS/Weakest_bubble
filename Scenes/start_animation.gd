@@ -1,11 +1,14 @@
 extends AnimationPlayer
 
+func _ready():
+	animation_finished.connect(_on_animation_finished)
+	$Camera2D.zoom = Vector2(0.6, 0.6)
+	play("animation1")
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _on_animation_finished(anim_name: String):
+	match anim_name:
+		"animation1":
+			$Camera2D.zoom = Vector2(1, 1)
+			play("animation2")
+		"animation2":
+			get_tree().change_scene_to_file("res://Scenes/World.tscn")

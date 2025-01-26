@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ct6l8li0fcrdb"
-path="res://.godot/imported/Ympyrä1.png-64054bb540d62d73dd12f695d46d865b.ctex"
+path="res://.godot/imported/Ympyrä1.png-b7850ca622a2151edeed2a84da702b0b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/Testikuvat/BasicShapes/Ympyrät/Ympyrä1.png"
-dest_files=["res://.godot/imported/Ympyrä1.png-64054bb540d62d73dd12f695d46d865b.ctex"]
+source_file="res://Images/Testikuvat/BasicShapes/Ympyrät/Ympyrä1.png"
+dest_files=["res://.godot/imported/Ympyrä1.png-b7850ca622a2151edeed2a84da702b0b.ctex"]
 
 [params]
 

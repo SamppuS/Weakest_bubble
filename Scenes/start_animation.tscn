@@ -1,3 +1,116 @@
-[gd_scene format=3 uid="uid://dh10cj3qod27q"]
+[gd_scene load_steps=8 format=3 uid="uid://dh10cj3qod27q"]
+
+[ext_resource type="Script" path="res://Scenes/start_animation.gd" id="1_0jln3"]
+[ext_resource type="Texture2D" uid="uid://c6lcj38k70uw8" path="res://Images/weakestbubblesad.png" id="2_j15fj"]
+[ext_resource type="Texture2D" uid="uid://dlunk0ltsgegm" path="res://Images/weakestbubblestart.png" id="3_oc5oe"]
+
+[sub_resource type="Animation" id="Animation_afmn6"]
+resource_name = "animation1"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StartAnimation/Camera2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0666667, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(960, -540), Vector2(960, -540)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StartAnimation/CanvasModulate:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0333333, 0.966667, 2.03333, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_otfxq"]
+resource_name = "animation2"
+length = 6.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StartAnimation/Camera2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.96667, 5, 6.46667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(3000, -320), Vector2(3000, -320), Vector2(3000, -1550), Vector2(3000, -1550)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StartAnimation/CanvasModulate:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0333333, 1.36667, 5.66667, 6.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_3bqlo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StartAnimation/Camera2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("StartAnimation/CanvasModulate:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_phkya"]
+_data = {
+"RESET": SubResource("Animation_3bqlo"),
+"animation1": SubResource("Animation_afmn6"),
+"animation2": SubResource("Animation_otfxq")
+}
 
 [node name="StartAnimation" type="AnimationPlayer"]
+libraries = {
+"": SubResource("AnimationLibrary_phkya")
+}
+script = ExtResource("1_0jln3")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(3000, -320)
+
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+modulate = Color(0, 0, 0, 1)
+
+[node name="Weakestbubblesad" type="Sprite2D" parent="CanvasModulate"]
+position = Vector2(3000, -959)
+scale = Vector2(1.1, 1)
+texture = ExtResource("2_j15fj")
+
+[node name="Weakestbubblestart" type="Sprite2D" parent="CanvasModulate"]
+position = Vector2(960, -540)
+texture = ExtResource("3_oc5oe")

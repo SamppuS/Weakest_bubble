@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://yc7mw2n067y2"]
+[gd_scene load_steps=3 format=3 uid="uid://yc7mw2n067y2"]
 
 [ext_resource type="Script" path="res://main_menu.gd" id="1_qhhex"]
+[ext_resource type="Texture2D" uid="uid://rgu1q6t13ffh" path="res://Images/weakestbubblemenuscreen.png" id="2_xes6x"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -10,6 +11,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_qhhex")
+
+[node name="Weakestbubblemenuscreen" type="Sprite2D" parent="."]
+position = Vector2(574, 329)
+scale = Vector2(0.597917, 0.596296)
+texture = ExtResource("2_xes6x")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
