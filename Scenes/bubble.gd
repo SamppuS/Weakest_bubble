@@ -98,11 +98,7 @@ func recoil(power: float, mode: String = ""):
 func _on_player_death():
 	#print("dyeing")
 	ragdoll()
-	#get_tree().root.add_child(bubblesword)
-	#get_child(2).visible = false
-	#get_child(3).get_child(1).visible = false
-	#get_tree().root.add_child(camera)
-	#queue_free()
+	#ascend()
 
 
 
@@ -127,3 +123,12 @@ func ragdoll():
 		control = false
 		sword.gravity_scale = .5
 		sword.angular_velocity /= 100
+		
+func ascend():
+	if control:
+		$PinJoint2D.queue_free()
+		sword.gravity_scale = .5
+		sword.angular_velocity /= 100
+		control = false
+		bubblebody.gravity_scale = -0.01
+		
