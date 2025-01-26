@@ -131,4 +131,6 @@ func ascend():
 		sword.angular_velocity /= 100
 		control = false
 		bubblebody.gravity_scale = -0.01
+		await get_tree().create_timer(4).timeout
+		get_tree().change_scene_to_file("res://Scenes/win.tscn")
 		
