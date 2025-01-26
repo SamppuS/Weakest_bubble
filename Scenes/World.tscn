@@ -5,10 +5,10 @@
 [ext_resource type="PackedScene" uid="uid://d05wdouomcpbg" path="res://Scenes/level.tscn" id="1_wst1v"]
 [ext_resource type="Texture2D" uid="uid://ddd5jpecsme4k" path="res://Images/tileSet.png" id="2_g6k0o"]
 [ext_resource type="Texture2D" uid="uid://q814eefodqp2" path="res://Images/Testikuvat/BasicShapes/Neliöt/Neliö4.png" id="3_4jvll"]
-[ext_resource type="PackedScene" uid="uid://d0layh3la33yn" path="res://Scenes/crawlid.tscn" id="3_81h1t"]
+[ext_resource type="PackedScene" uid="uid://dlvnog3euhiho" path="res://Scenes/crawlid.tscn" id="3_81h1t"]
 [ext_resource type="PackedScene" uid="uid://bfksemsph07pf" path="res://Scenes/flylid.tscn" id="5_qd0av"]
 [ext_resource type="AudioStream" uid="uid://bpyott744dush" path="res://serbia-nature-sounds-245993.mp3" id="8_wgykg"]
-[ext_resource type="PackedScene" uid="uid://imirociph11c" path="res://components/Spike.tscn" id="9_huefa"]
+[ext_resource type="PackedScene" path="res://components/Spike.tscn" id="9_huefa"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_qgdrw"]
 vertices = PackedVector2Array(2246.18, -541.102, 1870.96, -544.891, 1887, -717.273, 2265.84, -1602.8, 1228.87, -1806.63, 1708.34, -712.906, -377.688, -1200.57, -147.703, 90.5391, 1510.5, -552.156, 526, 55.0781, 1482.72, -294.25)
