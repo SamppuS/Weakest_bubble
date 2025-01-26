@@ -102,8 +102,6 @@ func _on_player_death():
 
 
 
-
-
 func _on_hitbox_component_body_entered(body: Node2D) -> void:
 	if body.get_child(0) is CollisionShape2D:
 		print("d")
