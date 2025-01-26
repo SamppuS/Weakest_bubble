@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://coyxg62j6kqxq"]
+[gd_scene load_steps=20 format=3 uid="uid://cgakd127v1gjx"]
 
 [ext_resource type="Texture2D" uid="uid://b25ckjaxpw4im" path="res://Images/jumala/godcloth.png" id="1_4phd1"]
 [ext_resource type="Texture2D" uid="uid://c46lwmlqxxfu0" path="res://Images/jumala/godfifthchild.png" id="2_4h6jl"]
@@ -22,14 +22,24 @@
 script/source = "extends RigidBody2D
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+@export var bob_speed = 2.0  # Adjust for faster/slower movement
+@export var bob_amount = 0.3  # Adjust for larger/smaller movement
+
+@onready var sprites = $Sprite2D.get_children()
+var time_offsets = []
+
+func _ready():
+	sprites.remove_at(14)
+	for sprite in sprites:
+		time_offsets.append(randf() * 10.0)  # Random starting offset
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _process(delta):
+	for i in sprites.size():
+		var sprite = sprites[i]
+		var offset = sin((Time.get_ticks_msec() / 1000.0 + time_offsets[i]) * bob_speed) * bob_amount
+		sprite.position.y = sprite.position.y + offset
 
 
 func _on_body_entered(body: Node) -> void:
@@ -62,41 +72,21 @@ position = Vector2(-959, -297)
 scale = Vector2(1.098, 1.098)
 texture = ExtResource("1_4phd1")
 
-[node name="Godfifthchild" type="Sprite2D" parent="Sprite2D"]
-position = Vector2(-959, -297)
-texture = ExtResource("2_4h6jl")
-
 [node name="Godfirstchild" type="Sprite2D" parent="Sprite2D"]
 position = Vector2(-959, -297)
 texture = ExtResource("3_jjp4a")
-
-[node name="Godfourthchild" type="Sprite2D" parent="Sprite2D"]
-position = Vector2(-959, -297)
-texture = ExtResource("4_i0w2v")
-
-[node name="Godhead" type="Sprite2D" parent="Sprite2D"]
-position = Vector2(-959, -297)
-texture = ExtResource("5_gdd8y")
 
 [node name="Godlowerarmleft" type="Sprite2D" parent="Sprite2D"]
 position = Vector2(-959, -297)
 texture = ExtResource("6_ylu30")
 
-[node name="Godlowerarmright" type="Sprite2D" parent="Sprite2D"]
+[node name="Godupperlegright" type="Sprite2D" parent="Sprite2D"]
 position = Vector2(-959, -297)
-texture = ExtResource("7_a8037")
+texture = ExtResource("17_s87aa")
 
 [node name="Godlowerlegleft" type="Sprite2D" parent="Sprite2D"]
 position = Vector2(-959, -297)
 texture = ExtResource("8_pxrq4")
-
-[node name="Godlowerlegright" type="Sprite2D" parent="Sprite2D"]
-position = Vector2(-959, -297)
-texture = ExtResource("9_6dqvi")
-
-[node name="Godrandomball" type="Sprite2D" parent="Sprite2D"]
-position = Vector2(-959, -297)
-texture = ExtResource("10_x3uha")
 
 [node name="Godsecondchild" type="Sprite2D" parent="Sprite2D"]
 position = Vector2(-959, -297)
@@ -106,25 +96,45 @@ texture = ExtResource("11_ettwn")
 position = Vector2(-959, -297)
 texture = ExtResource("12_ljgwx")
 
+[node name="Godlowerarmright" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(-959, -297)
+texture = ExtResource("7_a8037")
+
 [node name="Godtorso" type="Sprite2D" parent="Sprite2D"]
 position = Vector2(-959, -297)
 texture = ExtResource("13_mj8dj")
+
+[node name="Godhead" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(-959, -297)
+texture = ExtResource("5_gdd8y")
 
 [node name="Godupperarmleft" type="Sprite2D" parent="Sprite2D"]
 position = Vector2(-959, -297)
 texture = ExtResource("14_hrgi4")
 
-[node name="Godupperarmright" type="Sprite2D" parent="Sprite2D"]
+[node name="Godrandomball" type="Sprite2D" parent="Sprite2D"]
 position = Vector2(-959, -297)
-texture = ExtResource("15_e1kpl")
+texture = ExtResource("10_x3uha")
+
+[node name="Godfourthchild" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(-959, -297)
+texture = ExtResource("4_i0w2v")
+
+[node name="Godfifthchild" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(-959, -297)
+texture = ExtResource("2_4h6jl")
+
+[node name="Godlowerlegright" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(-959, -297)
+texture = ExtResource("9_6dqvi")
 
 [node name="Godupperlegleft" type="Sprite2D" parent="Sprite2D"]
 position = Vector2(-959, -297)
 texture = ExtResource("16_bf0jn")
 
-[node name="Godupperlegright" type="Sprite2D" parent="Sprite2D"]
+[node name="Godupperarmright" type="Sprite2D" parent="Sprite2D"]
 position = Vector2(-959, -297)
-texture = ExtResource("17_s87aa")
+texture = ExtResource("15_e1kpl")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
