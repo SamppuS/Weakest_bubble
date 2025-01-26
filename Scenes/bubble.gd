@@ -17,7 +17,8 @@ var recoiling := false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$Health_Component_Player.player_death.connect(_on_player_death)
+	#$Health_Component_Player.player_death.connect(_on_player_death)
+	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
