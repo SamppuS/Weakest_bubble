@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bajjjepbs6grt"
-path="res://.godot/imported/Neliö3.png-b0d90e607b1f281b56854ff2c0cb6174.ctex"
+uid="uid://cvi87emern7g6"
+path="res://.godot/imported/secondenemyupperlegleft.png-6653fc93e05ee7b3d326f333a74412b1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/Testikuvat/BasicShapes/Neliöt/Neliö3.png"
-dest_files=["res://.godot/imported/Neliö3.png-b0d90e607b1f281b56854ff2c0cb6174.ctex"]
+source_file="res://Images/enkeli/secondenemyupperlegleft.png"
+dest_files=["res://.godot/imported/secondenemyupperlegleft.png-6653fc93e05ee7b3d326f333a74412b1.ctex"]
 
 [params]
 
