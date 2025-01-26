@@ -7,13 +7,13 @@ var death_count = -1
 @onready var bubblebody = $Bubblebody
 @onready var bubblesword = $Bubble_Sword
 @onready var camera = $StaticBody2D/Camera2D
-var alive = true
+
 
 const radius = 15
 
 var center := Vector2.ZERO
 var recoiling := false
-
+var control = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -23,13 +23,15 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	
+	if control == false: return
 	var sword_data = find_angle()
 	
 	
 
 	if sign(sword_data[2]) != sign(sword.angular_velocity) and not recoiling:
 		sword.angular_velocity = 0
-	if force_function and alive:
+	if force_function:
 		var force = -1500
 		if recoiling:
 			force /= 5
@@ -83,7 +85,7 @@ func recoil(power: float, mode: String = ""):
 		if mode != "":
 			pass
 			#sword.apply_impulse(find_angle()[0] * power / 7000, center)
-		else:
+		else: 
 			sword.apply_torque_impulse(power)
 		
 		await get_tree().create_timer(0.2).timeout
@@ -94,9 +96,11 @@ func recoil(power: float, mode: String = ""):
 
 
 func _on_player_death():
-	get_tree().root.add_child(bubblesword)
-	get_child(2).visible = false
-	get_child(3).get_child(1).visible = false
+	#print("dyeing")
+	ragdoll()
+	#get_tree().root.add_child(bubblesword)
+	#get_child(2).visible = false
+	#get_child(3).get_child(1).visible = false
 	#get_tree().root.add_child(camera)
 	#queue_free()
 
@@ -114,3 +118,12 @@ func _on_hitbox_component_area_entered(area: Area2D) -> void:
 		print(death_count)
 		if(death_count>=2):
 			$Health_Component_Player.die_player()
+			_on_player_death()
+
+func ragdoll():
+	if control:
+		bubblebody.visible = false
+		$PinJoint2D.queue_free()
+		control = false
+		sword.gravity_scale = .5
+		sword.angular_velocity /= 100
