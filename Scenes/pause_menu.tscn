@@ -1,0 +1,46 @@
+[gd_scene load_steps=2 format=3 uid="uid://l38e8unlnfut"]
+
+[ext_resource type="Script" path="res://Scripts/pause_menu.gd" id="1_5phrg"]
+
+[node name="PauseMenu" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_5phrg")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+offset_left = 407.0
+offset_top = 217.0
+offset_right = 735.0
+offset_bottom = 369.0
+
+[node name="Button" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+text = "Continue"
+
+[node name="Restart" type="Button" parent="Control/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+text = "Restart"
+
+[node name="Quit to MainMenu" type="Button" parent="Control/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+text = "Quit to Main Menu"
+
+[node name="Quit Game" type="Button" parent="Control/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+text = "Quit Game
+"
+
+[connection signal="pressed" from="Control/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/Quit to MainMenu" to="." method="_on_quit_to_main_menu_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/Quit Game" to="." method="_on_quit_game_pressed"]
